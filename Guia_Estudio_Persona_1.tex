@@ -1,0 +1,238 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{geometry}
+\geometry{top=2cm, bottom=2cm, left=2.2cm, right=2.2cm}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{hyperref}
+
+% Paleta Oficial UNA PUNO - SIS225
+\definecolor{primaryNavy}{HTML}{446491}
+\definecolor{secondaryOcean}{HTML}{4B89AC}
+\definecolor{accentCyan}{HTML}{ACE6F6}
+\definecolor{bgMint}{HTML}{E4FCF9}
+\definecolor{darkText}{HTML}{122034}
+\definecolor{boxBg}{HTML}{F8FDFD}
+
+% Configuración de Encabezados y Pies
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\textbf{\color{primaryNavy}UNA PUNO $\cdot$ FIMEES $\cdot$ EPIS}}
+\fancyhead[R]{\small\color{secondaryOcean}SIS225: Computación Paralela y Distribuida}
+\fancyfoot[C]{\thepage}
+\fancyfoot[R]{\small\color{gray}Guía de Estudio: Persona 1}
+
+% Formato de Títulos
+\titleformat{\section}{\Large\bfseries\color{primaryNavy}}{\thesection.}{0.5em}{}[\titlerule]
+\titleformat{\subsection}{\large\bfseries\color{secondaryOcean}}{\thesubsection.}{0.5em}{}
+
+% Cajas de Estilo Personalizadas
+\newtcolorbox{guionbox}[1]{
+  enhanced,
+  colback=boxBg,
+  colframe=primaryNavy,
+  fonttitle=\bfseries\color{white},
+  colbacktitle=primaryNavy,
+  title={🎙️ Guión Sugerido: #1},
+  arc=3mm,
+  boxrule=1.2pt,
+  breakable,
+  shadow={2pt}{-2pt}{0pt}{black!15}
+}
+
+\newtcolorbox{conceptbox}[1]{
+  enhanced,
+  colback=bgMint!30,
+  colframe=secondaryOcean,
+  fonttitle=\bfseries\color{white},
+  colbacktitle=secondaryOcean,
+  title={💡 Concepto Clave: #1},
+  arc=3mm,
+  boxrule=1.2pt,
+  breakable
+}
+
+\newtcolorbox{qabox}[1]{
+  enhanced,
+  colback=white,
+  colframe=primaryNavy!80,
+  fonttitle=\bfseries\color{white},
+  colbacktitle=primaryNavy!80,
+  title={❓ Pregunta de Examen / Docente: #1},
+  arc=2.5mm,
+  boxrule=1pt,
+  breakable
+}
+
+\begin{document}
+
+% Portada / Cabecera Académica
+\begin{center}
+    {\Large\textbf{\color{primaryNavy}UNIVERSIDAD NACIONAL DEL ALTIPLANO -- PUNO}}\\[2mm]
+    {\large\textbf{\color{secondaryOcean}FACULTAD DE INGENIERÍA MECÁNICA ELÉCTRICA, ELECTRÓNICA Y SISTEMAS}}\\[1mm]
+    {\textbf{Escuela Profesional de Ingeniería de Sistemas}}\\[4mm]
+    
+    \begin{tcolorbox}[colback=primaryNavy,colframe=primaryNavy,arc=4mm,center,width=0.95\textwidth]
+        \centering\color{white}
+        \Large\textbf{GUÍA MAESTRA DE ESTUDIO Y DEFENSA}\\[1.5mm]
+        \large\textbf{PERSONA 1: FUNDAMENTOS DE LA CONCURRENCIA}\\[1mm]
+        \small\textbf{Curso:} Computación Paralela y Distribuida (SIS225) --- Semestre 2026-II\\
+        \small\textbf{Docente:} Dr. Ing. Robert Antonio Romero Flores
+    \end{tcolorbox}
+\end{center}
+
+\vspace{2mm}
+\noindent\textbf{Tiempo Asignado:} 4 minutos cronometrados (Minuto 0:00 al 4:00) $\cdot$ \textbf{Diapositivas a cargo:} 01, 02, 03, 04 y 05.
+
+\section{Cronograma Minuto a Minuto de tu Exposición (4:00 min)}
+
+\begin{table}[h!]
+\centering
+\small
+\begin{tabular}{@{}cclp{7.5cm}@{}}
+\toprule
+\textbf{Tiempo} & \textbf{Diapo} & \textbf{Fase} & \textbf{Acción / Objetivo Principal} \\ \midrule
+\textbf{0:00 -- 0:30} & 01 & Saludo y Apertura & Saludo protocolar al Dr. Robert Romero, presentación del tema y estructura en 16 minutos. \\
+\textbf{0:30 -- 1:00} & 02 & Agenda y Hoja de Ruta & Resumen de los 4 bloques temáticos (Concurrencia $\to$ Paralelismo $\to$ Rendimiento $\to$ Python). \\
+\textbf{1:00 -- 2:00} & 03 & ¿Qué es Concurrencia? & Definir tiempo lógico, time-slicing, cambios de contexto y estructura del software. \\
+\textbf{2:00 -- 3:15} & 04 & Analogía de la Cocina & Explicar el chef: tareas I/O Bound vs CPU Bound y avance no bloqueante en 1 solo núcleo. \\
+\textbf{3:15 -- 3:50} & 05 & Modelos Lógicos & Hilos (memoria compartida), Procesos (IPC), Actores (mensajes) y Reactivo (eventos). \\
+\textbf{3:50 -- 4:00} & 05 & Pase a Persona 2 & Transición formal hacia el paralelismo físico en hardware multinúcleo. \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\section{Guiones Exactos Paso a Paso (¿Qué decir en cada lámina?)}
+
+\begin{guionbox}{Diapositiva 01 --- Portada Institucional (0:00 -- 0:30)}
+\textit{«Buenas tardes Dr. Robert Romero y compañeros de la Escuela Profesional de Ingeniería de Sistemas de la UNA Puno. Somos el grupo encargado de exponer el tema \textbf{“Fundamentos del Paralelismo y Rendimiento”}, correspondiente a la Unidad 1 del curso de Computación Paralela y Distribuida.}
+
+\textit{Nuestra exposición durará exactamente 16 minutos cronometrados, dividida en 4 intervenciones de 4 minutos cada una. En este primer bloque definiremos qué es la concurrencia, cómo se diferencia de la ejecución secuencial tradicional y cuáles son sus principales modelos arquitectónicos.»}
+\end{guionbox}
+
+\begin{guionbox}{Diapositiva 02 --- Agenda y Hoja de Ruta (0:30 -- 1:00)}
+\textit{«Nuestra sesión se estructura en cuatro bloques complementarios: en este primer bloque abordaremos la \textbf{Concurrencia} y sus modelos lógicos; la \textbf{Persona 2} explicará el \textbf{Paralelismo} físico, la Regla de Oro y la Taxonomía de Flynn; la \textbf{Persona 3} detallará las \textbf{Métricas Cuantitativas de Rendimiento} (Speedup, Eficiencia, Ley de Amdahl y Consistencia de Memoria); y la \textbf{Persona 4} cerrará con la implementación práctica en \textbf{Python} analizando el GIL, Threading y Multiprocessing con simulaciones en vivo.»}
+\end{guionbox}
+
+\begin{guionbox}{Diapositiva 03 --- ¿Qué es Concurrencia? (1:00 -- 2:00)}
+\textit{«Iniciando con el tema central: la \textbf{concurrencia} es la capacidad de un sistema para gestionar y hacer progresar múltiples tareas al \textbf{mismo tiempo lógico}, aunque no necesariamente se ejecuten en el mismo instante físico.}
+
+\textit{Como observamos en el diagrama, en un sistema tradicional con un solo procesador (1 CPU), las tareas no corren al unísono, sino que progresan de manera \textbf{intercalada} (\textit{interleaving}) compartiendo el CPU mediante \textbf{time-slicing} (fracciones de tiempo) y cambios de contexto (\textit{context switches}). La idea fundamental es que la concurrencia trata sobre la \textbf{estructura} del programa: descomponer un problema en tareas independientes para aprovechar al máximo los recursos y evitar que el procesador quede ocioso durante esperas.»}
+\end{guionbox}
+
+\begin{guionbox}{Diapositiva 04 --- Analogía de la Cocina (2:00 -- 3:15)}
+\textit{«Para comprender la concurrencia de forma intuitiva, analicemos la analogía de \textbf{un solo chef} en la cocina:}
+
+\begin{itemize}[leftmargin=5mm]
+    \item \textit{Mientras el agua hierve para la pasta (lo que representa una \textbf{espera pasiva de I/O}, como leer de un disco o esperar una petición web), el chef no se queda de brazos cruzados.}
+    \item \textit{En ese tiempo muerto, el chef pasa a picar verduras (lo que representa \textbf{cómputo activo de CPU}) y luego revisa el horno.}
+\end{itemize}
+
+\textit{El chef no tiene seis brazos para hacer todo al mismo nanosegundo, pero avanza en las tres tareas de forma no bloqueante. En un modelo secuencial estricto, el chef esperaría parado diez minutos a que hierva el agua antes de picar la verdura. La concurrencia, por tanto, optimiza la gestión del tiempo y la capacidad de respuesta (\textit{responsiveness}).»}
+\end{guionbox}
+
+\begin{guionbox}{Diapositiva 05 --- Modelos de Concurrencia \& Transición (3:15 -- 4:00)}
+\textit{«En la ingeniería de software moderna implementamos la concurrencia mediante cuatro modelos principales:}
+\begin{enumerate}[leftmargin=5mm]
+    \item \textbf{Hilos (Threads):} \textit{Ejecutan dentro de un mismo proceso y comparten el espacio de memoria (heap). Son muy livianos, pero exigen sincronización para evitar condiciones de carrera.}
+    \item \textbf{Procesos:} \textit{Cuentan con espacio de memoria aislado y protegido por el sistema operativo, comunicándose mediante IPC (Inter-Process Communication).}
+    \item \textbf{Modelo de Actores:} \textit{Cada actor es una entidad autónoma que no comparte estado y se comunica exclusivamente enviando y recibiendo mensajes asíncronos.}
+    \item \textbf{Modelo Reactivo:} \textit{Asíncrono y no bloqueante, guiado por eventos y flujos de datos (\textit{Event Loops}).}
+\end{enumerate}
+
+\textit{Habiendo comprendido que la concurrencia organiza tareas intercaladas en el tiempo lógico, le doy el pase a mi compañero (Persona 2) para ver qué sucede cuando tenemos múltiples núcleos ejecutando al mismo instante físico: el paralelismo.»}
+\end{guionbox}
+
+\section{Fundamento Teórico Riguroso para Persona 1}
+
+\subsection{Definiciones Formales}
+\begin{itemize}[leftmargin=5mm]
+    \item \textbf{Concurrencia ($\mathcal{C}$):} Composición de procesos que se ejecutan independientemente. Es una propiedad del \textit{diseño de software} (estructura). Formalmente: dos eventos $e_1$ y $e_2$ son concurrentes si no existe una relación de precedencia causal temporal estricta entre ellos ($e_1 \not\prec e_2 \land e_2 \not\prec e_1$).
+    \item \textbf{Tiempo Lógico vs. Tiempo Físico:} En tiempo lógico, el sistema garantiza que múltiples tareas están en estado de progreso simultáneo dentro de su ciclo de vida ($t_{inicio} < t < t_{fin}$), independientemente de si comparten un solo núcleo físico.
+    \item \textbf{Cambio de Contexto (\textit{Context Switch}):} Procedimiento mediante el cual el planificador (\textit{scheduler}) del sistema operativo guarda el estado de ejecución de un hilo/proceso (registros de CPU, puntero de instrucción \textit{PC}, pila) y restaura el estado de otro hilo. Incurre en un costo temporal denominado \textit{overhead}.
+\end{itemize}
+
+\subsection{Comparativa Fundamental: Secuencial vs. Concurrente}
+
+\begin{table}[h!]
+\centering
+\small
+\begin{tabular}{@{}lp{6cm}p{6cm}@{}}
+\toprule
+\textbf{Criterio} & \textbf{Ejecución Secuencial} & \textbf{Ejecución Concurrente} \\ \midrule
+\textbf{Orden de Ejecución} & Estrictamente lineal y determinístico ($T_1 \to T_2 \to T_3$). & Intercalado dinámico por el planificador del SO. \\
+\textbf{Bloqueos de I/O} & Bloquea todo el sistema hasta que finalice la E/S. & Cede el CPU a otra tarea lista para computar. \\
+\textbf{Uso del CPU} & Pobre en presencia de operaciones de red o disco. & Maximizado; reduce tiempos de inactividad (\textit{idle}). \\
+\textbf{Complejidad} & Baja; predecible y sin sincronización. & Requiere control de concurrencia (\textit{locks}, semáforos). \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Los 4 Modelos de Concurrencia en Detalle}
+
+\begin{conceptbox}{1. Modelo de Hilos (Memoria Compartida)}
+\textbf{Mecanismo:} Múltiples hilos de ejecución dentro del mismo espacio de direcciones virtuales.\\
+\textbf{Ventaja:} Comunicación ultrarrápida mediante lectura/escritura directa en memoria compartida.\\
+\textbf{Desafío:} Riesgo de \textit{Race Conditions}, bloqueos mutuos (\textit{Deadlocks}) y necesidad de exclusión mutua (\textit{Mutex}).
+\end{conceptbox}
+
+\begin{conceptbox}{2. Modelo de Procesos (Memoria Aislada)}
+\textbf{Mecanismo:} Cada proceso tiene su propio mapa de memoria virtual aislado por el MMU del procesador.\\
+\textbf{Ventaja:} Alta robustez y tolerancia a fallos; si un proceso colapsa, no afecta a los demás.\\
+\textbf{Comunicación:} Requiere tuberías (\textit{Pipes}), sockets, colas de mensajes o memoria compartida explícita (\textit{IPC}).
+\end{conceptbox}
+
+\begin{conceptbox}{3. Modelo de Actores (Paso de Mensajes)}
+\textbf{Mecanismo:} Propuesto por Carl Hewitt (usado en Erlang, Akka). Cada actor tiene un buzón de mensajes (\textit{mailbox}).\\
+\textbf{Ventaja:} Elimina completamente el estado compartido; no requiere candados ni semáforos.\\
+\textbf{Regla de Oro:} \textit{«No te comuniques compartiendo memoria; comparte memoria comunicándote».}
+\end{conceptbox}
+
+\begin{conceptbox}{4. Modelo Reactivo / Event-Driven}
+\textbf{Mecanismo:} Un solo hilo ejecuta un bucle de eventos (\textit{Event Loop}) que atiende callbacks asíncronos (ej. Node.js, Python \texttt{asyncio}).\\
+\textbf{Ventaja:} Excelente escalabilidad para millones de conexiones concurrentes con mínimo consumo de RAM.
+\end{conceptbox}
+
+\section{Banco de Preguntas del Docente (Dr. Robert Romero) \& Respuestas de Defensa}
+
+\begin{qabox}{1. ¿Puede existir concurrencia en un procesador de un solo núcleo?}
+\textbf{Respuesta Modelo:}  
+\textit{«Sí, totalmente. La concurrencia trata sobre cómo estructuramos el software para gestionar múltiples tareas en progreso lógico simultáneo. En un procesador mononúcleo, el sistema operativo implementa \textbf{multiprogramación} y \textbf{time-slicing} (conmutación rápida de tareas), permitiendo que cuando una tarea se bloquea por Entrada/Salida (disco o red), el procesador atienda a otra tarea lista para ejecutar, maximizando el uso del CPU.»}
+\end{qabox}
+
+\begin{qabox}{2. ¿Qué es un cambio de contexto (context switch) y por qué genera sobrecosto?}
+\textbf{Respuesta Modelo:}  
+\textit{«Un cambio de contexto es la operación del sistema operativo para suspender un hilo y reanudar otro. Involucra guardar los registros del CPU, el puntero de instrucción (Program Counter), el puntero de pila (Stack Pointer) y actualizar las tablas de páginas de memoria. Genera sobrecosto (\textit{overhead}) porque durante esos microsegundos el CPU no ejecuta código útil del usuario, además de provocar la invalidación de líneas en la memoria caché (\textit{cache pollution}).»}
+\end{qabox}
+
+\begin{qabox}{3. ¿Cuál es la diferencia exacta entre una tarea I/O Bound y una CPU Bound?}
+\textbf{Respuesta Modelo:}  
+\textit{«Una tarea \textbf{I/O Bound} pasa la mayor parte de su tiempo esperando respuestas de dispositivos externos (lectura de disco, peticiones HTTP, consultas a bases de datos), por lo que se beneficia enormemente de la \textbf{concurrencia} incluso en 1 solo núcleo. Una tarea \textbf{CPU Bound} pasa casi el 100\% de su tiempo realizando cálculos aritméticos continuos en los transistores del procesador (como multiplicación de matrices o criptografía), por lo que requiere \textbf{paralelismo real} en múltiples núcleos físicos para acelerarse.»}
+\end{qabox}
+
+\begin{qabox}{4. ¿Por qué el modelo de actores previene las condiciones de carrera (race conditions)?}
+\textbf{Respuesta Modelo:}  
+\textit{«Porque en el modelo de actores \textbf{no existe memoria compartida mutable}. Cada actor es dueño exclusivo de su estado interno y la única forma de interactuar es enviando mensajes inmutables a su buzón. Como el actor procesa sus mensajes uno por uno de forma secuencial en su ámbito local, es matemáticamente imposible que dos entidades modifiquen la misma variable al mismo tiempo.»}
+\end{qabox}
+
+\begin{qabox}{5. ¿Qué diferencia formal existe entre concurrencia y paralelismo?}
+\textbf{Respuesta Modelo:}  
+\textit{«La concurrencia trata sobre la \textbf{estructura} del software (manejar muchas cosas a la vez en tiempo lógico); el paralelismo trata sobre la \textbf{ejecución física simultánea} en hardware (hacer muchas cosas al mismo instante de tiempo $t$). Por eso nuestra Regla de Oro dice: \textbf{“Todo paralelismo implica concurrencia, pero no toda concurrencia implica paralelismo”}.»}
+\end{qabox}
+
+\section{Checklist de Seguridad para tu Exposición}
+
+\begin{itemize}[leftmargin=6mm]
+    \item[$\square$] \textbf{Control del Cronómetro:} Asegurar que el saludo y la definición de concurrencia terminen antes del minuto 1:30.
+    \item[$\square$] \textbf{Términos Clave Pronunciados:} \textit{Tiempo lógico}, \textit{Time-slicing}, \textit{Context switch}, \textit{I/O Bound}, \textit{Memoria compartida vs. aislada}.
+    \item[$\square$] \textbf{Postura y Énfasis:} Modular la voz en la analogía del chef para mantener la atención del profesor Dr. Robert Romero.
+    \item[$\square$] \textbf{Transición Impecable:} Cerrar en el minuto 3:55 dando el pase formal a la Persona 2 con la frase: \textit{«Habiendo visto la concurrencia lógica, le doy el pase a mi compañero para analizar el paralelismo físico en hardware multinúcleo.»}
+\end{itemize}
+
+\end{document}
