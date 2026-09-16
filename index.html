@@ -1713,70 +1713,73 @@
 
       <!-- slide_16.html -->
       <!-- ====================================================================
-           SLIDE 16: RONDA DE PREGUNTAS & PREGUNTAS FRECUENTES
-           ==================================================================== -->
-      <article class="slide" id="slide-16">
-        <div class="slide-header">
-          <div class="slide-tagline-row">
-            <span class="slide-badge-category">Ronda de Preguntas</span>
-            <span class="slide-badge-time">Defensa Grupal</span>
-          </div>
-          <h2 class="slide-title">Ronda de Preguntas & Glosario de Defensa</h2>
-          <p class="slide-subtitle">Respuestas estructuradas a las preguntas clave del docente y del público</p>
+     SLIDE 16: CIERRE INSTITUCIONAL & AGRADECIMIENTO
+     ==================================================================== -->
+<article class="slide" id="slide-16" style="justify-content: center; align-items: center; text-align: center;">
+  
+  <div class="slide-body" style="justify-content: center; align-items: center; width: 100%; max-width: 980px; margin: 0 auto; gap: 16px;">
+    
+    <!-- Hero Closing Card -->
+    <div class="card card-highlight" style="width: 100%; padding: 36px 40px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 16px; border: 2px solid var(--accent-cyan); box-shadow: var(--shadow-lg); background: linear-gradient(180deg, #FFFFFF 0%, #F4FCFA 100%);">
+      
+      <!-- Institutional Badges Row -->
+      <div style="display: flex; align-items: center; gap: 10px; justify-content: center;">
+        <span class="slide-badge-category" style="font-size: 12px; padding: 5px 16px;">Cierre Institucional</span>
+        <span class="slide-badge-time" style="font-size: 12px; padding: 5px 16px;">UNA PUNO • FIMEES</span>
+      </div>
+
+      <!-- University HD Logo -->
+      <div style="margin: 6px 0;">
+        <img src="assets/images/uni_logo.png" alt="Escudo Oficial UNA Puno" style="height: 120px; width: auto; object-fit: contain; filter: drop-shadow(0 8px 18px rgba(20, 34, 56, 0.20));">
+      </div>
+
+      <!-- Main Thank You Heading -->
+      <div>
+        <h2 style="font-family: 'Outfit', sans-serif; font-size: 38px; font-weight: 900; color: var(--primary-navy); letter-spacing: -0.5px; margin: 0 0 6px 0; line-height: 1.15;">
+          ¡Muchas Gracias por su Atención!
+        </h2>
+        <p style="font-size: 16px; font-weight: 600; color: var(--secondary-ocean); margin: 0;">
+          ¿Preguntas, dudas o comentarios?
+        </p>
+      </div>
+
+      <!-- Institutional Details Card -->
+      <div style="background: #FFFFFF; border: 1.5px solid var(--border-light); border-radius: var(--radius-md); padding: 14px 28px; width: 100%; max-width: 720px; box-shadow: var(--shadow-sm);">
+        <div style="font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 800; color: var(--primary-navy); margin-bottom: 2px;">
+          UNIVERSIDAD NACIONAL DEL ALTIPLANO • PUNO
         </div>
-
-        <div class="slide-body">
-          <div class="grid-2-cols">
-            <!-- QA 1 & 2 -->
-            <div style="display: flex; flex-direction: column; gap: 10px; justify-content: space-between;">
-              <div class="card card-highlight" style="padding: 14px;">
-                <h4 style="font-size: 13.5px; font-weight: 700; color: var(--primary-navy); margin-bottom: 3px;">
-                  [Pregunta] ¿Cuál es la diferencia exacta entre un hilo y un proceso?
-                </h4>
-                <p style="font-size: 12.5px; color: var(--text-dark); line-height: 1.45;">
-                  <strong>Respuesta:</strong> Un <strong>hilo</strong> es la unidad mínima de ejecución dentro de un proceso y comparte el espacio de memoria y variables con otros hilos (muy liviano). Un <strong>proceso</strong> tiene su propio espacio de memoria aislado por el SO y requiere mecanismos de IPC para comunicarse (más robusto pero más pesado).
-                </p>
-              </div>
-
-              <div class="card card-highlight" style="padding: 14px;">
-                <h4 style="font-size: 13.5px; font-weight: 700; color: var(--primary-navy); margin-bottom: 3px;">
-                  [Pregunta] ¿Por qué no se puede lograr Speedup infinito agregando miles de CPUs?
-                </h4>
-                <p style="font-size: 12.5px; color: var(--text-dark); line-height: 1.45;">
-                  <strong>Respuesta:</strong> Por la <strong>Ley de Amdahl</strong>. Todo programa tiene una fracción intrínsecamente secuencial $(1-f)$ que no se puede paralelizar (inicialización, E/S, sincronización). Cuando $p \to \infty$, el Speedup máximo queda estancado en $\frac{1}{1-f}$.
-                </p>
-              </div>
-            </div>
-
-            <!-- QA 3 & 4 -->
-            <div style="display: flex; flex-direction: column; gap: 10px; justify-content: space-between;">
-              <div class="card card-highlight" style="padding: 14px;">
-                <h4 style="font-size: 13.5px; font-weight: 700; color: var(--primary-navy); margin-bottom: 3px;">
-                  [Pregunta] ¿Qué es el GIL de Python y por qué existe?
-                </h4>
-                <p style="font-size: 12.5px; color: var(--text-dark); line-height: 1.45;">
-                  <strong>Respuesta:</strong> El <em>Global Interpreter Lock</em> es un cerrojo mutex en CPython que previene que múltiples hilos nativos ejecuten bytecode Python al mismo tiempo para proteger la gestión de memoria (reference counting). Por eso, para paralelismo real de CPU se usa <code>multiprocessing</code>.
-                </p>
-              </div>
-
-              <div class="card card-ocean" style="padding: 16px 20px; justify-content: center; align-items: center; text-align: center; gap: 10px;">
-                <img src="assets/images/uni_logo.png" alt="Logo UNA Puno" style="height: 72px; width: auto; object-fit: contain; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));">
-                <div>
-                  <h4 style="font-size: 16px; font-weight: 800; color: #FFFFFF; margin-bottom: 4px;">
-                    ¡Muchas Gracias por su Atención!
-                  </h4>
-                  <p style="font-size: 12.5px; color: #E4FCF9; line-height: 1.45;">
-                    ¿Preguntas del docente o de los compañeros de clase?<br>
-                    <strong>UNIVERSIDAD NACIONAL DEL ALTIPLANO • PUNO</strong><br>
-                    <span style="color: var(--accent-cyan); font-weight: 700;">FIMEES • Escuela Profesional de Ingeniería de Sistemas</span><br>
-                    <em>SIS225: Computación Paralela y Distribuida • 2026-II</em>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div style="font-size: 13px; font-weight: 700; color: var(--secondary-ocean); margin-bottom: 6px;">
+          Facultad de Ingeniería Mecánica Eléctrica, Electrónica y Sistemas — EPIS
         </div>
-      </article>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 16px; font-size: 12px; color: var(--text-muted); border-top: 1px solid #E2EFF5; padding-top: 6px;">
+          <span><strong>Curso:</strong> Computación Paralela y Distribuida (SIS225)</span>
+          <span>•</span>
+          <span><strong>Semestre:</strong> 2026-II</span>
+          <span>•</span>
+          <span><strong>Docente:</strong> Dr. Ing. Robert Antonio Romero Flores</span>
+        </div>
+      </div>
+
+      <!-- Key Topics Covered Pills -->
+      <div style="display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap;">
+        <span style="background: var(--bg-mint); border: 1px solid var(--accent-cyan); color: var(--primary-navy); font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 20px;">
+          ✓ Concurrencia &amp; Time-Slicing
+        </span>
+        <span style="background: var(--bg-mint); border: 1px solid var(--accent-cyan); color: var(--primary-navy); font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 20px;">
+          ✓ Paralelismo Físico &amp; Flynn
+        </span>
+        <span style="background: var(--bg-mint); border: 1px solid var(--accent-cyan); color: var(--primary-navy); font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 20px;">
+          ✓ Speedup, Eficiencia &amp; Ley de Amdahl
+        </span>
+        <span style="background: var(--bg-mint); border: 1px solid var(--accent-cyan); color: var(--primary-navy); font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 20px;">
+          ✓ Python: Threading vs Multiprocessing
+        </span>
+      </div>
+
+    </div>
+
+  </div>
+</article>
     </section>
 
     <!-- Bottom Controls Bar -->
