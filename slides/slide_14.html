@@ -1,0 +1,71 @@
+<!-- ====================================================================
+           SLIDE 14: PERSONA 4 - PARALELISMO EN PYTHON (MULTIPROCESSING)
+           ==================================================================== -->
+      <article class="slide" id="slide-14">
+        <div class="slide-header">
+          <div class="slide-tagline-row">
+            <span class="slide-badge-category">Persona 4: Python Paralelo</span>
+            <span class="slide-badge-time">Minuto 12:00 - 16:00</span>
+          </div>
+          <h2 class="slide-title">Paralelismo en Python: `multiprocessing`</h2>
+          <p class="slide-subtitle">Ejemplo 2: Paralelismo real en 4 núcleos para tareas CPU Bound sin la restricción del GIL</p>
+        </div>
+
+        <div class="slide-body">
+          <div class="grid-2-cols">
+            <!-- Left: High Readability Code Block -->
+            <div class="code-container">
+              <div class="code-header">
+                <div class="code-dots">
+                  <span class="code-dot code-dot-red"></span>
+                  <span class="code-dot code-dot-yellow"></span>
+                  <span class="code-dot code-dot-green"></span>
+                </div>
+                <span class="code-title">
+                  <svg class="icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" fill="none"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                  ejemplo2_multiprocessing.py
+                </span>
+                <button id="btnRunMultiprocessing" class="nav-btn" style="padding: 4px 10px; font-size: 11.5px;">
+                  <svg class="icon" viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                  Ejecutar Código
+                </button>
+              </div>
+
+              <div class="code-body">
+                <pre><code><span class="code-line-num"> 1</span><span class="code-keyword">from</span> multiprocessing <span class="code-keyword">import</span> Pool
+<span class="code-line-num"> 2</span><span class="code-keyword">import</span> time
+<span class="code-line-num"> 3</span>
+<span class="code-line-num"> 4</span><span class="code-keyword">def</span> <span class="code-fn">tarea_pesada</span>(n):
+<span class="code-line-num"> 5</span>    <span class="code-comment"># Tarea CPU Bound intensiva</span>
+<span class="code-line-num"> 6</span>    <span class="code-keyword">return</span> <span class="code-fn">sum</span>(i * i <span class="code-keyword">for</span> i <span class="code-keyword">in</span> <span class="code-fn">range</span>(n))
+<span class="code-line-num"> 7</span>
+<span class="code-line-num"> 8</span><span class="code-keyword">if</span> __name__ == <span class="code-str">"__main__"</span>:
+<span class="code-line-num"> 9</span>    datos = [<span class="code-num">10**7</span>, <span class="code-num">10**7</span>, <span class="code-num">10**7</span>, <span class="code-num">10**7</span>]
+<span class="code-line-num">10</span>    <span class="code-comment"># Secuencial vs Pool(4)</span>
+<span class="code-line-num">11</span>    t0 = time.time()
+<span class="code-line-num">12</span>    res_seq = [<span class="code-fn">tarea_pesada</span>(n) <span class="code-keyword">for</span> n <span class="code-keyword">in</span> datos]
+<span class="code-line-num">13</span>    t_seq = time.time() - t0
+<span class="code-line-num">14</span>    
+<span class="code-line-num">15</span>    t1 = time.time()
+<span class="code-line-num">16</span>    <span class="code-keyword">with</span> <span class="code-fn">Pool</span>(processes=<span class="code-num">4</span>) <span class="code-keyword">as</span> pool:
+<span class="code-line-num">17</span>        res_par = pool.<span class="code-fn">map</span>(tarea_pesada, datos)
+<span class="code-line-num">18</span>    t_par = time.time() - t1
+<span class="code-line-num">19</span>    <span class="code-fn">print</span>(<span class="code-str">f"Speedup: {t_seq/t_par:.2f}x"</span>)</code></pre>
+              </div>
+
+              <div id="terminalMulti" class="terminal-output">
+                <div class="terminal-title">
+                  <svg class="icon" viewBox="0 0 24 24" width="13" height="13" stroke="currentColor" fill="none"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+                  SALIDA DE TERMINAL:
+                </div>
+                <span class="terminal-line">Haz clic en 'Ejecutar Código' para probar...</span>
+              </div>
+            </div>
+
+            <!-- Right: Prominent Dedicated Multiprocessing 4 Cores Diagram -->
+            <div class="media-container" style="padding: 6px;">
+              <img src="assets/images/python_multiprocessing_cores.svg" alt="Arquitectura Multiprocessing en 4 Núcleos">
+            </div>
+          </div>
+        </div>
+      </article>

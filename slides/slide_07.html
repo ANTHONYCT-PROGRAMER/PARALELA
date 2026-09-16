@@ -1,0 +1,75 @@
+<!-- ====================================================================
+           SLIDE 07: PERSONA 2 - LA REGLA DE ORO: CONCURRENCIA VS PARALELISMO
+           ==================================================================== -->
+      <article class="slide" id="slide-7">
+        <div class="slide-header">
+          <div class="slide-tagline-row">
+            <span class="slide-badge-category">Persona 2: La Regla de Oro</span>
+            <span class="slide-badge-time">Minuto 4:00 - 8:00</span>
+          </div>
+          <h2 class="slide-title">La Regla de Oro: Concurrencia vs. Paralelismo</h2>
+          <p class="slide-subtitle">La diferencia conceptual más importante de toda la exposición</p>
+        </div>
+
+        <div class="slide-body">
+          <div class="card card-navy" style="padding: 10px 18px; text-align: center; flex: 0 0 auto;">
+            <p style="font-family: 'Outfit', sans-serif; font-size: 16.5px; font-weight: 800; color: #FFFFFF; letter-spacing: 0.5px;">
+              REGLA FUNDAMENTAL: <span style="color: var(--accent-cyan);">"Todo paralelismo implica concurrencia, pero no toda concurrencia implica paralelismo."</span>
+            </p>
+          </div>
+
+          <div class="grid-2-cols" style="flex: 1;">
+            <!-- Left: Prominent CPU Graphic -->
+            <div class="media-container" style="padding: 6px;">
+              <img src="assets/images/concurrency_cpu.svg" alt="Concurrencia vs Paralelismo Hardware">
+            </div>
+
+            <!-- Right: Contrast Details (Centered vertically in the column) -->
+            <div style="display: flex; flex-direction: column; justify-content: center; gap: 14px; height: 100%;">
+              <div style="background: #FFFFFF; border-radius: var(--radius-md); border: 1.5px solid var(--border-light); overflow: hidden; box-shadow: var(--shadow-sm);">
+                <table class="table-presentation" style="margin: 0; width: 100%;">
+                  <thead>
+                    <tr>
+                      <th style="padding: 10px 14px; font-size: 12.5px;">Criterio</th>
+                      <th style="padding: 10px 14px; font-size: 12.5px;">Concurrencia</th>
+                      <th style="padding: 10px 14px; font-size: 12.5px;">Paralelismo</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td style="padding: 9px 14px; font-size: 12px;"><strong>Ejecución</strong></td>
+                      <td style="padding: 9px 14px; font-size: 12px; color: var(--text-dark);">Intercalada en el tiempo (Time Slices).</td>
+                      <td style="padding: 9px 14px; font-size: 12px; color: var(--primary-navy); font-weight: 700;">Simultánea en el mismo instante $t$.</td>
+                    </tr>
+                    <tr>
+                      <td style="padding: 9px 14px; font-size: 12px;"><strong>Núcleos Requeridos</strong></td>
+                      <td style="padding: 9px 14px; font-size: 12px; color: var(--text-dark);">Puede ser 1 solo núcleo de CPU.</td>
+                      <td style="padding: 9px 14px; font-size: 12px; color: var(--secondary-ocean); font-weight: 700;">Requiere 2 o más núcleos/CPUs físicos.</td>
+                    </tr>
+                    <tr>
+                      <td style="padding: 9px 14px; font-size: 12px;"><strong>Objetivo Principal</strong></td>
+                      <td style="padding: 9px 14px; font-size: 12px; color: var(--text-dark);">Mejorar responsividad y uso de I/O.</td>
+                      <td style="padding: 9px 14px; font-size: 12px; color: var(--primary-navy); font-weight: 700;">Reducir drásticamente el tiempo de cómputo.</td>
+                    </tr>
+                    <tr>
+                      <td style="padding: 9px 14px; font-size: 12px;"><strong>Enfoque Conceptual</strong></td>
+                      <td style="padding: 9px 14px; font-size: 12px; color: var(--text-dark);">Estructura y gestión del software.</td>
+                      <td style="padding: 9px 14px; font-size: 12px; color: var(--primary-navy); font-weight: 700;">Ejecución física en el hardware.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Centered Summary Banner -->
+              <div class="takeaway-banner" style="margin: 0; box-shadow: var(--shadow-sm);">
+                <div class="takeaway-icon-box">
+                  <svg class="icon" viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none"><line x1="9" y1="18" x2="15" y2="18"/><line x1="10" y1="22" x2="14" y2="22"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5.76.76 1.23 1.52 1.41 2.5"/></svg>
+                </div>
+                <div class="takeaway-text">
+                  <strong>Resumen para el público:</strong> Puedes tener concurrencia sin paralelismo (1 CPU alternando tareas), pero cuando tienes paralelismo, las tareas concurrentes se ejecutan físicamente al unísono.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>

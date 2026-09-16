@@ -1,0 +1,65 @@
+<!-- ====================================================================
+           SLIDE 16: RONDA DE PREGUNTAS & PREGUNTAS FRECUENTES
+           ==================================================================== -->
+      <article class="slide" id="slide-16">
+        <div class="slide-header">
+          <div class="slide-tagline-row">
+            <span class="slide-badge-category">Ronda de Preguntas</span>
+            <span class="slide-badge-time">Defensa Grupal</span>
+          </div>
+          <h2 class="slide-title">Ronda de Preguntas & Glosario de Defensa</h2>
+          <p class="slide-subtitle">Respuestas estructuradas a las preguntas clave del docente y del público</p>
+        </div>
+
+        <div class="slide-body">
+          <div class="grid-2-cols">
+            <!-- QA 1 & 2 -->
+            <div style="display: flex; flex-direction: column; gap: 10px; justify-content: space-between;">
+              <div class="card card-highlight" style="padding: 14px;">
+                <h4 style="font-size: 13.5px; font-weight: 700; color: var(--primary-navy); margin-bottom: 3px;">
+                  [Pregunta] ¿Cuál es la diferencia exacta entre un hilo y un proceso?
+                </h4>
+                <p style="font-size: 12.5px; color: var(--text-dark); line-height: 1.45;">
+                  <strong>Respuesta:</strong> Un <strong>hilo</strong> es la unidad mínima de ejecución dentro de un proceso y comparte el espacio de memoria y variables con otros hilos (muy liviano). Un <strong>proceso</strong> tiene su propio espacio de memoria aislado por el SO y requiere mecanismos de IPC para comunicarse (más robusto pero más pesado).
+                </p>
+              </div>
+
+              <div class="card card-highlight" style="padding: 14px;">
+                <h4 style="font-size: 13.5px; font-weight: 700; color: var(--primary-navy); margin-bottom: 3px;">
+                  [Pregunta] ¿Por qué no se puede lograr Speedup infinito agregando miles de CPUs?
+                </h4>
+                <p style="font-size: 12.5px; color: var(--text-dark); line-height: 1.45;">
+                  <strong>Respuesta:</strong> Por la <strong>Ley de Amdahl</strong>. Todo programa tiene una fracción intrínsecamente secuencial $(1-f)$ que no se puede paralelizar (inicialización, E/S, sincronización). Cuando $p \to \infty$, el Speedup máximo queda estancado en $\frac{1}{1-f}$.
+                </p>
+              </div>
+            </div>
+
+            <!-- QA 3 & 4 -->
+            <div style="display: flex; flex-direction: column; gap: 10px; justify-content: space-between;">
+              <div class="card card-highlight" style="padding: 14px;">
+                <h4 style="font-size: 13.5px; font-weight: 700; color: var(--primary-navy); margin-bottom: 3px;">
+                  [Pregunta] ¿Qué es el GIL de Python y por qué existe?
+                </h4>
+                <p style="font-size: 12.5px; color: var(--text-dark); line-height: 1.45;">
+                  <strong>Respuesta:</strong> El <em>Global Interpreter Lock</em> es un cerrojo mutex en CPython que previene que múltiples hilos nativos ejecuten bytecode Python al mismo tiempo para proteger la gestión de memoria (reference counting). Por eso, para paralelismo real de CPU se usa <code>multiprocessing</code>.
+                </p>
+              </div>
+
+              <div class="card card-ocean" style="padding: 16px 20px; justify-content: center; align-items: center; text-align: center; gap: 10px;">
+                <img src="assets/images/uni_logo.png" alt="Logo UNA Puno" style="height: 72px; width: auto; object-fit: contain; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));">
+                <div>
+                  <h4 style="font-size: 16px; font-weight: 800; color: #FFFFFF; margin-bottom: 4px;">
+                    ¡Muchas Gracias por su Atención!
+                  </h4>
+                  <p style="font-size: 12.5px; color: #E4FCF9; line-height: 1.45;">
+                    ¿Preguntas del docente o de los compañeros de clase?<br>
+                    <strong>UNIVERSIDAD NACIONAL DEL ALTIPLANO • PUNO</strong><br>
+                    <span style="color: var(--accent-cyan); font-weight: 700;">FIMEES • Escuela Profesional de Ingeniería de Sistemas</span><br>
+                    <em>SIS225: Computación Paralela y Distribuida • 2026-II</em>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>

@@ -1,0 +1,59 @@
+<!-- ====================================================================
+           SLIDE 08: PERSONA 2 - TIPOS DE PARALELISMO & TAXONOMÍA DE FLYNN
+           ==================================================================== -->
+      <article class="slide" id="slide-8">
+        <div class="slide-header">
+          <div class="slide-tagline-row">
+            <span class="slide-badge-category">Persona 2: Clasificación</span>
+            <span class="slide-badge-time">Minuto 4:00 - 8:00</span>
+          </div>
+          <h2 class="slide-title">Tipos de Paralelismo & Taxonomía de Flynn</h2>
+          <p class="slide-subtitle">Clasificación según partición de trabajo y flujos de instrucciones/datos</p>
+        </div>
+
+        <div class="slide-body">
+          <!-- Hero Flynn Diagram -->
+          <div class="media-container" style="max-height: 260px;">
+            <img src="assets/images/flynn_taxonomy.svg" alt="Taxonomía de Flynn SISD SIMD MIMD">
+          </div>
+
+          <!-- 4 Types of Parallelism -->
+          <div class="grid-4-cols">
+            <div class="card" style="padding: 12px 14px;">
+              <h4 style="font-size: 13.5px; font-weight: 700; color: var(--primary-navy); margin-bottom: 2px;">
+                Paralelismo de Datos
+              </h4>
+              <p style="font-size: 12px; color: var(--text-dark);">
+                Se divide un conjunto de datos grande y cada núcleo procesa un bloque. <em>Ej: Suma de vectores, filtros de fotos.</em>
+              </p>
+            </div>
+
+            <div class="card" style="padding: 12px 14px;">
+              <h4 style="font-size: 13.5px; font-weight: 700; color: var(--primary-navy); margin-bottom: 2px;">
+                Paralelismo de Tareas
+              </h4>
+              <p style="font-size: 12px; color: var(--text-dark);">
+                Se dividen operaciones y algoritmos independientes entre núcleos. <em>Ej: Pipeline de renderizado de videojuegos.</em>
+              </p>
+            </div>
+
+            <div class="card" style="padding: 12px 14px;">
+              <h4 style="font-size: 13.5px; font-weight: 700; color: var(--primary-navy); margin-bottom: 2px;">
+                Paralelismo de Instrucción
+              </h4>
+              <p style="font-size: 12px; color: var(--text-dark);">
+                El microprocesador ejecuta varias fases de instrucciones a la vez mediante <em>pipelining</em> y ejecución especulativa (ILP).
+              </p>
+            </div>
+
+            <div class="card" style="padding: 12px 14px;">
+              <h4 style="font-size: 13.5px; font-weight: 700; color: var(--primary-navy); margin-bottom: 2px;">
+                Paralelismo a Nivel de Bits
+              </h4>
+              <p style="font-size: 12px; color: var(--text-dark);">
+                Evolución histórica del tamaño de palabra del hardware (procesadores de 8-bit a 16, 32 y 64-bit modernos).
+              </p>
+            </div>
+          </div>
+        </div>
+      </article>

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" width="100%" height="100%">
+  <defs>
+    <linearGradient id="p2GradBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#F1FCFA" />
+    </linearGradient>
+    <linearGradient id="p2GradOcean" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4B89AC" />
+      <stop offset="100%" stop-color="#31607C" />
+    </linearGradient>
+    <filter id="p2Shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#122034" flood-opacity="0.12" />
+    </filter>
+  </defs>
+
+  <!-- Card Frame -->
+  <rect x="2" y="2" width="316" height="156" rx="10" fill="url(#p2GradBg)" stroke="#ACE6F6" stroke-width="1.5" />
+
+  <!-- Overlap Badge -->
+  <rect x="12" y="10" width="104" height="24" rx="5" fill="url(#p2GradOcean)" filter="url(#p2Shadow)" />
+  <text x="64" y="26" fill="#FFFFFF" font-family="'Outfit', sans-serif" font-size="10" font-weight="900" text-anchor="middle">SOLAPAMIENTO</text>
+
+  <rect x="122" y="10" width="186" height="24" rx="5" fill="#FFFFFF" stroke="rgba(75, 137, 172, 0.3)" />
+  <text x="215" y="26" fill="#122034" font-family="'Inter', sans-serif" font-size="8.5" font-weight="800" text-anchor="middle">CPU + Disco/Red Activos</text>
+
+  <!-- Task 1 (I/O Wait) -->
+  <g transform="translate(12, 42)" filter="url(#p2Shadow)">
+    <rect x="0" y="0" width="80" height="22" rx="4" fill="#142238" />
+    <text x="40" y="15" fill="#ACE6F6" font-family="'Outfit', sans-serif" font-size="8.5" font-weight="800" text-anchor="middle">Tarea 1 (Red)</text>
+    
+    <rect x="86" y="0" width="60" height="22" rx="4" fill="#446491" stroke="#ACE6F6" stroke-width="1" />
+    <text x="116" y="15" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="8" font-weight="700" text-anchor="middle">Cálculo</text>
+
+    <rect x="150" y="0" width="146" height="22" rx="4" fill="#E4FCF9" stroke="#4B89AC" stroke-width="1" stroke-dasharray="3,2" />
+    <text x="223" y="15" fill="#4B89AC" font-family="'Inter', sans-serif" font-size="8" font-weight="800" text-anchor="middle">Esperando Respuesta I/O...</text>
+  </g>
+
+  <!-- Task 2 (Takes CPU while Task 1 is waiting) -->
+  <g transform="translate(12, 70)" filter="url(#p2Shadow)">
+    <rect x="0" y="0" width="80" height="22" rx="4" fill="#142238" />
+    <text x="40" y="15" fill="#ACE6F6" font-family="'Outfit', sans-serif" font-size="8.5" font-weight="800" text-anchor="middle">Tarea 2 (CPU)</text>
+    
+    <rect x="86" y="0" width="60" height="22" rx="4" fill="#E4FCF9" stroke="#4B89AC" stroke-width="1" stroke-dasharray="3,2" />
+    <text x="116" y="15" fill="#566E87" font-family="'Inter', sans-serif" font-size="8" font-weight="600" text-anchor="middle">Espera</text>
+
+    <rect x="150" y="0" width="146" height="22" rx="4" fill="#4B89AC" stroke="#ACE6F6" stroke-width="1" />
+    <text x="223" y="15" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="8.5" font-weight="800" text-anchor="middle">Ocupa CPU en paralelo al I/O</text>
+  </g>
+
+  <!-- Footer Tag -->
+  <rect x="12" y="104" width="296" height="44" rx="6" fill="#FFFFFF" stroke="rgba(75, 137, 172, 0.3)" />
+  <circle cx="28" cy="126" r="10" fill="#4B89AC" />
+  <text x="28" y="130" fill="#FFFFFF" font-family="'Outfit', sans-serif" font-size="11" font-weight="900" text-anchor="middle">2</text>
+  <text x="46" y="120" fill="#122034" font-family="'Outfit', sans-serif" font-size="9.5" font-weight="800">Cero Tiempo Ocioso (Zero Idle)</text>
+  <text x="46" y="136" fill="#566E87" font-family="'Inter', sans-serif" font-size="8.5">Solapamiento inteligente de I/O y procesamiento</text>
+</svg>

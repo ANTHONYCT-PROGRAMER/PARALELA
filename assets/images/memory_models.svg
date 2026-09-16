@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 320" width="100%" height="100%">
+  <defs>
+    <linearGradient id="memCard" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#F2FBFA"/>
+    </linearGradient>
+    <filter id="mShadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#446491" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <!-- Model 1: Estricta -->
+  <g transform="translate(15, 15)">
+    <rect width="255" height="290" rx="14" fill="url(#memCard)" stroke="#446491" stroke-width="1.8" filter="url(#mShadow)"/>
+    <rect width="255" height="42" rx="14" fill="#446491"/>
+    <rect y="24" width="255" height="18" fill="#446491"/>
+    <text x="127" y="28" font-family="'Outfit', sans-serif" font-size="15" font-weight="800" fill="#FFFFFF" text-anchor="middle">
+      Consistencia Estricta
+    </text>
+    
+    <!-- Diagram -->
+    <g transform="translate(15, 55)">
+      <!-- Shared Mem -->
+      <rect x="25" y="10" width="175" height="32" rx="6" fill="#E4FCF9" stroke="#4B89AC" stroke-width="1.5"/>
+      <text x="112" y="30" font-family="'Inter', sans-serif" font-size="10.5" font-weight="bold" fill="#446491" text-anchor="middle">Memoria Compartida [x = 5]</text>
+      
+      <!-- Instant write/read arrows -->
+      <path d="M 60 80 L 60 48" stroke="#446491" stroke-width="2.5" marker-end="url(#arr)"/>
+      <path d="M 165 48 L 165 80" stroke="#4B89AC" stroke-width="2.5" marker-end="url(#arr)"/>
+      
+      <rect x="20" y="85" width="80" height="30" rx="6" fill="#446491"/>
+      <text x="60" y="104" font-family="'Inter', sans-serif" font-size="10" font-weight="bold" fill="#FFFFFF" text-anchor="middle">P1: Escribe x</text>
+      
+      <rect x="125" y="85" width="80" height="30" rx="6" fill="#4B89AC"/>
+      <text x="165" y="104" font-family="'Inter', sans-serif" font-size="10" font-weight="bold" fill="#FFFFFF" text-anchor="middle">P2: Lee x</text>
+    </g>
+
+    <text x="20" y="190" font-family="'Inter', sans-serif" font-size="11.5" font-weight="700" fill="#446491">
+      • Tiempo global absoluto.
+    </text>
+    <text x="20" y="212" font-family="'Inter', sans-serif" font-size="11" fill="#142238">
+      • Toda lectura ve la última escritura al instante.
+    </text>
+    <text x="20" y="234" font-family="'Inter', sans-serif" font-size="11" fill="#142238">
+      • Imposible de implementar físicamente en sistemas distribuidos.
+    </text>
+
+    <rect x="20" y="255" width="215" height="24" rx="6" fill="#E4FCF9"/>
+    <text x="127" y="271" font-family="'Inter', sans-serif" font-size="10" font-weight="bold" fill="#446491" text-anchor="middle">
+      Teórico / Reloj Físico Único
+    </text>
+  </g>
+
+  <!-- Model 2: Secuencial (Lamport) -->
+  <g transform="translate(295, 15)">
+    <rect width="255" height="290" rx="14" fill="url(#memCard)" stroke="#4B89AC" stroke-width="1.8" filter="url(#mShadow)"/>
+    <rect width="255" height="42" rx="14" fill="#4B89AC"/>
+    <rect y="24" width="255" height="18" fill="#4B89AC"/>
+    <text x="127" y="28" font-family="'Outfit', sans-serif" font-size="15" font-weight="800" fill="#FFFFFF" text-anchor="middle">
+      Consistencia Secuencial
+    </text>
+    
+    <!-- Diagram -->
+    <g transform="translate(15, 55)">
+      <rect x="25" y="10" width="175" height="32" rx="6" fill="#E4FCF9" stroke="#446491" stroke-width="1.5"/>
+      <text x="112" y="30" font-family="'Inter', sans-serif" font-size="10.5" font-weight="bold" fill="#446491" text-anchor="middle">Orden Global Válido</text>
+      
+      <!-- Interleaved valid order -->
+      <rect x="20" y="70" width="185" height="45" rx="6" fill="#FFFFFF" stroke="#ACE6F6" stroke-width="1.5"/>
+      <text x="112" y="90" font-family="'Inter', sans-serif" font-size="9.5" font-weight="bold" fill="#446491" text-anchor="middle">
+        Todos ven el mismo orden:
+      </text>
+      <text x="112" y="106" font-family="'Inter', monospace" font-size="10" font-weight="bold" fill="#4B89AC" text-anchor="middle">
+        [Op1] → [Op2] → [Op3]
+      </text>
+    </g>
+
+    <text x="20" y="190" font-family="'Inter', sans-serif" font-size="11.5" font-weight="700" fill="#446491">
+      • Propuesto por Leslie Lamport.
+    </text>
+    <text x="20" y="212" font-family="'Inter', sans-serif" font-size="11" fill="#142238">
+      • Todas las operaciones parecen ejecutarse en algún orden secuencial.
+    </text>
+    <text x="20" y="234" font-family="'Inter', sans-serif" font-size="11" fill="#142238">
+      • Todos los procesadores ven el mismo entrelazado.
+    </text>
+
+    <rect x="20" y="255" width="215" height="24" rx="6" fill="#E4FCF9"/>
+    <text x="127" y="271" font-family="'Inter', sans-serif" font-size="10" font-weight="bold" fill="#4B89AC" text-anchor="middle">
+      Estándar de Oro en Concurrencia
+    </text>
+  </g>
+
+  <!-- Model 3: Relajada / Débil -->
+  <g transform="translate(575, 15)">
+    <rect width="255" height="290" rx="14" fill="url(#memCard)" stroke="#446491" stroke-width="1.8" filter="url(#mShadow)"/>
+    <rect width="255" height="42" rx="14" fill="#446491"/>
+    <rect y="24" width="255" height="18" fill="#446491"/>
+    <text x="127" y="28" font-family="'Outfit', sans-serif" font-size="15" font-weight="800" fill="#FFFFFF" text-anchor="middle">
+      Consistencia Relajada
+    </text>
+    
+    <!-- Diagram -->
+    <g transform="translate(15, 55)">
+      <rect x="25" y="10" width="175" height="32" rx="6" fill="#E4FCF9" stroke="#4B89AC" stroke-width="1.5"/>
+      <text x="112" y="30" font-family="'Inter', sans-serif" font-size="10.5" font-weight="bold" fill="#446491" text-anchor="middle">Reordenamiento &amp; Caches</text>
+      
+      <!-- Cache sync barrier -->
+      <rect x="20" y="70" width="185" height="45" rx="6" fill="#FFFFFF" stroke="#ACE6F6" stroke-width="1.5"/>
+      <text x="112" y="88" font-family="'Inter', sans-serif" font-size="9" font-weight="bold" fill="#446491" text-anchor="middle">
+        Reordenamiento permitido
+      </text>
+      <text x="112" y="105" font-family="'Inter', sans-serif" font-size="9.5" font-weight="bold" fill="#E65100" text-anchor="middle">
+        Sincronización con Barreras / Locks
+      </text>
+    </g>
+
+    <text x="20" y="190" font-family="'Inter', sans-serif" font-size="11.5" font-weight="700" fill="#446491">
+      • Máximo rendimiento de hardware.
+    </text>
+    <text x="20" y="212" font-family="'Inter', sans-serif" font-size="11" fill="#142238">
+      • El CPU y compilador reordenan operaciones independientes.
+    </text>
+    <text x="20" y="234" font-family="'Inter', sans-serif" font-size="11" fill="#142238">
+      • Se sincroniza explícitamente con Mutex o Memory Barriers.
+    </text>
+
+    <rect x="20" y="255" width="215" height="24" rx="6" fill="#E4FCF9"/>
+    <text x="127" y="271" font-family="'Inter', sans-serif" font-size="10" font-weight="bold" fill="#446491" text-anchor="middle">
+      Arquitecturas Modernas (x86, ARM)
+    </text>
+  </g>
+</svg>

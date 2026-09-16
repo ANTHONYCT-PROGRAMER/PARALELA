@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fundamentos del Paralelismo y Rendimiento | UNA PUNO - FIMEES</title>
+  <meta name="description" content="Presentación interactiva para Computación Paralela y Distribuida SIS225 - Universidad Nacional del Altiplano Puno">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Ambient Animated Lighting -->
+  <div class="ambient-background">
+    <div class="ambient-blob ambient-blob-1"></div>
+    <div class="ambient-blob ambient-blob-2"></div>
+  </div>
+
+  <!-- Main Presentation Container -->
+  <main class="presentation-viewport">
+    
+    <!-- Top Navigation Bar -->
+    <header class="top-nav-bar">
+      <div class="nav-brand-group">
+        <img src="assets/images/uni_logo.png" alt="Logo UNA Puno" style="height: 44px; width: auto; object-fit: contain; border-radius: 4px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.12));">
+        <span class="nav-badge-uni">UNA PUNO • FIMEES</span>
+        <h1 class="nav-presentation-title">SIS225: Fundamentos del Paralelismo y Rendimiento</h1>
+      </div>
+
+      <div class="nav-speaker-indicator">
+        <span class="speaker-dot"></span>
+        <span id="speakerTag">Inicio</span>
+      </div>
+
+      <div class="nav-controls-group">
+        <button id="btnToggleNotes" class="nav-btn" title="Abrir notas del presentador (Tecla N)">
+          <svg class="icon" viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" fill="none"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          Notas [N]
+        </button>
+        <button id="btnToggleOverview" class="nav-btn" title="Ver cuadrícula de diapositivas (Tecla O)">
+          <svg class="icon" viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" fill="none"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          Vista General [O]
+        </button>
+        <button id="btnToggleFullscreen" class="nav-btn" title="Pantalla completa (Tecla F)">
+          <svg class="icon" viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" fill="none"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+          Pantalla Completa [F]
+        </button>
+      </div>
+    </header>
+
+    <!-- Top Progress Bar -->
+    <div class="presentation-progress-track">
+      <div id="progressFill" class="presentation-progress-fill"></div>
+    </div>
+
+    <!-- Slide Deck Container (Loaded Modularly from slides/) -->
+    <section class="slide-deck" id="slideDeck">
+<!-- SLIDES_PLACEHOLDER -->
+    </section>
+
+    <!-- Bottom Controls Bar -->
+    <footer class="bottom-controls-bar">
+      <div class="slide-counter-badge">
+        <span id="slideCounter">01 / 16</span>
+      </div>
+
+      <div class="slide-nav-buttons">
+        <button id="btnPrevSlide" class="btn-circle" title="Diapositiva anterior (Flecha Izquierda / Backspace)">
+          <svg class="icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button id="btnNextSlide" class="btn-circle" title="Siguiente diapositiva (Flecha Derecha / Espacio)">
+          <svg class="icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+
+      <div class="quick-help-pill">
+        Atajos: [← / →] Diapositivas | [N] Notas | [O] Resumen | [F] Fullscreen
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- ========================================================================
+       SPEAKER NOTES DRAWER (TECLA N)
+       ======================================================================== -->
+  <aside id="speakerNotesDrawer" class="speaker-notes-drawer">
+    <div class="drawer-header">
+      <div class="drawer-title-group">
+        <svg class="icon" viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        <div>
+          <h3 class="drawer-title">Notas del Expositor</h3>
+          <span id="notesSpeakerName" class="drawer-speaker-badge">Persona 1</span>
+        </div>
+      </div>
+      <button id="btnCloseNotes" class="drawer-close-btn" title="Cerrar notas [N]">
+        <svg class="icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" fill="none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <!-- Timer Bar per Persona (4 Minutes) -->
+    <div class="speaker-timer-bar">
+      <div>
+        <span style="font-size: 10.5px; font-weight: 700; color: var(--text-muted); display: block;">TIEMPO EN TURNO (4 MIN MAX):</span>
+        <div id="timerDisplay" class="timer-display">04:00</div>
+      </div>
+      <div class="timer-controls">
+        <button id="timerToggleBtn" class="timer-btn">Iniciar</button>
+        <button id="timerResetBtn" class="timer-btn">Reiniciar</button>
+      </div>
+    </div>
+
+    <div class="drawer-body">
+      <!-- Section 1: Speech Guide -->
+      <div class="notes-section">
+        <div class="notes-section-title">
+          <svg class="icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" fill="none"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Guión Rápido Sugerido (<span id="notesTimeBadge">1 min</span>)
+        </div>
+        <div id="notesGuideContent" class="notes-script-text">
+          Definir el concepto central y explicar con voz clara.
+        </div>
+      </div>
+
+      <!-- Section 2: Keywords to mention -->
+      <div class="notes-section">
+        <div class="notes-section-title">
+          <svg class="icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" fill="none"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Palabras Clave Obligatorias
+        </div>
+        <div id="notesKeyWords" style="display: flex; flex-wrap: wrap; gap: 6px;">
+          <!-- Injected via JS -->
+        </div>
+      </div>
+
+      <!-- Section 3: Possible Professor Questions -->
+      <div class="notes-section">
+        <div class="notes-section-title">
+          <svg class="icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" fill="none"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          Preguntas Típicas del Docente y Respuestas
+        </div>
+        <div id="notesQAContainer">
+          <!-- Injected via JS -->
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ========================================================================
+       SLIDE OVERVIEW MODAL (TECLA O)
+       ======================================================================== -->
+  <div id="overviewModal" class="overview-modal">
+    <div class="overview-header">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <svg class="icon" viewBox="0 0 24 24" width="22" height="22" stroke="#ACE6F6" fill="none"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        <h2 class="overview-title">Vista General de Diapositivas</h2>
+      </div>
+      <button id="btnCloseOverview" class="nav-btn" style="background: var(--accent-cyan); color: var(--primary-navy); border: none;">
+        Cerrar [ESC / O]
+      </button>
+    </div>
+
+    <div id="overviewGrid" class="overview-grid">
+      <!-- Grid items injected by JS -->
+    </div>
+  </div>
+
+  <!-- Laser Pointer Dot -->
+  <div id="laserDot" class="laser-dot"></div>
+
+  <!-- JavaScript Modules -->
+  <script src="js/slides.js"></script>
+  <script src="js/interactive.js"></script>
+</body>
+</html>

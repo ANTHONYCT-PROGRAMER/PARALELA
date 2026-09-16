@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="seqGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#446491"/>
+      <stop offset="100%" stop-color="#273E60"/>
+    </linearGradient>
+    <linearGradient id="parGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4B89AC"/>
+      <stop offset="100%" stop-color="#31607C"/>
+    </linearGradient>
+    <filter id="boxSh" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#446491" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <!-- Container -->
+  <rect x="10" y="10" width="740" height="280" rx="16" fill="#FFFFFF" stroke="#ACE6F6" stroke-width="1.8" filter="url(#boxSh)"/>
+
+  <!-- Title -->
+  <text x="35" y="38" font-family="'Outfit', sans-serif" font-size="15" font-weight="800" fill="#446491">
+    COMPARACIÓN VISUAL: TIEMPO SECUENCIAL VS. TIEMPO PARALELO (4 CPUS)
+  </text>
+
+  <!-- Bar 1: Sequential Execution (1 CPU) -->
+  <g transform="translate(35, 60)">
+    <text x="0" y="18" font-family="'Inter', sans-serif" font-size="12" font-weight="700" fill="#446491">
+      Modo Secuencial (1 CPU): T_seq = 100 segundos
+    </text>
+    <rect x="0" y="28" width="670" height="38" rx="8" fill="url(#seqGrad)"/>
+    <text x="335" y="52" font-family="'Inter', sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF" text-anchor="middle">
+      100 s de cómputo continuo en 1 solo núcleo (100%)
+    </text>
+  </g>
+
+  <!-- Bar 2: Parallel Execution (4 CPUs) -->
+  <g transform="translate(35, 145)">
+    <text x="0" y="18" font-family="'Inter', sans-serif" font-size="12" font-weight="700" fill="#4B89AC">
+      Modo Paralelo (4 CPUs): T_par = 30 segundos
+    </text>
+    
+    <!-- Ideal work block (25s scaled) -->
+    <rect x="0" y="28" width="168" height="38" rx="8 0 0 8" fill="url(#parGrad)"/>
+    <text x="84" y="52" font-family="'Inter', sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF" text-anchor="middle">
+      Cómputo (25s)
+    </text>
+
+    <!-- Overhead block (5s scaled) -->
+    <rect x="168" y="28" width="34" height="38" rx="0 8 8 0" fill="#E65100"/>
+    <text x="185" y="52" font-family="'Inter', sans-serif" font-size="10" font-weight="bold" fill="#FFFFFF" text-anchor="middle">
+      Ovh
+    </text>
+
+    <!-- Total Time bracket -->
+    <line x1="0" y1="72" x2="202" y2="72" stroke="#446491" stroke-width="2"/>
+    <text x="101" y="86" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="bold" fill="#446491" text-anchor="middle">
+      T_par = 30 segundos
+    </text>
+
+    <!-- Saved Time area -->
+    <rect x="210" y="28" width="460" height="38" rx="8" fill="#E4FCF9" stroke="#ACE6F6" stroke-width="1.5" stroke-dasharray="4"/>
+    <text x="440" y="52" font-family="'Inter', sans-serif" font-size="12" font-weight="bold" fill="#2E7D32" text-anchor="middle">
+      ⚡ Tiempo Ahorrado: 70 segundos (70% de reducción)
+    </text>
+  </g>
+
+  <!-- Summary Metric Pills at Bottom -->
+  <g transform="translate(35, 240)">
+    <rect x="0" y="0" width="210" height="32" rx="6" fill="#446491"/>
+    <text x="105" y="21" font-family="'Inter', sans-serif" font-size="11.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle">
+      Speedup: S = 100 / 30 = 3.33x
+    </text>
+
+    <rect x="230" y="0" width="210" height="32" rx="6" fill="#4B89AC"/>
+    <text x="335" y="21" font-family="'Inter', sans-serif" font-size="11.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle">
+      Eficiencia: E = 3.33 / 4 = 83.3%
+    </text>
+
+    <rect x="460" y="0" width="210" height="32" rx="6" fill="#E4FCF9" stroke="#E65100" stroke-width="1.2"/>
+    <text x="565" y="21" font-family="'Inter', sans-serif" font-size="11.5" font-weight="bold" fill="#E65100" text-anchor="middle">
+      Overhead: 16.7% (5 segundos)
+    </text>
+  </g>
+</svg>

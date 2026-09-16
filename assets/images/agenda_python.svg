@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 175" width="100%" height="100%">
+  <defs>
+    <linearGradient id="pyGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E4FCF9" />
+      <stop offset="100%" stop-color="#D2F6F0" />
+    </linearGradient>
+    <linearGradient id="pyGradOcean" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4B89AC" />
+      <stop offset="100%" stop-color="#31607C" />
+    </linearGradient>
+    <filter id="pyShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#122034" flood-opacity="0.16" />
+    </filter>
+  </defs>
+
+  <!-- Background Frame -->
+  <rect x="2" y="2" width="336" height="171" rx="12" fill="url(#pyGrad1)" stroke="#ACE6F6" stroke-width="1.8" />
+
+  <!-- Top Header Row -->
+  <rect x="12" y="10" width="100" height="26" rx="6" fill="url(#pyGradOcean)" filter="url(#pyShadow)" />
+  <text x="62" y="27" fill="#FFFFFF" font-family="'Outfit', sans-serif" font-size="11.5" font-weight="900" text-anchor="middle">PYTHON 3.x</text>
+
+  <!-- Libraries Comparison Pill -->
+  <rect x="120" y="10" width="208" height="26" rx="6" fill="#FFFFFF" stroke="rgba(75, 137, 172, 0.35)" />
+  <text x="224" y="27" fill="#122034" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="800" text-anchor="middle">threading vs multiprocessing</text>
+
+  <!-- 2 Comparison Columns: Threading (GIL) vs Multiprocessing (Pool) -->
+  <g transform="translate(12, 44)" filter="url(#pyShadow)">
+    <!-- Box 1: threading -->
+    <rect x="0" y="0" width="152" height="58" rx="8" fill="#FFFFFF" stroke="rgba(68, 100, 145, 0.3)" />
+    <rect x="8" y="8" width="62" height="18" rx="4" fill="#223654" />
+    <text x="39" y="21" fill="#ACE6F6" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="800" text-anchor="middle">threading</text>
+    <rect x="74" y="8" width="70" height="18" rx="4" fill="#DDF7FC" stroke="#4B89AC" stroke-width="1" />
+    <text x="109" y="21" fill="#142238" font-family="'Outfit', sans-serif" font-size="9" font-weight="900" text-anchor="middle">GIL Mutex</text>
+    <text x="76" y="45" fill="#566E87" font-family="'Inter', sans-serif" font-size="9" font-weight="700" text-anchor="middle">1 Núcleo (I/O Bound)</text>
+
+    <!-- Box 2: multiprocessing -->
+    <rect x="160" y="0" width="156" height="58" rx="8" fill="#446491" stroke="#ACE6F6" stroke-width="1.2" />
+    <rect x="166" y="8" width="82" height="18" rx="4" fill="#ACE6F6" />
+    <text x="207" y="21" fill="#122034" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="900" text-anchor="middle">multiprocess</text>
+    <rect x="252" y="8" width="58" height="18" rx="4" fill="#142238" />
+    <text x="281" y="21" fill="#E4FCF9" font-family="'Outfit', sans-serif" font-size="9" font-weight="900" text-anchor="middle">Sin GIL</text>
+    <text x="238" y="45" fill="#E4FCF9" font-family="'Inter', sans-serif" font-size="9" font-weight="700" text-anchor="middle">4 Procesos (CPU Bound)</text>
+  </g>
+
+  <!-- Bottom Explanatory Banner -->
+  <rect x="12" y="112" width="316" height="50" rx="8" fill="#FFFFFF" stroke="rgba(75, 137, 172, 0.35)" filter="url(#pyShadow)" />
+  <rect x="20" y="122" width="28" height="28" rx="6" fill="#4B89AC" />
+  <text x="34" y="141" fill="#FFFFFF" font-family="'Outfit', sans-serif" font-size="14" font-weight="900" text-anchor="middle">Py</text>
+  <text x="56" y="132" fill="#122034" font-family="'Outfit', sans-serif" font-size="11" font-weight="800">Benchmark &amp; Demostración en Vivo</text>
+  <text x="56" y="148" fill="#4B89AC" font-family="'Inter', sans-serif" font-size="9.5" font-weight="600">Medición empírica de aceleración en Python</text>
+</svg>

@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="100%" height="100%">
+  <defs>
+    <linearGradient id="cpuBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#F4FCFA"/>
+    </linearGradient>
+    <linearGradient id="cpuNavy" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#446491"/>
+      <stop offset="100%" stop-color="#223654"/>
+    </linearGradient>
+    <linearGradient id="cpuOcean" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4B89AC"/>
+      <stop offset="100%" stop-color="#2D5E7C"/>
+    </linearGradient>
+    <filter id="cpuShadow" x="-4%" y="-3%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="3" stdDeviation="3.5" flood-color="#122034" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- ================= LEFT CARD: CONCURRENCIA (1 CPU) ================= -->
+  <g transform="translate(14, 14)" filter="url(#cpuShadow)">
+    <rect width="372" height="392" rx="14" fill="url(#cpuBg)" stroke="#446491" stroke-width="1.5"/>
+    
+    <!-- Header -->
+    <rect width="372" height="42" rx="14" fill="url(#cpuNavy)"/>
+    <rect y="24" width="372" height="18" fill="url(#cpuNavy)"/>
+    <text x="186" y="27" font-family="'Outfit', sans-serif" font-size="15" font-weight="800" fill="#FFFFFF" text-anchor="middle">
+      CONCURRENCIA (1 NÚCLEO)
+    </text>
+
+    <!-- CPU Box -->
+    <g transform="translate(20, 56)">
+      <rect width="332" height="64" rx="8" fill="#FFFFFF" stroke="#4B89AC" stroke-width="1.3"/>
+      <rect x="12" y="12" width="40" height="40" rx="6" fill="#446491"/>
+      <text x="32" y="36" font-family="'Outfit', sans-serif" font-size="11.5" font-weight="800" fill="#ACE6F6" text-anchor="middle">CPU 1</text>
+      <text x="64" y="29" font-family="'Outfit', sans-serif" font-size="12" font-weight="800" fill="#223654">1 Solo Núcleo de Hardware</text>
+      <text x="64" y="47" font-family="'Inter', sans-serif" font-size="10.5" font-weight="600" fill="#4B89AC">Turnos de tiempo (Context Switch)</text>
+    </g>
+
+    <!-- Timeline Execution Area -->
+    <g transform="translate(20, 132)">
+      <text x="0" y="16" font-family="'Outfit', sans-serif" font-size="12" font-weight="800" fill="#223654">
+        Progreso Intercalado en el Tiempo:
+      </text>
+
+      <!-- Time Slices -->
+      <g transform="translate(0, 26)">
+        <rect x="0" y="0" width="76" height="40" rx="5" fill="#446491"/>
+        <text x="38" y="24" font-family="'Outfit', sans-serif" font-size="11" font-weight="800" fill="#FFFFFF" text-anchor="middle">Tarea A</text>
+
+        <!-- Connector -->
+        <path d="M 80 20 L 88 20" stroke="#4B89AC" stroke-width="2"/>
+
+        <rect x="92" y="0" width="76" height="40" rx="5" fill="#4B89AC"/>
+        <text x="130" y="24" font-family="'Outfit', sans-serif" font-size="11" font-weight="800" fill="#FFFFFF" text-anchor="middle">Tarea B</text>
+
+        <!-- Connector -->
+        <path d="M 172 20 L 180 20" stroke="#4B89AC" stroke-width="2"/>
+
+        <rect x="184" y="0" width="68" height="40" rx="5" fill="#446491"/>
+        <text x="218" y="24" font-family="'Outfit', sans-serif" font-size="11" font-weight="800" fill="#FFFFFF" text-anchor="middle">Tarea A</text>
+
+        <!-- Connector -->
+        <path d="M 256 20 L 264 20" stroke="#4B89AC" stroke-width="2"/>
+
+        <rect x="268" y="0" width="64" height="40" rx="5" fill="#4B89AC"/>
+        <text x="300" y="24" font-family="'Outfit', sans-serif" font-size="11" font-weight="800" fill="#FFFFFF" text-anchor="middle">Tarea B</text>
+      </g>
+      <text x="332" y="80" font-family="'Inter', sans-serif" font-size="9.5" font-weight="700" fill="#4B89AC" text-anchor="end">Tiempo Lógico →</text>
+    </g>
+
+    <!-- Summary Box -->
+    <rect x="20" y="234" width="332" height="136" rx="8" fill="#FFFFFF" stroke="#ACE6F6" stroke-width="1.3"/>
+    <g transform="translate(36, 252)">
+      <text x="0" y="16" font-family="'Inter', sans-serif" font-size="11.5" font-weight="700" fill="#122034">• Tiempo lógico compartido</text>
+      <text x="0" y="38" font-family="'Inter', sans-serif" font-size="11.5" font-weight="700" fill="#122034">• Ideal para I/O y servidores web</text>
+      <text x="0" y="60" font-family="'Inter', sans-serif" font-size="11.5" font-weight="700" fill="#122034">• No exige múltiples procesadores</text>
+      
+      <rect x="-4" y="74" width="308" height="28" rx="5" fill="#E4FCF9"/>
+      <text x="150" y="92" font-family="'Outfit', sans-serif" font-size="11" font-weight="800" fill="#223654" text-anchor="middle">
+        Enfoque: Estructura del Software
+      </text>
+    </g>
+  </g>
+
+  <!-- ================= RIGHT CARD: PARALELISMO (N NÚCLEOS) ================= -->
+  <g transform="translate(414, 14)" filter="url(#cpuShadow)">
+    <rect width="372" height="392" rx="14" fill="url(#cpuBg)" stroke="#4B89AC" stroke-width="1.5"/>
+    
+    <!-- Header -->
+    <rect width="372" height="42" rx="14" fill="url(#cpuOcean)"/>
+    <rect y="24" width="372" height="18" fill="url(#cpuOcean)"/>
+    <text x="186" y="27" font-family="'Outfit', sans-serif" font-size="15" font-weight="800" fill="#FFFFFF" text-anchor="middle">
+      PARALELISMO (N NÚCLEOS)
+    </text>
+
+    <!-- Multi-Core Pods -->
+    <g transform="translate(20, 56)">
+      <rect width="332" height="144" rx="8" fill="#FFFFFF" stroke="#4B89AC" stroke-width="1.3"/>
+      
+      <!-- Core 1 -->
+      <rect x="12" y="10" width="70" height="26" rx="4" fill="#446491"/>
+      <text x="47" y="27" font-family="'Outfit', sans-serif" font-size="10.5" font-weight="800" fill="#FFFFFF" text-anchor="middle">Núcleo 0</text>
+      <rect x="88" y="10" width="232" height="26" rx="4" fill="#E4FCF9" stroke="#446491" stroke-width="1"/>
+      <text x="204" y="27" font-family="'Inter', sans-serif" font-size="10.5" font-weight="700" fill="#223654" text-anchor="middle">Ejecutando Tarea A (Thread 1)</text>
+
+      <!-- Core 2 -->
+      <rect x="12" y="42" width="70" height="26" rx="4" fill="#4B89AC"/>
+      <text x="47" y="59" font-family="'Outfit', sans-serif" font-size="10.5" font-weight="800" fill="#FFFFFF" text-anchor="middle">Núcleo 1</text>
+      <rect x="88" y="42" width="232" height="26" rx="4" fill="#E4FCF9" stroke="#4B89AC" stroke-width="1"/>
+      <text x="204" y="59" font-family="'Inter', sans-serif" font-size="10.5" font-weight="700" fill="#223654" text-anchor="middle">Ejecutando Tarea B (Thread 2)</text>
+
+      <!-- Core 3 -->
+      <rect x="12" y="74" width="70" height="26" rx="4" fill="#446491"/>
+      <text x="47" y="91" font-family="'Outfit', sans-serif" font-size="10.5" font-weight="800" fill="#FFFFFF" text-anchor="middle">Núcleo 2</text>
+      <rect x="88" y="74" width="232" height="26" rx="4" fill="#E4FCF9" stroke="#446491" stroke-width="1"/>
+      <text x="204" y="91" font-family="'Inter', sans-serif" font-size="10.5" font-weight="700" fill="#223654" text-anchor="middle">Ejecutando Tarea C (Thread 3)</text>
+
+      <!-- Core 4 -->
+      <rect x="12" y="106" width="70" height="26" rx="4" fill="#4B89AC"/>
+      <text x="47" y="123" font-family="'Outfit', sans-serif" font-size="10.5" font-weight="800" fill="#FFFFFF" text-anchor="middle">Núcleo 3</text>
+      <rect x="88" y="106" width="232" height="26" rx="4" fill="#E4FCF9" stroke="#4B89AC" stroke-width="1"/>
+      <text x="204" y="123" font-family="'Inter', sans-serif" font-size="10.5" font-weight="700" fill="#223654" text-anchor="middle">Ejecutando Tarea D (Thread 4)</text>
+    </g>
+
+    <text x="352" y="218" font-family="'Inter', sans-serif" font-size="9.5" font-weight="700" fill="#223654" text-anchor="end">Mismo Instante Físico (t0)</text>
+
+    <!-- Summary Box -->
+    <rect x="20" y="234" width="332" height="136" rx="8" fill="#FFFFFF" stroke="#ACE6F6" stroke-width="1.3"/>
+    <g transform="translate(36, 252)">
+      <text x="0" y="16" font-family="'Inter', sans-serif" font-size="11.5" font-weight="700" fill="#122034">• Ejecución física simultánea</text>
+      <text x="0" y="38" font-family="'Inter', sans-serif" font-size="11.5" font-weight="700" fill="#122034">• Reduce el tiempo total (Speedup)</text>
+      <text x="0" y="60" font-family="'Inter', sans-serif" font-size="11.5" font-weight="700" fill="#122034">• Requiere 2 o más núcleos/CPUs</text>
+      
+      <rect x="-4" y="74" width="308" height="28" rx="5" fill="#E4FCF9"/>
+      <text x="150" y="92" font-family="'Outfit', sans-serif" font-size="11" font-weight="800" fill="#223654" text-anchor="middle">
+        Enfoque: Ejecución en Hardware
+      </text>
+    </g>
+  </g>
+</svg>

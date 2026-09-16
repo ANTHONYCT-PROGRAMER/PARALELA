@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120" width="100%" height="100%">
+  <defs>
+    <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#446491"/>
+      <stop offset="100%" stop-color="#4B89AC"/>
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ACE6F6"/>
+      <stop offset="100%" stop-color="#E4FCF9"/>
+    </linearGradient>
+    <filter id="subtleShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#446491" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <!-- Background container -->
+  <rect x="5" y="5" width="390" height="110" rx="16" fill="#FFFFFF" stroke="#ACE6F6" stroke-width="1.5" filter="url(#subtleShadow)"/>
+
+  <!-- Logo Emblem Icon -->
+  <g transform="translate(25, 20)">
+    <!-- Hexagonal Crest -->
+    <polygon points="40,0 75,20 75,60 40,80 5,60 5,20" fill="url(#primaryGrad)"/>
+    <polygon points="40,6 69,23 69,57 40,74 11,57 11,23" fill="#E4FCF9" opacity="0.15"/>
+    
+    <!-- UNI Stylized Monogram -->
+    <path d="M 24 26 L 24 46 C 24 53 32 55 40 55 C 48 55 56 53 56 46 L 56 26" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+    <line x1="40" y1="26" x2="40" y2="44" stroke="#ACE6F6" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="40" cy="20" r="3.5" fill="#ACE6F6"/>
+  </g>
+
+  <!-- Typography -->
+  <text x="120" y="42" font-family="'Outfit', 'Inter', -apple-system, sans-serif" font-size="16" font-weight="800" fill="#446491" letter-spacing="1.5">
+    UNIVERSIDAD NACIONAL DE INGENIERÍA
+  </text>
+  <text x="120" y="65" font-family="'Outfit', 'Inter', -apple-system, sans-serif" font-size="13" font-weight="600" fill="#4B89AC" letter-spacing="0.8">
+    Facultad de Ingeniería de Sistemas (FIIS)
+  </text>
+  <text x="120" y="86" font-family="'Outfit', 'Inter', -apple-system, sans-serif" font-size="11" font-weight="500" fill="#607D9E" letter-spacing="0.5">
+    SIS225 • Computación Paralela y Distribuida • 2026-II
+  </text>
+
+  <!-- Accent Status Pill -->
+  <rect x="305" y="74" width="75" height="20" rx="10" fill="#E4FCF9" stroke="#ACE6F6" stroke-width="1"/>
+  <text x="342" y="88" font-family="'Inter', sans-serif" font-size="9.5" font-weight="700" fill="#446491" text-anchor="middle">GRUPO 1</text>
+</svg>

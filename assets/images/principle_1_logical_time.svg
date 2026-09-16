@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" width="100%" height="100%">
+  <defs>
+    <linearGradient id="p1GradBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#F1FCFA" />
+    </linearGradient>
+    <linearGradient id="p1GradNavy" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#446491" />
+      <stop offset="100%" stop-color="#243B55" />
+    </linearGradient>
+    <filter id="p1Shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#122034" flood-opacity="0.12" />
+    </filter>
+  </defs>
+
+  <!-- Card Frame -->
+  <rect x="2" y="2" width="316" height="156" rx="10" fill="url(#p1GradBg)" stroke="#ACE6F6" stroke-width="1.5" />
+
+  <!-- Single Core CPU Box -->
+  <rect x="12" y="10" width="96" height="24" rx="5" fill="url(#p1GradNavy)" filter="url(#p1Shadow)" />
+  <text x="60" y="26" fill="#FFFFFF" font-family="'Outfit', sans-serif" font-size="10.5" font-weight="900" text-anchor="middle">CPU 1 NÚCLEO</text>
+
+  <!-- Timeline Arrow -->
+  <line x1="118" y1="22" x2="295" y2="22" stroke="#4B89AC" stroke-width="1.5" stroke-dasharray="3,3" />
+  <polygon points="300,22 294,18 294,26" fill="#4B89AC" />
+  <text x="286" y="14" fill="#4B89AC" font-family="'Inter', sans-serif" font-size="8.5" font-weight="800">Tiempo</text>
+
+  <!-- Time-Slicing Slots -->
+  <!-- Slot 1 -->
+  <g filter="url(#p1Shadow)">
+    <rect x="12" y="44" width="66" height="48" rx="6" fill="#446491" stroke="#ACE6F6" stroke-width="1" />
+    <text x="45" y="66" fill="#FFFFFF" font-family="'Outfit', sans-serif" font-size="11.5" font-weight="900" text-anchor="middle">Tarea A</text>
+    <rect x="22" y="74" width="46" height="12" rx="3" fill="rgba(255,255,255,0.2)" />
+    <text x="45" y="83" fill="#ACE6F6" font-family="'Inter', sans-serif" font-size="7.5" font-weight="800" text-anchor="middle">Slot t1</text>
+  </g>
+
+  <!-- Switch 1 -->
+  <path d="M78 68 Q 84 54, 90 68" stroke="#4B89AC" stroke-width="1.5" fill="none" />
+
+  <!-- Slot 2 -->
+  <g filter="url(#p1Shadow)">
+    <rect x="90" y="44" width="66" height="48" rx="6" fill="#4B89AC" stroke="#ACE6F6" stroke-width="1" />
+    <text x="123" y="66" fill="#FFFFFF" font-family="'Outfit', sans-serif" font-size="11.5" font-weight="900" text-anchor="middle">Tarea B</text>
+    <rect x="100" y="74" width="46" height="12" rx="3" fill="rgba(255,255,255,0.2)" />
+    <text x="123" y="83" fill="#E4FCF9" font-family="'Inter', sans-serif" font-size="7.5" font-weight="800" text-anchor="middle">Slot t2</text>
+  </g>
+
+  <!-- Switch 2 -->
+  <path d="M156 68 Q 162 54, 168 68" stroke="#4B89AC" stroke-width="1.5" fill="none" />
+
+  <!-- Slot 3 -->
+  <g filter="url(#p1Shadow)">
+    <rect x="168" y="44" width="66" height="48" rx="6" fill="#446491" stroke="#ACE6F6" stroke-width="1" />
+    <text x="201" y="66" fill="#FFFFFF" font-family="'Outfit', sans-serif" font-size="11.5" font-weight="900" text-anchor="middle">Tarea A</text>
+    <rect x="178" y="74" width="46" height="12" rx="3" fill="rgba(255,255,255,0.2)" />
+    <text x="201" y="83" fill="#ACE6F6" font-family="'Inter', sans-serif" font-size="7.5" font-weight="800" text-anchor="middle">Slot t3</text>
+  </g>
+
+  <!-- Slot 4 -->
+  <g filter="url(#p1Shadow)">
+    <rect x="242" y="44" width="66" height="48" rx="6" fill="#243B55" stroke="#ACE6F6" stroke-width="1" />
+    <text x="275" y="66" fill="#FFFFFF" font-family="'Outfit', sans-serif" font-size="11.5" font-weight="900" text-anchor="middle">Tarea C</text>
+    <rect x="252" y="74" width="46" height="12" rx="3" fill="rgba(255,255,255,0.2)" />
+    <text x="275" y="83" fill="#ACE6F6" font-family="'Inter', sans-serif" font-size="7.5" font-weight="800" text-anchor="middle">Slot t4</text>
+  </g>
+
+  <!-- Footer Tag -->
+  <rect x="12" y="104" width="296" height="44" rx="6" fill="#FFFFFF" stroke="rgba(75, 137, 172, 0.3)" />
+  <circle cx="28" cy="126" r="10" fill="#ACE6F6" />
+  <text x="28" y="130" fill="#122034" font-family="'Outfit', sans-serif" font-size="11" font-weight="900" text-anchor="middle">1</text>
+  <text x="46" y="120" fill="#122034" font-family="'Outfit', sans-serif" font-size="9.5" font-weight="800">Turnos Rápidos en 1 CPU</text>
+  <text x="46" y="136" fill="#566E87" font-family="'Inter', sans-serif" font-size="8.5">Progresión simultánea a nivel lógico</text>
+</svg>

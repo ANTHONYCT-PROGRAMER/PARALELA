@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 160" width="100%" height="100%">
+  <defs>
+    <linearGradient id="cpGradBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#F1FCFA" />
+    </linearGradient>
+    <linearGradient id="cpGradNavy" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#446491" />
+      <stop offset="100%" stop-color="#243B55" />
+    </linearGradient>
+    <linearGradient id="cpGradOcean" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4B89AC" />
+      <stop offset="100%" stop-color="#31607C" />
+    </linearGradient>
+    <filter id="cpShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#122034" flood-opacity="0.12" />
+    </filter>
+  </defs>
+
+  <!-- Background Card -->
+  <rect x="2" y="2" width="496" height="156" rx="10" fill="url(#cpGradBg)" stroke="#ACE6F6" stroke-width="1.5" />
+
+  <!-- Top Title Bar -->
+  <rect x="12" y="10" width="130" height="22" rx="5" fill="url(#cpGradNavy)" filter="url(#cpShadow)" />
+  <text x="77" y="25" fill="#FFFFFF" font-family="'Outfit', sans-serif" font-size="10" font-weight="900" text-anchor="middle">CPU SCHEDULER</text>
+
+  <!-- Timeline Axis -->
+  <line x1="150" y1="21" x2="480" y2="21" stroke="#4B89AC" stroke-width="1.5" stroke-dasharray="4,3" />
+  <polygon points="486,21 478,17 478,25" fill="#4B89AC" />
+  <text x="470" y="14" fill="#4B89AC" font-family="'Inter', sans-serif" font-size="8.5" font-weight="800">Eje de Tiempo Lógico (t)</text>
+
+  <!-- Task 1: Red / Socket (I/O) -->
+  <g transform="translate(12, 40)" filter="url(#cpShadow)">
+    <rect x="0" y="0" width="90" height="26" rx="5" fill="#142238" />
+    <text x="45" y="17" fill="#ACE6F6" font-family="'Outfit', sans-serif" font-size="9" font-weight="800" text-anchor="middle">Tarea 1: Red I/O</text>
+    
+    <!-- Timeline slices -->
+    <rect x="98" y="0" width="70" height="26" rx="4" fill="#446491" stroke="#ACE6F6" stroke-width="1" />
+    <text x="133" y="17" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="8.5" font-weight="700" text-anchor="middle">Ejecuta CPU</text>
+    
+    <rect x="174" y="0" width="110" height="26" rx="4" fill="#E4FCF9" stroke="#4B89AC" stroke-width="1" stroke-dasharray="3,2" />
+    <text x="229" y="17" fill="#4B89AC" font-family="'Inter', sans-serif" font-size="8" font-weight="700" text-anchor="middle">Espera Respuesta Red</text>
+    
+    <rect x="290" y="0" width="80" height="26" rx="4" fill="#446491" stroke="#ACE6F6" stroke-width="1" />
+    <text x="330" y="17" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="8.5" font-weight="700" text-anchor="middle">Procesa Datos</text>
+    
+    <rect x="376" y="0" width="98" height="26" rx="4" fill="#243B55" />
+    <text x="425" y="17" fill="#ACE6F6" font-family="'Inter', sans-serif" font-size="8" font-weight="700" text-anchor="middle">Finalizado</text>
+  </g>
+
+  <!-- Task 2: Cómputo CPU -->
+  <g transform="translate(12, 72)" filter="url(#cpShadow)">
+    <rect x="0" y="0" width="90" height="26" rx="5" fill="#142238" />
+    <text x="45" y="17" fill="#ACE6F6" font-family="'Outfit', sans-serif" font-size="9" font-weight="800" text-anchor="middle">Tarea 2: Cómputo</text>
+    
+    <!-- Timeline slices -->
+    <rect x="98" y="0" width="70" height="26" rx="4" fill="#E4FCF9" stroke="#4B89AC" stroke-width="1" stroke-dasharray="3,2" />
+    <text x="133" y="17" fill="#566E87" font-family="'Inter', sans-serif" font-size="8" font-weight="600" text-anchor="middle">En Espera</text>
+    
+    <rect x="174" y="0" width="110" height="26" rx="4" fill="#4B89AC" stroke="#ACE6F6" stroke-width="1" />
+    <text x="229" y="17" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="8.5" font-weight="800" text-anchor="middle">Toma el CPU (Cálculo)</text>
+    
+    <rect x="290" y="0" width="80" height="26" rx="4" fill="#E4FCF9" stroke="#4B89AC" stroke-width="1" stroke-dasharray="3,2" />
+    <text x="330" y="17" fill="#566E87" font-family="'Inter', sans-serif" font-size="8" font-weight="600" text-anchor="middle">En Espera</text>
+    
+    <rect x="376" y="0" width="98" height="26" rx="4" fill="#4B89AC" stroke="#ACE6F6" stroke-width="1" />
+    <text x="425" y="17" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="8.5" font-weight="700" text-anchor="middle">Cierra Tarea</text>
+  </g>
+
+  <!-- Bottom Efficiency Banner -->
+  <g transform="translate(12, 106)" filter="url(#cpShadow)">
+    <rect x="0" y="0" width="474" height="42" rx="6" fill="#FFFFFF" stroke="rgba(68, 100, 145, 0.3)" />
+    <rect x="8" y="7" width="28" height="28" rx="5" fill="#ACE6F6" />
+    <text x="22" y="26" fill="#122034" font-family="'Outfit', sans-serif" font-size="14" font-weight="900" text-anchor="middle">OK</text>
+    
+    <text x="46" y="20" fill="#122034" font-family="'Outfit', sans-serif" font-size="10.5" font-weight="800">
+      Aprovechamiento Óptimo del Núcleo (Time-Slicing Inteligente)
+    </text>
+    <text x="46" y="34" fill="#4B89AC" font-family="'Inter', sans-serif" font-size="9" font-weight="600">
+      El CPU nunca se queda ocioso: conmuta de contexto mientras otras tareas esperan I/O
+    </text>
+  </g>
+</svg>

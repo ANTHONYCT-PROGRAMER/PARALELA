@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 175" width="100%" height="100%">
+  <defs>
+    <linearGradient id="cGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E4FCF9" />
+      <stop offset="100%" stop-color="#D2F6F0" />
+    </linearGradient>
+    <linearGradient id="cGradNavy" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#446491" />
+      <stop offset="100%" stop-color="#223654" />
+    </linearGradient>
+    <linearGradient id="cGradOcean" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4B89AC" />
+      <stop offset="100%" stop-color="#31607C" />
+    </linearGradient>
+    <filter id="cShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#122034" flood-opacity="0.16" />
+    </filter>
+  </defs>
+
+  <!-- Background Frame -->
+  <rect x="2" y="2" width="336" height="171" rx="12" fill="url(#cGrad1)" stroke="#ACE6F6" stroke-width="1.8" />
+
+  <!-- Top Header Row -->
+  <rect x="12" y="10" width="100" height="26" rx="6" fill="url(#cGradNavy)" filter="url(#cShadow)" />
+  <text x="62" y="27" fill="#FFFFFF" font-family="'Outfit', sans-serif" font-size="11.5" font-weight="900" text-anchor="middle">CPU 1 NÚCLEO</text>
+
+  <!-- Time Axis Arrow -->
+  <line x1="125" y1="23" x2="315" y2="23" stroke="#4B89AC" stroke-width="2" stroke-dasharray="4,3" />
+  <polygon points="322,23 314,19 314,27" fill="#4B89AC" />
+  <text x="306" y="15" fill="#4B89AC" font-family="'Inter', sans-serif" font-size="9.5" font-weight="800">Tiempo (t)</text>
+
+  <!-- Interleaved Timeline Blocks -->
+  <!-- Block A1 -->
+  <g filter="url(#cShadow)">
+    <rect x="12" y="48" width="68" height="52" rx="8" fill="#446491" stroke="#ACE6F6" stroke-width="1.5" />
+    <text x="46" y="72" fill="#FFFFFF" font-family="'Outfit', sans-serif" font-size="13" font-weight="900" text-anchor="middle">Hilo A</text>
+    <rect x="22" y="80" width="48" height="14" rx="4" fill="rgba(255,255,255,0.2)" />
+    <text x="46" y="90" fill="#ACE6F6" font-family="'Inter', sans-serif" font-size="8.5" font-weight="800" text-anchor="middle">Turno 1</text>
+  </g>
+
+  <!-- Switch Arrow 1 -->
+  <path d="M80 74 Q 87 60, 94 74" stroke="#4B89AC" stroke-width="2" fill="none" />
+  <polygon points="95,74 91,69 96,67" fill="#4B89AC" />
+
+  <!-- Block B1 -->
+  <g filter="url(#cShadow)">
+    <rect x="94" y="48" width="68" height="52" rx="8" fill="#4B89AC" stroke="#ACE6F6" stroke-width="1.5" />
+    <text x="128" y="72" fill="#FFFFFF" font-family="'Outfit', sans-serif" font-size="13" font-weight="900" text-anchor="middle">Hilo B</text>
+    <rect x="104" y="80" width="48" height="14" rx="4" fill="rgba(255,255,255,0.2)" />
+    <text x="128" y="90" fill="#E4FCF9" font-family="'Inter', sans-serif" font-size="8.5" font-weight="800" text-anchor="middle">Turno 2</text>
+  </g>
+
+  <!-- Switch Arrow 2 -->
+  <path d="M162 74 Q 169 60, 176 74" stroke="#4B89AC" stroke-width="2" fill="none" />
+  <polygon points="177,74 173,69 178,67" fill="#4B89AC" />
+
+  <!-- Block A2 -->
+  <g filter="url(#cShadow)">
+    <rect x="176" y="48" width="68" height="52" rx="8" fill="#446491" stroke="#ACE6F6" stroke-width="1.5" />
+    <text x="210" y="72" fill="#FFFFFF" font-family="'Outfit', sans-serif" font-size="13" font-weight="900" text-anchor="middle">Hilo A</text>
+    <rect x="186" y="80" width="48" height="14" rx="4" fill="rgba(255,255,255,0.2)" />
+    <text x="210" y="90" fill="#ACE6F6" font-family="'Inter', sans-serif" font-size="8.5" font-weight="800" text-anchor="middle">Turno 3</text>
+  </g>
+
+  <!-- Switch Arrow 3 -->
+  <path d="M244 74 Q 251 60, 258 74" stroke="#4B89AC" stroke-width="2" fill="none" />
+  <polygon points="259,74 255,69 260,67" fill="#4B89AC" />
+
+  <!-- Block C1 -->
+  <g filter="url(#cShadow)">
+    <rect x="258" y="48" width="70" height="52" rx="8" fill="#223654" stroke="#ACE6F6" stroke-width="1.5" />
+    <text x="293" y="72" fill="#FFFFFF" font-family="'Outfit', sans-serif" font-size="13" font-weight="900" text-anchor="middle">Hilo C</text>
+    <rect x="268" y="80" width="50" height="14" rx="4" fill="rgba(255,255,255,0.2)" />
+    <text x="293" y="90" fill="#ACE6F6" font-family="'Inter', sans-serif" font-size="8.5" font-weight="800" text-anchor="middle">Turno 4</text>
+  </g>
+
+  <!-- Bottom Explanatory Banner -->
+  <rect x="12" y="112" width="316" height="50" rx="8" fill="#FFFFFF" stroke="rgba(75, 137, 172, 0.35)" filter="url(#cShadow)" />
+  <rect x="20" y="122" width="28" height="28" rx="6" fill="#ACE6F6" />
+  <text x="34" y="141" fill="#122034" font-family="'Outfit', sans-serif" font-size="14" font-weight="900" text-anchor="middle">1C</text>
+  <text x="56" y="132" fill="#122034" font-family="'Outfit', sans-serif" font-size="11" font-weight="800">Concurrencia: Tiempo Lógico</text>
+  <text x="56" y="148" fill="#4B89AC" font-family="'Inter', sans-serif" font-size="9.5" font-weight="600">Intercalado rápido de tareas mediante Time-Slicing</text>
+</svg>

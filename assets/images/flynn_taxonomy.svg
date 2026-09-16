@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 320" width="100%" height="100%">
+  <defs>
+    <linearGradient id="primaryCard" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#E4FCF9"/>
+    </linearGradient>
+    <filter id="fShadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#446491" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <!-- SISD Card -->
+  <g transform="translate(15, 15)">
+    <rect width="255" height="290" rx="14" fill="url(#primaryCard)" stroke="#4B89AC" stroke-width="1.8" filter="url(#fShadow)"/>
+    <rect width="255" height="42" rx="14" fill="#446491"/>
+    <rect y="24" width="255" height="18" fill="#446491"/>
+    <text x="127" y="28" font-family="'Outfit', sans-serif" font-size="15" font-weight="800" fill="#FFFFFF" text-anchor="middle">SISD</text>
+    
+    <text x="127" y="62" font-family="'Inter', sans-serif" font-size="11" font-weight="700" fill="#4B89AC" text-anchor="middle">Single Instruction, Single Data</text>
+    
+    <!-- Architecture Diagram -->
+    <g transform="translate(25, 80)">
+      <!-- Instruction Pool -->
+      <rect x="10" y="5" width="85" height="32" rx="6" fill="#446491"/>
+      <text x="52" y="25" font-family="'Inter', sans-serif" font-size="10" font-weight="bold" fill="#FFFFFF" text-anchor="middle">1 Instrucción</text>
+
+      <line x1="95" y1="21" x2="115" y2="21" stroke="#446491" stroke-width="2" marker-end="url(#arrow)"/>
+      <polygon points="118,21 112,17 112,25" fill="#446491"/>
+
+      <!-- PU -->
+      <rect x="120" y="5" width="75" height="32" rx="6" fill="#4B89AC"/>
+      <text x="157" y="25" font-family="'Inter', sans-serif" font-size="10.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle">1 CPU</text>
+
+      <!-- Data Stream -->
+      <rect x="65" y="60" width="80" height="28" rx="6" fill="#ACE6F6"/>
+      <text x="105" y="78" font-family="'Inter', sans-serif" font-size="10" font-weight="bold" fill="#142238" text-anchor="middle">1 Dato (Stream)</text>
+    </g>
+
+    <text x="25" y="195" font-family="'Inter', sans-serif" font-size="11.5" font-weight="600" fill="#446491">• Modelo secuencial de Von Neumann.</text>
+    <text x="25" y="220" font-family="'Inter', sans-serif" font-size="11.5" font-weight="600" fill="#446491">• 1 procesador tradicional.</text>
+    <text x="25" y="245" font-family="'Inter', sans-serif" font-size="11.5" font-weight="600" fill="#446491">• 1 instrucción sobre 1 dato a la vez.</text>
+    <rect x="25" y="260" width="205" height="20" rx="4" fill="#E4FCF9"/>
+    <text x="127" y="274" font-family="'Inter', sans-serif" font-size="10" font-weight="bold" fill="#4B89AC" text-anchor="middle">Ejemplo: CPU Mononúcleo clásico</text>
+  </g>
+
+  <!-- SIMD Card -->
+  <g transform="translate(295, 15)">
+    <rect width="255" height="290" rx="14" fill="url(#primaryCard)" stroke="#4B89AC" stroke-width="1.8" filter="url(#fShadow)"/>
+    <rect width="255" height="42" rx="14" fill="#4B89AC"/>
+    <rect y="24" width="255" height="18" fill="#4B89AC"/>
+    <text x="127" y="28" font-family="'Outfit', sans-serif" font-size="15" font-weight="800" fill="#FFFFFF" text-anchor="middle">SIMD</text>
+    
+    <text x="127" y="62" font-family="'Inter', sans-serif" font-size="11" font-weight="700" fill="#446491" text-anchor="middle">Single Instruction, Multiple Data</text>
+    
+    <!-- Architecture Diagram -->
+    <g transform="translate(20, 80)">
+      <rect x="5" y="5" width="80" height="85" rx="6" fill="#446491"/>
+      <text x="45" y="45" font-family="'Inter', sans-serif" font-size="10" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Misma</text>
+      <text x="45" y="60" font-family="'Inter', sans-serif" font-size="10" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Instrucción</text>
+
+      <!-- 3 ALU/CPUs -->
+      <rect x="110" y="5" width="45" height="24" rx="4" fill="#4B89AC"/>
+      <text x="132" y="21" font-family="'Inter', sans-serif" font-size="9" font-weight="bold" fill="#FFFFFF" text-anchor="middle">ALU 1</text>
+      <rect x="160" y="5" width="45" height="24" rx="4" fill="#ACE6F6"/>
+      <text x="182" y="21" font-family="'Inter', sans-serif" font-size="8.5" font-weight="bold" fill="#142238" text-anchor="middle">Dato 1</text>
+
+      <rect x="110" y="35" width="45" height="24" rx="4" fill="#4B89AC"/>
+      <text x="132" y="51" font-family="'Inter', sans-serif" font-size="9" font-weight="bold" fill="#FFFFFF" text-anchor="middle">ALU 2</text>
+      <rect x="160" y="35" width="45" height="24" rx="4" fill="#ACE6F6"/>
+      <text x="182" y="51" font-family="'Inter', sans-serif" font-size="8.5" font-weight="bold" fill="#142238" text-anchor="middle">Dato 2</text>
+
+      <rect x="110" y="65" width="45" height="24" rx="4" fill="#4B89AC"/>
+      <text x="132" y="81" font-family="'Inter', sans-serif" font-size="9" font-weight="bold" fill="#FFFFFF" text-anchor="middle">ALU 3</text>
+      <rect x="160" y="65" width="45" height="24" rx="4" fill="#ACE6F6"/>
+      <text x="182" y="81" font-family="'Inter', sans-serif" font-size="8.5" font-weight="bold" fill="#142238" text-anchor="middle">Dato 3</text>
+    </g>
+
+    <text x="25" y="195" font-family="'Inter', sans-serif" font-size="11.5" font-weight="600" fill="#446491">• Paralelismo a nivel de datos (Vector).</text>
+    <text x="25" y="220" font-family="'Inter', sans-serif" font-size="11.5" font-weight="600" fill="#446491">• Múltiples ALUs ejecutan al unísono.</text>
+    <text x="25" y="245" font-family="'Inter', sans-serif" font-size="11.5" font-weight="600" fill="#446491">• Excelente para matrices y gráficos.</text>
+    <rect x="25" y="260" width="205" height="20" rx="4" fill="#E4FCF9"/>
+    <text x="127" y="274" font-family="'Inter', sans-serif" font-size="10" font-weight="bold" fill="#4B89AC" text-anchor="middle">Ejemplo: GPUs, AVX, SSE</text>
+  </g>
+
+  <!-- MIMD Card -->
+  <g transform="translate(575, 15)">
+    <rect width="255" height="290" rx="14" fill="url(#primaryCard)" stroke="#446491" stroke-width="1.8" filter="url(#fShadow)"/>
+    <rect width="255" height="42" rx="14" fill="#446491"/>
+    <rect y="24" width="255" height="18" fill="#446491"/>
+    <text x="127" y="28" font-family="'Outfit', sans-serif" font-size="15" font-weight="800" fill="#FFFFFF" text-anchor="middle">MIMD</text>
+    
+    <text x="127" y="62" font-family="'Inter', sans-serif" font-size="11" font-weight="700" fill="#4B89AC" text-anchor="middle">Multiple Instruction, Multiple Data</text>
+    
+    <!-- Architecture Diagram -->
+    <g transform="translate(15, 80)">
+      <!-- Unit 1 -->
+      <rect x="10" y="5" width="45" height="24" rx="4" fill="#446491"/>
+      <text x="32" y="21" font-family="'Inter', sans-serif" font-size="9" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Inst 1</text>
+      <rect x="60" y="5" width="45" height="24" rx="4" fill="#4B89AC"/>
+      <text x="82" y="21" font-family="'Inter', sans-serif" font-size="9" font-weight="bold" fill="#FFFFFF" text-anchor="middle">CPU 1</text>
+      <rect x="110" y="5" width="45" height="24" rx="4" fill="#ACE6F6"/>
+      <text x="132" y="21" font-family="'Inter', sans-serif" font-size="8.5" font-weight="bold" fill="#142238" text-anchor="middle">Dato A</text>
+
+      <!-- Unit 2 -->
+      <rect x="10" y="35" width="45" height="24" rx="4" fill="#446491"/>
+      <text x="32" y="51" font-family="'Inter', sans-serif" font-size="9" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Inst 2</text>
+      <rect x="60" y="35" width="45" height="24" rx="4" fill="#4B89AC"/>
+      <text x="82" y="51" font-family="'Inter', sans-serif" font-size="9" font-weight="bold" fill="#FFFFFF" text-anchor="middle">CPU 2</text>
+      <rect x="110" y="35" width="45" height="24" rx="4" fill="#ACE6F6"/>
+      <text x="132" y="51" font-family="'Inter', sans-serif" font-size="8.5" font-weight="bold" fill="#142238" text-anchor="middle">Dato B</text>
+
+      <!-- Unit 3 -->
+      <rect x="10" y="65" width="45" height="24" rx="4" fill="#446491"/>
+      <text x="32" y="81" font-family="'Inter', sans-serif" font-size="9" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Inst 3</text>
+      <rect x="60" y="65" width="45" height="24" rx="4" fill="#4B89AC"/>
+      <text x="82" y="81" font-family="'Inter', sans-serif" font-size="9" font-weight="bold" fill="#FFFFFF" text-anchor="middle">CPU 3</text>
+      <rect x="110" y="65" width="45" height="24" rx="4" fill="#ACE6F6"/>
+      <text x="132" y="81" font-family="'Inter', sans-serif" font-size="8.5" font-weight="bold" fill="#142238" text-anchor="middle">Dato C</text>
+    </g>
+
+    <text x="25" y="195" font-family="'Inter', sans-serif" font-size="11.5" font-weight="600" fill="#446491">• Totalmente autónomo e independiente.</text>
+    <text x="25" y="220" font-family="'Inter', sans-serif" font-size="11.5" font-weight="600" fill="#446491">• Múltiples flujos de control simultáneos.</text>
+    <text x="25" y="245" font-family="'Inter', sans-serif" font-size="11.5" font-weight="600" fill="#446491">• Base de procesadores modernos y clusters.</text>
+    <rect x="25" y="260" width="205" height="20" rx="4" fill="#E4FCF9"/>
+    <text x="127" y="274" font-family="'Inter', sans-serif" font-size="10" font-weight="bold" fill="#4B89AC" text-anchor="middle">Ejemplo: Intel Core i7, Clusters, HPC</text>
+  </g>
+</svg>

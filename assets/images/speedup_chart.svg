@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 360" width="100%" height="100%">
+  <defs>
+    <linearGradient id="chartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#E4FCF9"/>
+    </linearGradient>
+    <filter id="cShadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#446491" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+
+  <!-- Container -->
+  <rect x="10" y="10" width="740" height="340" rx="16" fill="url(#chartGrad)" stroke="#ACE6F6" stroke-width="1.8" filter="url(#cShadow)"/>
+
+  <!-- Chart Title -->
+  <text x="35" y="42" font-family="'Outfit', sans-serif" font-size="16" font-weight="800" fill="#446491">
+    LEY DE AMDAHL: LÍMITES TEÓRICOS DEL SPEEDUP (S_max)
+  </text>
+  <text x="35" y="62" font-family="'Inter', sans-serif" font-size="12" font-weight="500" fill="#4B89AC">
+    El cuello de botella está fijado por la fracción secuencial (1 - f)
+  </text>
+
+  <!-- Formula Highlight Badge -->
+  <rect x="510" y="25" width="220" height="42" rx="10" fill="#446491"/>
+  <text x="620" y="51" font-family="'Inter', monospace" font-size="13" font-weight="bold" fill="#ACE6F6" text-anchor="middle">
+    S_max = 1 / ((1-f) + f/p)
+  </text>
+
+  <!-- Graph Axes -->
+  <g transform="translate(60, 90)">
+    <!-- Y-axis -->
+    <line x1="40" y1="20" x2="40" y2="200" stroke="#446491" stroke-width="2"/>
+    <polygon points="40,15 36,25 44,25" fill="#446491"/>
+    <text x="30" y="15" font-family="'Inter', sans-serif" font-size="10" font-weight="bold" fill="#446491" text-anchor="end">Speedup (S)</text>
+    
+    <!-- Y Grid & Labels -->
+    <line x1="35" y1="50" x2="420" y2="50" stroke="#ACE6F6" stroke-width="1" stroke-dasharray="3"/>
+    <text x="30" y="54" font-family="'Inter', sans-serif" font-size="9" fill="#4B89AC" text-anchor="end">5.0x</text>
+
+    <line x1="35" y1="100" x2="420" y2="100" stroke="#ACE6F6" stroke-width="1" stroke-dasharray="3"/>
+    <text x="30" y="104" font-family="'Inter', sans-serif" font-size="9" fill="#4B89AC" text-anchor="end">3.3x</text>
+
+    <line x1="35" y1="150" x2="420" y2="150" stroke="#ACE6F6" stroke-width="1" stroke-dasharray="3"/>
+    <text x="30" y="154" font-family="'Inter', sans-serif" font-size="9" fill="#4B89AC" text-anchor="end">2.0x</text>
+
+    <text x="30" y="204" font-family="'Inter', sans-serif" font-size="9" fill="#4B89AC" text-anchor="end">1.0x</text>
+
+    <!-- X-axis -->
+    <line x1="40" y1="200" x2="430" y2="200" stroke="#446491" stroke-width="2"/>
+    <polygon points="435,200 425,196 425,204" fill="#446491"/>
+    <text x="430" y="220" font-family="'Inter', sans-serif" font-size="10" font-weight="bold" fill="#446491" text-anchor="end">Procesadores (p) →</text>
+
+    <!-- X Labels -->
+    <text x="40" y="215" font-family="'Inter', sans-serif" font-size="9" fill="#4B89AC" text-anchor="middle">1</text>
+    <text x="130" y="215" font-family="'Inter', sans-serif" font-size="9" fill="#4B89AC" text-anchor="middle">4</text>
+    <text x="220" y="215" font-family="'Inter', sans-serif" font-size="9" fill="#4B89AC" text-anchor="middle">8</text>
+    <text x="310" y="215" font-family="'Inter', sans-serif" font-size="9" fill="#4B89AC" text-anchor="middle">16</text>
+    <text x="400" y="215" font-family="'Inter', sans-serif" font-size="9" fill="#4B89AC" text-anchor="middle">32</text>
+
+    <!-- Linear Ideal Curve -->
+    <line x1="40" y1="200" x2="220" y2="30" stroke="#ACE6F6" stroke-width="2" stroke-dasharray="4"/>
+    <text x="210" y="22" font-family="'Inter', sans-serif" font-size="9" font-weight="bold" fill="#4B89AC">Ideal (S = p)</text>
+
+    <!-- Curve 1: f = 90% (Max 10x) -->
+    <path d="M 40 200 Q 130 115 220 85 T 410 65" fill="none" stroke="#446491" stroke-width="3.5"/>
+    <circle cx="130" cy="115" r="4" fill="#446491"/>
+    <text x="375" y="60" font-family="'Inter', sans-serif" font-size="9" font-weight="bold" fill="#446491">f = 90% (S_max=10)</text>
+
+    <!-- Curve 2: f = 80% (Example in PDF: f=0.8, p=4 -> S=2.5x, S_max=5) -->
+    <path d="M 40 200 Q 130 135 220 115 T 410 102" fill="none" stroke="#4B89AC" stroke-width="3"/>
+    <circle cx="130" cy="135" r="5" fill="#ACE6F6" stroke="#4B89AC" stroke-width="2"/>
+    <text x="140" y="132" font-family="'Inter', sans-serif" font-size="9.5" font-weight="800" fill="#446491">f=80%, p=4 → S=2.5x</text>
+
+    <!-- Curve 3: f = 50% (Max 2x) -->
+    <path d="M 40 200 Q 130 165 220 155 T 410 151" fill="none" stroke="#7E9EB8" stroke-width="2.5"/>
+    <text x="375" y="145" font-family="'Inter', sans-serif" font-size="9" font-weight="bold" fill="#7E9EB8">f = 50% (S_max=2)</text>
+  </g>
+
+  <!-- Right Explanation Cards -->
+  <g transform="translate(510, 85)">
+    <rect width="220" height="235" rx="12" fill="#FFFFFF" stroke="#ACE6F6" stroke-width="1.5"/>
+    
+    <text x="15" y="25" font-family="'Outfit', sans-serif" font-size="12" font-weight="800" fill="#446491">
+      CASO DEL DOCUMENTO (PDF):
+    </text>
+    
+    <rect x="15" y="38" width="190" height="50" rx="6" fill="#E4FCF9"/>
+    <text x="25" y="56" font-family="'Inter', sans-serif" font-size="11" font-weight="bold" fill="#446491">
+      f = 80% (Paralelizable)
+    </text>
+    <text x="25" y="74" font-family="'Inter', sans-serif" font-size="10.5" fill="#4B89AC">
+      1 - f = 20% (Secuencial)
+    </text>
+
+    <text x="15" y="110" font-family="'Inter', sans-serif" font-size="10.5" font-weight="600" fill="#142238">
+      Con p = 4 núcleos:
+    </text>
+    <rect x="15" y="118" width="190" height="26" rx="4" fill="#446491"/>
+    <text x="110" y="135" font-family="'Inter', monospace" font-size="11" font-weight="bold" fill="#ACE6F6" text-anchor="middle">
+      S_max = 1 / (0.2 + 0.2) = 2.5x
+    </text>
+
+    <text x="15" y="165" font-family="'Inter', sans-serif" font-size="10.5" font-weight="700" fill="#446491">
+      Con p = ∞ infinitos núcleos:
+    </text>
+    <rect x="15" y="173" width="190" height="26" rx="4" fill="#4B89AC"/>
+    <text x="110" y="190" font-family="'Inter', monospace" font-size="11" font-weight="bold" fill="#FFFFFF" text-anchor="middle">
+      S_teórico = 1 / 0.2 = 5.0x
+    </text>
+
+    <text x="15" y="220" font-family="'Inter', sans-serif" font-size="9" font-style="italic" fill="#758A99">
+      ¡El 20% secuencial impone un tope!
+    </text>
+  </g>
+</svg>

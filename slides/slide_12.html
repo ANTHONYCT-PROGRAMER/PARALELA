@@ -1,0 +1,57 @@
+<!-- ====================================================================
+           SLIDE 12: PERSONA 3 - MODELOS DE CONSISTENCIA DE MEMORIA
+           ==================================================================== -->
+      <article class="slide" id="slide-12">
+        <div class="slide-header">
+          <div class="slide-tagline-row">
+            <span class="slide-badge-category">Persona 3: Consistencia</span>
+            <span class="slide-badge-time">Minuto 8:00 - 12:00</span>
+          </div>
+          <h2 class="slide-title">Consistencia de Memoria</h2>
+          <p class="slide-subtitle">Reglas que determinan cómo los procesadores observan escrituras y lecturas compartidas</p>
+        </div>
+
+        <div class="slide-body">
+          <div class="media-container" style="max-height: 270px;">
+            <img src="assets/images/memory_models.svg" alt="Modelos de Consistencia de Memoria">
+          </div>
+
+          <div class="grid-3-cols">
+            <div class="card card-highlight">
+              <div>
+                <h3 class="card-title" style="font-size: 15px;">1. Consistencia Estricta</h3>
+                <p class="card-desc" style="font-size: 12.5px;">
+                  Cualquier lectura retorna inmediatamente el valor de la escritura más reciente en un reloj físico absoluto.
+                </p>
+              </div>
+              <span style="font-size: 11px; font-weight: 800; color: #D32F2F; margin-top: 6px; display: block;">
+                [Teórica / Imposible en sistemas distribuidos]
+              </span>
+            </div>
+
+            <div class="card card-highlight">
+              <div>
+                <h3 class="card-title" style="font-size: 15px;">2. Consistencia Secuencial</h3>
+                <p class="card-desc" style="font-size: 12.5px;">
+                  Propuesta por Leslie Lamport: el resultado es idéntico a si todas las operaciones se ejecutaran en algún orden secuencial global.
+                </p>
+              </div>
+              <span style="font-size: 11px; font-weight: 800; color: var(--secondary-ocean); margin-top: 6px; display: block;">
+                [Estándar clásico de correctitud]
+              </span>
+            </div>
+
+            <div class="card card-highlight">
+              <div>
+                <h3 class="card-title" style="font-size: 15px;">3. Consistencia Relajada</h3>
+                <p class="card-desc" style="font-size: 12.5px;">
+                  Permite reordenamiento de hardware y cachés para máximo rendimiento. Requiere <em>Memory Barriers</em> o <em>Mutex</em> para sincronizar.
+                </p>
+              </div>
+              <span style="font-size: 11px; font-weight: 800; color: var(--primary-navy); margin-top: 6px; display: block;">
+                [Arquitecturas modernas: x86, ARM, GPUs]
+              </span>
+            </div>
+          </div>
+        </div>
+      </article>
