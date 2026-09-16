@@ -1301,62 +1301,84 @@
 
       <!-- slide_12.html -->
       <!-- ====================================================================
-           SLIDE 12: PERSONA 3 - MODELOS DE CONSISTENCIA DE MEMORIA
-           ==================================================================== -->
-      <article class="slide" id="slide-12">
-        <div class="slide-header">
-          <div class="slide-tagline-row">
-            <span class="slide-badge-category">Persona 3: Consistencia</span>
-            <span class="slide-badge-time">Minuto 8:00 - 12:00</span>
-          </div>
-          <h2 class="slide-title">Consistencia de Memoria</h2>
-          <p class="slide-subtitle">Reglas que determinan cómo los procesadores observan escrituras y lecturas compartidas</p>
+     SLIDE 12: PERSONA 3 - MODELOS DE CONSISTENCIA DE MEMORIA
+     ==================================================================== -->
+<article class="slide" id="slide-12">
+  <div class="slide-header" style="margin-bottom: 8px;">
+    <div class="slide-tagline-row">
+      <span class="slide-badge-category">Persona 3: Consistencia y Sincronización</span>
+      <span class="slide-badge-time">Minuto 8:00 - 12:00</span>
+    </div>
+    <h2 class="slide-title">Modelos de Consistencia de Memoria</h2>
+    <p class="slide-subtitle">El contrato entre hardware y software que define cuándo las escrituras de un núcleo son visibles para los demás</p>
+  </div>
+
+  <div class="slide-body" style="gap: 10px;">
+    <!-- HERO ARCHITECTURAL DIAGRAM (Maximizado a tamaño dominante) -->
+    <div class="media-container" style="flex: 1; width: 100%; height: 100%; min-height: 0; padding: 4px; box-shadow: var(--shadow-sm);">
+      <img src="assets/images/memory_consistency_architecture.svg" alt="Arquitecturas de Consistencia de Memoria: Estricta vs Secuencial vs Relajada" style="width: 100%; height: 100%; object-fit: contain;">
+    </div>
+
+    <!-- 3 TECHNICAL COMPARISON CARDS (Compactas, sin redundancia, contenido de ingeniería complementario) -->
+    <div class="grid-3-cols" style="flex: 0 0 auto; gap: 10px; margin: 0;">
+      
+      <!-- Card 1: Estricta -->
+      <div class="card" style="padding: 10px 14px; height: auto; min-height: auto; justify-content: flex-start; gap: 4px; border: 1.5px solid var(--border-light); box-shadow: var(--shadow-sm);">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+          <h4 style="font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 800; color: var(--primary-navy); margin: 0;">
+            1. Consistencia Estricta
+          </h4>
+          <span style="background: #FFF2F2; color: #A82828; font-size: 9.5px; font-weight: 800; padding: 2px 7px; border-radius: 4px; border: 1px solid #FFC4C4;">
+            Teórica / Inviable
+          </span>
         </div>
-
-        <div class="slide-body">
-          <div class="media-container" style="max-height: 270px;">
-            <img src="assets/images/memory_models.svg" alt="Modelos de Consistencia de Memoria">
-          </div>
-
-          <div class="grid-3-cols">
-            <div class="card card-highlight">
-              <div>
-                <h3 class="card-title" style="font-size: 15px;">1. Consistencia Estricta</h3>
-                <p class="card-desc" style="font-size: 12.5px;">
-                  Cualquier lectura retorna inmediatamente el valor de la escritura más reciente en un reloj físico absoluto.
-                </p>
-              </div>
-              <span style="font-size: 11px; font-weight: 800; color: #D32F2F; margin-top: 6px; display: block;">
-                [Teórica / Imposible en sistemas distribuidos]
-              </span>
-            </div>
-
-            <div class="card card-highlight">
-              <div>
-                <h3 class="card-title" style="font-size: 15px;">2. Consistencia Secuencial</h3>
-                <p class="card-desc" style="font-size: 12.5px;">
-                  Propuesta por Leslie Lamport: el resultado es idéntico a si todas las operaciones se ejecutaran en algún orden secuencial global.
-                </p>
-              </div>
-              <span style="font-size: 11px; font-weight: 800; color: var(--secondary-ocean); margin-top: 6px; display: block;">
-                [Estándar clásico de correctitud]
-              </span>
-            </div>
-
-            <div class="card card-highlight">
-              <div>
-                <h3 class="card-title" style="font-size: 15px;">3. Consistencia Relajada</h3>
-                <p class="card-desc" style="font-size: 12.5px;">
-                  Permite reordenamiento de hardware y cachés para máximo rendimiento. Requiere <em>Memory Barriers</em> o <em>Mutex</em> para sincronizar.
-                </p>
-              </div>
-              <span style="font-size: 11px; font-weight: 800; color: var(--primary-navy); margin-top: 6px; display: block;">
-                [Arquitecturas modernas: x86, ARM, GPUs]
-              </span>
-            </div>
-          </div>
+        <p style="font-size: 11px; line-height: 1.35; color: var(--text-dark); margin: 0;">
+          <strong>Regla:</strong> Toda lectura <em>R(x)</em> ve inmediatamente la última escritura <em>W(x)</em> en un reloj físico absoluto común.
+        </p>
+        <div style="font-size: 10.5px; color: #A82828; background: #FFF9F9; padding: 4px 6px; border-radius: 4px; border-left: 2px solid #E05D5D;">
+          Imposible en sistemas reales por la velocidad finita de propagación de señales (&Delta;t &gt; 0).
         </div>
-      </article>
+      </div>
+
+      <!-- Card 2: Secuencial -->
+      <div class="card" style="padding: 10px 14px; height: auto; min-height: auto; justify-content: flex-start; gap: 4px; border: 1.5px solid var(--border-light); box-shadow: var(--shadow-sm);">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+          <h4 style="font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 800; color: var(--secondary-ocean); margin: 0;">
+            2. Consistencia Secuencial
+          </h4>
+          <span style="background: var(--bg-mint); color: var(--secondary-ocean); font-size: 9.5px; font-weight: 800; padding: 2px 7px; border-radius: 4px; border: 1px solid var(--accent-cyan);">
+            Leslie Lamport (1979)
+          </span>
+        </div>
+        <p style="font-size: 11px; line-height: 1.35; color: var(--text-dark); margin: 0;">
+          <strong>Regla:</strong> Todas las operaciones parecen ejecutarse en un orden global único que respeta el orden de programa de cada CPU.
+        </p>
+        <div style="font-size: 10.5px; color: var(--secondary-ocean); background: #F0F8FB; padding: 4px 6px; border-radius: 4px; border-left: 2px solid var(--secondary-ocean);">
+          Estándar clásico intuitivo para el programador, pero desactiva optimizaciones del procesador.
+        </div>
+      </div>
+
+      <!-- Card 3: Relajada -->
+      <div class="card" style="padding: 10px 14px; height: auto; min-height: auto; justify-content: flex-start; gap: 4px; border: 1.5px solid var(--border-light); box-shadow: var(--shadow-sm);">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+          <h4 style="font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 800; color: var(--primary-navy); margin: 0;">
+            3. Consistencia Relajada
+          </h4>
+          <span style="background: #EAF8F5; color: #1B7A68; font-size: 9.5px; font-weight: 800; padding: 2px 7px; border-radius: 4px; border: 1px solid #A8E8DC;">
+            x86 / ARM / GPUs
+          </span>
+        </div>
+        <p style="font-size: 11px; line-height: 1.35; color: var(--text-dark); margin: 0;">
+          <strong>Regla:</strong> El hardware reordena lecturas/escrituras independientes en búferes de memoria para maximizar el throughput.
+        </p>
+        <div style="font-size: 10.5px; color: #1B7A68; background: #F4FAF8; padding: 4px 6px; border-radius: 4px; border-left: 2px solid #1B7A68;">
+          Máximo rendimiento; la sincronización se garantiza mediante <em>Memory Barriers</em> y <em>Mutex</em>.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</article>
 
       <!-- slide_13.html -->
       <!-- ====================================================================

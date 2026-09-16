@@ -1,0 +1,170 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 250" width="100%" height="100%">
+  <defs>
+    <linearGradient id="mBgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#F4FCFA"/>
+    </linearGradient>
+    <linearGradient id="colNavy" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#446491"/>
+      <stop offset="100%" stop-color="#223654"/>
+    </linearGradient>
+    <linearGradient id="colOcean" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4B89AC"/>
+      <stop offset="100%" stop-color="#285672"/>
+    </linearGradient>
+    <filter id="mDrop" x="-3%" y="-3%" width="106%" height="106%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#122034" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Outer Frame -->
+  <rect x="2" y="2" width="956" height="246" rx="12" fill="url(#mBgGrad)" stroke="#ACE6F6" stroke-width="1.8"/>
+
+  <!-- ================= MODEL 1: ESTRICTA ================= -->
+  <g transform="translate(12, 12)" filter="url(#mDrop)">
+    <rect width="300" height="224" rx="10" fill="#FFFFFF" stroke="#446491" stroke-width="1.4"/>
+    <rect width="300" height="32" rx="10" fill="url(#colNavy)"/>
+    <rect y="18" width="300" height="14" fill="url(#colNavy)"/>
+    <text x="150" y="21" font-family="'Outfit', sans-serif" font-size="13.5" font-weight="800" fill="#FFFFFF" text-anchor="middle">
+      1. Consistencia Estricta
+    </text>
+
+    <!-- Subtitle Pill -->
+    <rect x="20" y="38" width="260" height="20" rx="4" fill="#FFF2F2" stroke="#E05D5D" stroke-width="1"/>
+    <text x="150" y="52" font-family="'Inter', sans-serif" font-size="9.5" font-weight="800" fill="#A82828" text-anchor="middle">
+      Reloj Físico Absoluto • Cota Teórica
+    </text>
+
+    <!-- Architecture Visual -->
+    <g transform="translate(15, 66)">
+      <!-- Global Shared Memory -->
+      <rect x="35" y="0" width="200" height="30" rx="5" fill="#E4FCF9" stroke="#4B89AC" stroke-width="1.2"/>
+      <text x="135" y="19" font-family="'JetBrains Mono', monospace" font-size="10.5" font-weight="800" fill="#122034" text-anchor="middle">
+        Memoria RAM: x = 5
+      </text>
+
+      <!-- Sync instant arrows -->
+      <line x1="75" y1="32" x2="75" y2="60" stroke="#446491" stroke-width="2"/>
+      <polygon points="75,30 71,37 79,37" fill="#446491"/>
+      <text x="45" y="50" font-family="'Inter', sans-serif" font-size="8.5" font-weight="700" fill="#446491">W(x)=5</text>
+
+      <line x1="195" y1="32" x2="195" y2="60" stroke="#4B89AC" stroke-width="2"/>
+      <polygon points="195,62 191,55 199,55" fill="#4B89AC"/>
+      <text x="225" y="50" font-family="'Inter', sans-serif" font-size="8.5" font-weight="700" fill="#4B89AC">R(x)→5</text>
+
+      <!-- Processors P1 & P2 -->
+      <rect x="25" y="62" width="100" height="30" rx="4" fill="#446491"/>
+      <text x="75" y="81" font-family="'Outfit', sans-serif" font-size="10.5" font-weight="800" fill="#FFFFFF" text-anchor="middle">
+        Núcleo P1
+      </text>
+
+      <rect x="145" y="62" width="100" height="30" rx="4" fill="#4B89AC"/>
+      <text x="195" y="81" font-family="'Outfit', sans-serif" font-size="10.5" font-weight="800" fill="#FFFFFF" text-anchor="middle">
+        Núcleo P2
+      </text>
+
+      <!-- Instantaneous Timeline Bar -->
+      <rect x="15" y="102" width="240" height="26" rx="4" fill="#F8FDFD" stroke="#ACE6F6" stroke-width="1"/>
+      <text x="135" y="119" font-family="'Inter', sans-serif" font-size="9" font-weight="700" fill="#446491" text-anchor="middle">
+        Δt = 0 ns (Latencia cero • Inviable)
+      </text>
+    </g>
+  </g>
+
+  <!-- ================= MODEL 2: SECUENCIAL (LAMPORT) ================= -->
+  <g transform="translate(330, 12)" filter="url(#mDrop)">
+    <rect width="300" height="224" rx="10" fill="#FFFFFF" stroke="#4B89AC" stroke-width="1.4"/>
+    <rect width="300" height="32" rx="10" fill="url(#colOcean)"/>
+    <rect y="18" width="300" height="14" fill="url(#colOcean)"/>
+    <text x="150" y="21" font-family="'Outfit', sans-serif" font-size="13.5" font-weight="800" fill="#FFFFFF" text-anchor="middle">
+      2. Consistencia Secuencial
+    </text>
+
+    <!-- Subtitle Pill -->
+    <rect x="20" y="38" width="260" height="20" rx="4" fill="#EAF4F9" stroke="#4B89AC" stroke-width="1"/>
+    <text x="150" y="52" font-family="'Inter', sans-serif" font-size="9.5" font-weight="800" fill="#1C4D6B" text-anchor="middle">
+      Modelo de Lamport (1979) • Orden Global
+    </text>
+
+    <!-- Architecture Visual -->
+    <g transform="translate(15, 66)">
+      <!-- Processors on Top -->
+      <rect x="15" y="0" width="110" height="28" rx="4" fill="#446491"/>
+      <text x="70" y="18" font-family="'Outfit', sans-serif" font-size="10.5" font-weight="800" fill="#FFFFFF" text-anchor="middle">
+        P1: W(a) → W(b)
+      </text>
+
+      <rect x="145" y="0" width="110" height="28" rx="4" fill="#4B89AC"/>
+      <text x="200" y="18" font-family="'Outfit', sans-serif" font-size="10.5" font-weight="800" fill="#FFFFFF" text-anchor="middle">
+        P2: R(b) → R(a)
+      </text>
+
+      <!-- Global Interleaving Order Bus -->
+      <rect x="15" y="40" width="240" height="42" rx="5" fill="#E4FCF9" stroke="#4B89AC" stroke-width="1.2"/>
+      <text x="135" y="56" font-family="'Inter', sans-serif" font-size="9" font-weight="800" fill="#223654" text-anchor="middle">
+        Secuencia Única Observable:
+      </text>
+      <text x="135" y="72" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="800" fill="#446491" text-anchor="middle">
+        W(a) &#8594; W(b) &#8594; R(b) &#8594; R(a)
+      </text>
+
+      <!-- Program Order Guarantee -->
+      <rect x="15" y="92" width="240" height="36" rx="4" fill="#F8FDFD" stroke="#ACE6F6" stroke-width="1"/>
+      <text x="135" y="107" font-family="'Inter', sans-serif" font-size="9" font-weight="800" fill="#223654" text-anchor="middle">
+        Garantiza "Program Order" Estricto
+      </text>
+      <text x="135" y="120" font-family="'Inter', sans-serif" font-size="8" font-weight="600" fill="#566E87" text-anchor="middle">
+        Todos los núcleos ven el mismo orden intercalado
+      </text>
+    </g>
+  </g>
+
+  <!-- ================= MODEL 3: RELAJADA (MODERNA) ================= -->
+  <g transform="translate(648, 12)" filter="url(#mDrop)">
+    <rect width="300" height="224" rx="10" fill="#FFFFFF" stroke="#223654" stroke-width="1.4"/>
+    <rect width="300" height="32" rx="10" fill="url(#colNavy)"/>
+    <rect y="18" width="300" height="14" fill="url(#colNavy)"/>
+    <text x="150" y="21" font-family="'Outfit', sans-serif" font-size="13.5" font-weight="800" fill="#FFFFFF" text-anchor="middle">
+      3. Consistencia Relajada / Débil
+    </text>
+
+    <!-- Subtitle Pill -->
+    <rect x="20" y="38" width="260" height="20" rx="4" fill="#EAF8F5" stroke="#1B7A68" stroke-width="1"/>
+    <text x="150" y="52" font-family="'Inter', sans-serif" font-size="9.5" font-weight="800" fill="#144644" text-anchor="middle">
+      CPUs Modernas (x86, ARM) • Memory Barriers
+    </text>
+
+    <!-- Architecture Visual -->
+    <g transform="translate(15, 66)">
+      <!-- Core with Write Buffer -->
+      <rect x="15" y="0" width="110" height="28" rx="4" fill="#446491"/>
+      <text x="70" y="18" font-family="'Outfit', sans-serif" font-size="10.5" font-weight="800" fill="#FFFFFF" text-anchor="middle">
+        Núcleo (Out-of-Order)
+      </text>
+
+      <rect x="145" y="0" width="110" height="28" rx="4" fill="#E65100"/>
+      <text x="200" y="18" font-family="'Outfit', sans-serif" font-size="10" font-weight="800" fill="#FFFFFF" text-anchor="middle">
+        Búfer de Escritura
+      </text>
+
+      <!-- Synchronization Barrier Box -->
+      <rect x="15" y="38" width="240" height="44" rx="5" fill="#FFF8F0" stroke="#E65100" stroke-width="1.2"/>
+      <text x="135" y="54" font-family="'Inter', sans-serif" font-size="9" font-weight="800" fill="#993300" text-anchor="middle">
+        Reordenamiento de HW &amp; Cachés
+      </text>
+      <rect x="35" y="60" width="200" height="18" rx="3" fill="#E65100"/>
+      <text x="135" y="73" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="800" fill="#FFFFFF" text-anchor="middle">
+        FENCE / MEMORY BARRIER
+      </text>
+
+      <!-- Bottom Benefit Note -->
+      <rect x="15" y="92" width="240" height="36" rx="4" fill="#F8FDFD" stroke="#ACE6F6" stroke-width="1"/>
+      <text x="135" y="107" font-family="'Inter', sans-serif" font-size="9" font-weight="800" fill="#223654" text-anchor="middle">
+        Máximo Rendimiento del Hardware
+      </text>
+      <text x="135" y="120" font-family="'Inter', sans-serif" font-size="8" font-weight="600" fill="#566E87" text-anchor="middle">
+        Sincronización manual mediante Mutex / Locks
+      </text>
+    </g>
+  </g>
+</svg>
