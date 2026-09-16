@@ -1077,82 +1077,227 @@
 
       <!-- slide_11.html -->
       <!-- ====================================================================
-           SLIDE 11: PERSONA 3 - LEY DE AMDAHL
-           ==================================================================== -->
-      <article class="slide" id="slide-11">
-        <div class="slide-header">
-          <div class="slide-tagline-row">
-            <span class="slide-badge-category">Persona 3: Ley de Amdahl</span>
-            <span class="slide-badge-time">Minuto 8:00 - 12:00</span>
+     SLIDE 11: PERSONA 3 - LEY DE AMDAHL CON GRÁFICO DINÁMICO EN TIEMPO REAL
+     ==================================================================== -->
+<article class="slide" id="slide-11">
+  <div class="slide-header" style="margin-bottom: 8px;">
+    <div class="slide-tagline-row">
+      <span class="slide-badge-category">Persona 3: Ley de Amdahl</span>
+      <span class="slide-badge-time">Minuto 8:00 - 12:00</span>
+    </div>
+    <h2 class="slide-title">Ley de Amdahl: El Límite del Paralelismo</h2>
+    <p class="slide-subtitle">La fracción secuencial no paralelizable (1 - f) impone un límite asintótico infranqueable</p>
+  </div>
+
+  <div class="slide-body" style="gap: 10px;">
+    <div class="grid-2-cols" style="flex: 1; min-height: 0; gap: 12px; align-items: stretch;">
+      
+      <!-- LEFT COLUMN: LIVE AMDAHL SVG GRAPH & FORMULA BREAKDOWN -->
+      <div class="amdahl-chart-card">
+        
+        <!-- Header -->
+        <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #E2EFF5; padding-bottom: 6px;">
+          <div>
+            <h4 style="font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 800; color: var(--primary-navy); margin: 0;">
+              Curva Teórica de Speedup S(p) vs Procesadores (p)
+            </h4>
+            <span style="font-size: 10px; color: var(--text-muted);">
+              Actualización instantánea de la asíntota y el punto de operación
+            </span>
           </div>
-          <h2 class="slide-title">Ley de Amdahl: El Límite del Paralelismo</h2>
-          <p class="slide-subtitle">La porción secuencial no paralelizable impone una cota máxima teórica</p>
+          <span id="amdahlPillBadge" class="calc-live-badge" style="background: #EDF8FC; color: var(--secondary-ocean); border-color: var(--accent-cyan);">
+            f = 80% • 4 Cores
+          </span>
         </div>
 
-        <div class="slide-body">
-          <div class="grid-2-cols">
-            <!-- Left: SVG Chart -->
-            <div class="media-container" style="padding: 6px;">
-              <img src="assets/images/speedup_chart.svg" alt="Curvas de la Ley de Amdahl">
+        <!-- Dynamic SVG Graph Canvas -->
+        <div class="amdahl-svg-container">
+          <svg id="amdahlSvgCanvas" viewBox="0 0 520 230" width="100%" height="100%">
+            <defs>
+              <linearGradient id="amCurveGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#446491"/>
+                <stop offset="100%" stop-color="#4B89AC"/>
+              </linearGradient>
+            </defs>
+
+            <!-- Plot Area: X: 55 to 495 (width 440), Y: 20 to 195 (height 175) -->
+            <!-- Grid Lines -->
+            <g stroke="#E8F1F5" stroke-width="1" stroke-dasharray="3,3">
+              <line x1="55" y1="195" x2="495" y2="195"/>
+              <line x1="55" y1="151" x2="495" y2="151"/>
+              <line x1="55" y1="107" x2="495" y2="107"/>
+              <line x1="55" y1="63" x2="495" y2="63"/>
+              <line x1="55" y1="20" x2="495" y2="20"/>
+
+              <line x1="55" y1="20" x2="55" y2="195"/>
+              <line x1="165" y1="20" x2="165" y2="195"/>
+              <line x1="275" y1="20" x2="275" y2="195"/>
+              <line x1="385" y1="20" x2="385" y2="195"/>
+              <line x1="495" y1="20" x2="495" y2="195"/>
+            </g>
+
+            <!-- Axis X & Y Main Lines -->
+            <line x1="55" y1="195" x2="495" y2="195" stroke="#446491" stroke-width="1.6"/>
+            <line x1="55" y1="20" x2="55" y2="195" stroke="#446491" stroke-width="1.6"/>
+
+            <!-- Axis Y Labels (Speedup) -->
+            <text x="48" y="198" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" fill="#566E87" text-anchor="end">1x</text>
+            <text x="48" y="154" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" fill="#566E87" text-anchor="end">2.5x</text>
+            <text x="48" y="110" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" fill="#566E87" text-anchor="end">5.0x</text>
+            <text x="48" y="66" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" fill="#566E87" text-anchor="end">10x</text>
+            <text x="48" y="24" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" fill="#566E87" text-anchor="end">20x</text>
+
+            <!-- Axis X Labels (Processors) -->
+            <text x="55" y="210" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" fill="#566E87" text-anchor="middle">p=1</text>
+            <text x="165" y="210" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" fill="#566E87" text-anchor="middle">p=8</text>
+            <text x="275" y="210" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" fill="#566E87" text-anchor="middle">p=16</text>
+            <text x="385" y="210" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" fill="#566E87" text-anchor="middle">p=32</text>
+            <text x="495" y="210" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" fill="#566E87" text-anchor="middle">p=64</text>
+
+            <!-- Axis Titles -->
+            <text x="275" y="224" font-family="'Outfit', sans-serif" font-size="9.5" font-weight="800" fill="#122034" text-anchor="middle">
+              Número de Procesadores (p)
+            </text>
+
+            <!-- Ideal Linear Diagonal (Reference) -->
+            <line x1="55" y1="195" x2="275" y2="20" stroke="#CBDCE6" stroke-width="1.4" stroke-dasharray="4,4"/>
+            <text x="200" y="70" font-family="'Inter', sans-serif" font-size="8" font-weight="700" fill="#8898AA" transform="rotate(-38, 200, 70)">
+              Ideal Lineal (S = p)
+            </text>
+
+            <!-- Reference Curves in Light Tones (f=50%, f=90%) -->
+            <path id="amdahlRefPath50" d="M 55 195 Q 165 150 495 130" fill="none" stroke="#E2EFF5" stroke-width="1.5"/>
+            <path id="amdahlRefPath90" d="M 55 195 Q 165 90 495 45" fill="none" stroke="#D3E8F2" stroke-width="1.5"/>
+
+            <!-- Dynamic Asymptote Line (Max Theoretical Limit) -->
+            <line id="amdahlAsymptoteLine" x1="55" y1="107" x2="495" y2="107" stroke="#E05D5D" stroke-width="1.6" stroke-dasharray="5,4"/>
+            <text id="amdahlAsymptoteLabel" x="490" y="101" font-family="'Inter', sans-serif" font-size="8.5" font-weight="800" fill="#E05D5D" text-anchor="end">
+              Tope Asintótico S_max = 5.00x
+            </text>
+
+            <!-- Dynamic Active Amdahl Curve -->
+            <path id="amdahlDynamicCurve" d="M 55 195 Q 150 130 495 110" fill="none" stroke="url(#amCurveGrad)" stroke-width="3.5" stroke-linecap="round"/>
+
+            <!-- Dynamic Operating Point -->
+            <circle id="amdahlPointHalo" cx="110" cy="151" r="9" fill="#4B89AC" fill-opacity="0.2"/>
+            <circle id="amdahlActivePoint" cx="110" cy="151" r="5" fill="#446491" stroke="#FFFFFF" stroke-width="2"/>
+            <text id="amdahlPointLabel" x="120" y="146" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="800" fill="#446491">
+              (p=4, S=2.50x)
+            </text>
+          </svg>
+        </div>
+
+        <!-- Dynamic Formula Step-by-Step Box -->
+        <div class="amdahl-formula-card">
+          <div class="amdahl-formula-item">
+            <span class="amdahl-formula-title">Fórmula de Amdahl</span>
+            <div id="dynAmdahlFormulaText" class="amdahl-formula-math">
+              S = 1 / [(1-f) + f/p]
             </div>
-
-            <!-- Right: Interactive Amdahl Simulator -->
-            <div style="display: flex; flex-direction: column; gap: 12px; justify-content: space-between;">
-              <div class="calc-card">
-                <div>
-                  <h3 class="card-title" style="font-size: 16px; margin-bottom: 10px;">
-                    <svg class="icon" viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-                    Simulador Dinámico de Amdahl
-                  </h3>
-
-                  <div class="calc-row">
-                    <span class="calc-label">Fracción Paralelizable ($f$):</span>
-                    <input type="range" id="amdahlFraction" min="10" max="99" value="80" class="calc-input-slider">
-                    <span id="amdahlFractionVal" class="calc-val-badge">80%</span>
-                  </div>
-
-                  <div class="calc-row">
-                    <span class="calc-label">Número de Procesadores ($p$):</span>
-                    <input type="range" id="amdahlProcs" min="1" max="64" value="4" class="calc-input-slider">
-                    <span id="amdahlProcsVal" class="calc-val-badge">4 núcleos</span>
-                  </div>
-
-                  <!-- Visual Bar breakdown -->
-                  <div style="margin: 8px 0;">
-                    <span style="font-size: 10.5px; font-weight: 800; color: var(--text-muted); display: block; margin-bottom: 4px;">
-                      COMPOSICIÓN DEL TIEMPO DE EJECUCIÓN:
-                    </span>
-                    <div style="display: flex; height: 22px; border-radius: 6px; overflow: hidden; border: 1.5px solid var(--border-navy);">
-                      <div id="amdahlSeqBar" style="width: 50%; background: #E65100; color: #FFFFFF; font-size: 10px; font-weight: bold; display: flex; align-items: center; justify-content: center;" title="Parte Secuencial">Secuencial (1-f)</div>
-                      <div id="amdahlParBar" style="width: 50%; background: var(--secondary-ocean); color: #FFFFFF; font-size: 10px; font-weight: bold; display: flex; align-items: center; justify-content: center;" title="Parte Paralela">Paralelo (f/p)</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="calc-result-box" style="margin-top: 4px;">
-                  <div class="calc-res-item">
-                    <span class="calc-res-label">Speedup con $p$</span>
-                    <span id="amdahlSpeedupRes" class="calc-res-val">2.50x</span>
-                  </div>
-                  <div class="calc-res-item">
-                    <span class="calc-res-label">Tope Máximo ($p \to \infty$)</span>
-                    <span id="amdahlTheoMax" class="calc-res-val">5.00x</span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="takeaway-banner" style="margin-top: 0;">
-                <div class="takeaway-icon-box">
-                  <svg class="icon" viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-                </div>
-                <div class="takeaway-text">
-                  <strong>Conclusión Amdahl:</strong> Si el 20% del programa es secuencial, ¡ni siquiera con 1,000,000 de procesadores podrás superar un Speedup de 5x!
-                </div>
-              </div>
+          </div>
+          <div class="amdahl-formula-item" style="border-color: var(--secondary-ocean);">
+            <span class="amdahl-formula-title">Speedup Obtenido con p</span>
+            <div id="dynAmdahlStepResult" class="amdahl-formula-math" style="color: var(--secondary-ocean);">
+              S(4) = 2.50x
+            </div>
+          </div>
+          <div class="amdahl-formula-item" style="border-color: #E05D5D;">
+            <span class="amdahl-formula-title">Límite Máximo (p &rarr; &infin;)</span>
+            <div id="dynAmdahlMaxLimit" class="amdahl-formula-math" style="color: #E05D5D;">
+              S_max = 5.00x
             </div>
           </div>
         </div>
-      </article>
+
+      </div>
+
+      <!-- RIGHT COLUMN: MINIMALIST SIMULATOR & CONCLUSION -->
+      <div class="calc-card-mini">
+        
+        <!-- Header -->
+        <div class="calc-header-mini">
+          <div class="calc-title-mini">
+            <svg class="icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            Simulador de Amdahl
+          </div>
+          <span class="calc-live-badge">
+            <span class="calc-live-dot"></span> EN VIVO
+          </span>
+        </div>
+
+        <!-- Input 1: Fraction (f) -->
+        <div class="calc-row-mini">
+          <div class="calc-row-header">
+            <span>1. Fracción Paralelizable (f):</span>
+            <span id="dynSeqFractionTag" style="font-size: 11px; color: #E05D5D; font-weight: 700;">Secuencial (1-f): 20%</span>
+          </div>
+          <div class="calc-input-group">
+            <input type="range" id="amdahlFraction" min="10" max="99" step="1" value="80" class="calc-slider-pro">
+            <input type="number" id="calcAmdahlFraction" min="1" max="99" value="80" class="calc-num-input">
+          </div>
+        </div>
+
+        <!-- Input 2: Cores (p) -->
+        <div class="calc-row-mini">
+          <div class="calc-row-header">
+            <span>2. Número de Procesadores (p):</span>
+            <span style="font-size: 11px; color: var(--text-muted);">núcleos físicos</span>
+          </div>
+          <div class="calc-input-group">
+            <input type="range" id="amdahlProcs" min="1" max="64" step="1" value="4" class="calc-slider-pro">
+            <input type="number" id="calcAmdahlProcs" min="1" max="512" value="4" class="calc-num-input">
+          </div>
+        </div>
+
+        <!-- Presets Row -->
+        <div class="calc-presets-row">
+          <span style="font-size: 9.5px; font-weight: 800; color: var(--text-muted); text-transform: uppercase;">Presets:</span>
+          <button type="button" class="preset-chip" onclick="window.applyAmdahlPreset(80, 4)">Caso Base (80%, 4p)</button>
+          <button type="button" class="preset-chip" onclick="window.applyAmdahlPreset(95, 16)">Alto: 95% (16p)</button>
+          <button type="button" class="preset-chip" onclick="window.applyAmdahlPreset(50, 8)">Bajo: 50% (8p)</button>
+          <button type="button" class="preset-chip" onclick="window.applyAmdahlPreset(99, 32)">Extremo: 99% (32p)</button>
+        </div>
+
+        <!-- Time Composition Visual Bar -->
+        <div>
+          <span style="font-size: 10px; font-weight: 800; color: var(--primary-navy); text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 3px;">
+            Composición del Tiempo de Ejecución:
+          </span>
+          <div class="time-composition-track">
+            <div id="amdahlSeqBar" class="time-comp-seq" style="width: 50%;" title="Porción Secuencial">
+              Secuencial (1-f): 20%
+            </div>
+            <div id="amdahlParBar" class="time-comp-par" style="width: 50%;" title="Porción Paralela">
+              Paralelo (f/p): 20%
+            </div>
+          </div>
+        </div>
+
+        <!-- Minimalist KPI Summary -->
+        <div class="calc-kpi-grid">
+          <div class="calc-kpi-box">
+            <div class="calc-kpi-title">Speedup con p Cores</div>
+            <div id="amdahlSpeedupRes" class="calc-kpi-value">2.50x</div>
+          </div>
+          <div class="calc-kpi-box kpi-ocean">
+            <div class="calc-kpi-title">Tope Teórico (p &rarr; &infin;)</div>
+            <div id="amdahlTheoMax" class="calc-kpi-value">5.00x</div>
+          </div>
+        </div>
+
+        <!-- Dynamic Takeaway Conclusion -->
+        <div class="takeaway-banner-pro">
+          <svg class="icon" viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" style="flex-shrink: 0; color: var(--primary-navy);"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          <span id="amdahlConclusionText">
+            <strong>Conclusión de Amdahl:</strong> Con un <strong>20%</strong> de código secuencial, el Speedup máximo está topado a <strong>5.00x</strong>, incluso con infinitos procesadores.
+          </span>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</article>
 
       <!-- slide_12.html -->
       <!-- ====================================================================

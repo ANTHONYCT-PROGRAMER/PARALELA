@@ -1685,4 +1685,120 @@ body {
   color: var(--primary-navy);
 }
 
+/* ==========================================================================
+   Amdahl Live Interactive Chart & Formula Box (Slide 11)
+   ========================================================================== */
+.amdahl-chart-card {
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  box-shadow: var(--shadow-sm);
+  gap: 8px;
+}
+
+.amdahl-svg-container {
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  background: #FDFEFE;
+  border-radius: var(--radius-sm);
+  border: 1px solid #E2EFF5;
+  overflow: hidden;
+  position: relative;
+}
+
+.amdahl-formula-card {
+  background: #F4FAFC;
+  border: 1.2px solid var(--border-light);
+  border-radius: 6px;
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.amdahl-formula-item {
+  flex: 1;
+  background: #FFFFFF;
+  border: 1px solid #D5E8F0;
+  border-radius: 4px;
+  padding: 5px 8px;
+  text-align: center;
+}
+
+.amdahl-formula-title {
+  font-size: 9.5px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.amdahl-formula-math {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--primary-navy);
+  margin-top: 1px;
+}
+
+.time-composition-track {
+  width: 100%;
+  height: 24px;
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  border: 1.2px solid var(--border-navy);
+  margin-top: 4px;
+}
+
+.time-comp-seq {
+  background: linear-gradient(90deg, #E05D5D, #C44343);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  transition: width 0.25s ease;
+  white-space: nowrap;
+}
+
+.time-comp-par {
+  background: linear-gradient(90deg, #4B89AC, #356D8D);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  transition: width 0.25s ease;
+  white-space: nowrap;
+}
+
+.takeaway-banner-pro {
+  background: linear-gradient(135deg, #F0FBF8, #E4FCF9);
+  border: 1.5px solid var(--accent-cyan);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--text-dark);
+}
+
+.takeaway-banner-pro strong {
+  color: var(--primary-navy);
+}
+
+
 

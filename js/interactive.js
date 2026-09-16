@@ -18,50 +18,182 @@ window.initAllSimulations = function() {
 };
 
 // ==========================================================================
-// 1. CALCULADORA INTERACTIVA DE LEY DE AMDAHL (DIAPOSITIVA 11)
+// 1. CALCULADORA INTERACTIVA DE LEY DE AMDAHL & GRÁFICO DINÁMICO (DIAPOSITIVA 11)
 // ==========================================================================
 function initAmdahlCalculator() {
   const fractionSlider = document.getElementById('amdahlFraction');
-  const procsSlider = document.getElementById('amdahlProcs');
+  const calcFractionInput = document.getElementById('calcAmdahlFraction');
   
-  const fractionVal = document.getElementById('amdahlFractionVal');
-  const procsVal = document.getElementById('amdahlProcsVal');
+  const procsSlider = document.getElementById('amdahlProcs');
+  const calcProcsInput = document.getElementById('calcAmdahlProcs');
+  
+  const pillBadge = document.getElementById('amdahlPillBadge');
+  const seqFractionTag = document.getElementById('dynSeqFractionTag');
   
   const speedupResult = document.getElementById('amdahlSpeedupRes');
   const theoreticalMax = document.getElementById('amdahlTheoMax');
   const seqPortionBar = document.getElementById('amdahlSeqBar');
   const parPortionBar = document.getElementById('amdahlParBar');
+  const conclusionText = document.getElementById('amdahlConclusionText');
+
+  const dynFormulaText = document.getElementById('dynAmdahlFormulaText');
+  const dynStepResult = document.getElementById('dynAmdahlStepResult');
+  const dynMaxLimit = document.getElementById('dynAmdahlMaxLimit');
+
+  // SVG elements for live plotting
+  const dynamicCurve = document.getElementById('amdahlDynamicCurve');
+  const asymptoteLine = document.getElementById('amdahlAsymptoteLine');
+  const asymptoteLabel = document.getElementById('amdahlAsymptoteLabel');
+  const activePoint = document.getElementById('amdahlActivePoint');
+  const pointHalo = document.getElementById('amdahlPointHalo');
+  const pointLabel = document.getElementById('amdahlPointLabel');
 
   function updateAmdahl() {
     if (!fractionSlider || !procsSlider) return;
     
-    const f = parseFloat(fractionSlider.value) / 100;
-    const p = parseInt(procsSlider.value, 10);
-    
-    if (fractionVal) fractionVal.innerText = `${Math.round(f * 100)}%`;
-    if (procsVal) procsVal.innerText = `${p} núcleos`;
+    const fPercent = Math.min(99, Math.max(1, parseFloat(fractionSlider.value) || 80));
+    const f = fPercent / 100;
+    const p = Math.max(1, parseInt(procsSlider.value, 10) || 4);
 
     const seqFraction = 1 - f;
     const denominator = seqFraction + (f / p);
     const speedup = 1 / denominator;
     const maxTheoretical = 1 / seqFraction;
 
+    // 1. Text & KPI Updates
+    if (pillBadge) pillBadge.innerText = `f = ${Math.round(fPercent)}% • ${p} Cores`;
+    if (seqFractionTag) seqFractionTag.innerText = `Secuencial (1-f): ${(seqFraction * 100).toFixed(0)}%`;
+
     if (speedupResult) speedupResult.innerText = `${speedup.toFixed(2)}x`;
     if (theoreticalMax) theoreticalMax.innerText = `${maxTheoretical.toFixed(2)}x`;
 
-    // Update relative visual time bars
+    if (dynFormulaText) {
+      dynFormulaText.innerText = `S = 1 / [${seqFraction.toFixed(2)} + ${f.toFixed(2)}/${p}]`;
+    }
+    if (dynStepResult) {
+      dynStepResult.innerText = `S(${p}) = ${speedup.toFixed(2)}x (${((speedup / p) * 100).toFixed(0)}% Efic.)`;
+    }
+    if (dynMaxLimit) {
+      dynMaxLimit.innerText = `S_max = ${maxTheoretical.toFixed(2)}x`;
+    }
+
+    // 2. Relative Visual Time Composition Bars
     if (seqPortionBar && parPortionBar) {
-      const parTime = (f / p) / (seqFraction + (f / p)) * 100;
-      const seqTime = seqFraction / (seqFraction + (f / p)) * 100;
+      const parTime = (f / p) / denominator * 100;
+      const seqTime = seqFraction / denominator * 100;
       seqPortionBar.style.width = `${seqTime}%`;
+      seqPortionBar.innerText = seqTime > 15 ? `Secuencial: ${(seqFraction * 100).toFixed(0)}%` : `${(seqFraction * 100).toFixed(0)}%`;
+      
       parPortionBar.style.width = `${parTime}%`;
+      parPortionBar.innerText = parTime > 15 ? `Paralelo (f/p): ${((f / p) * 100).toFixed(1)}%` : `${((f / p) * 100).toFixed(1)}%`;
+    }
+
+    // 3. Dynamic Takeaway Message
+    if (conclusionText) {
+      conclusionText.innerHTML = `<strong>Conclusión de Amdahl:</strong> Con un <strong>${(seqFraction * 100).toFixed(0)}%</strong> de código estrictamente secuencial, el Speedup máximo está topado a <strong>${maxTheoretical.toFixed(2)}x</strong>, sin importar si usas 64 o 1,000,000 de procesadores.`;
+    }
+
+    // 4. Live SVG Plot Updates
+    // Plot coordinate math:
+    // X range: p in [1, 64] -> X in [55, 495] (width: 440) using log2 scale
+    const mapX = (coreCount) => {
+      const clampedP = Math.max(1, Math.min(64, coreCount));
+      const logRatio = Math.log2(clampedP) / Math.log2(64); // [0, 1]
+      return 55 + (440 * logRatio);
+    };
+
+    // Y range: S in [1, 20] -> Y in [195, 20] (height: 175) using log2 scale
+    const mapY = (sVal) => {
+      const clampedS = Math.max(1, Math.min(20, sVal));
+      const logRatio = Math.log2(clampedS) / Math.log2(20); // [0, 1]
+      return 195 - (175 * logRatio);
+    };
+
+    // Draw Dynamic Amdahl Curve Path
+    if (dynamicCurve) {
+      const samplePoints = [1, 1.5, 2, 3, 4, 6, 8, 12, 16, 24, 32, 48, 64];
+      let pathD = '';
+      samplePoints.forEach((ptP, idx) => {
+        const ptS = 1 / (seqFraction + (f / ptP));
+        const px = mapX(ptP);
+        const py = mapY(ptS);
+        if (idx === 0) {
+          pathD += `M ${px.toFixed(1)} ${py.toFixed(1)}`;
+        } else {
+          pathD += ` L ${px.toFixed(1)} ${py.toFixed(1)}`;
+        }
+      });
+      dynamicCurve.setAttribute('d', pathD);
+    }
+
+    // Update Asymptote Line & Label
+    if (asymptoteLine) {
+      const asymY = mapY(maxTheoretical);
+      asymptoteLine.setAttribute('y1', asymY.toFixed(1));
+      asymptoteLine.setAttribute('y2', asymY.toFixed(1));
+      if (asymptoteLabel) {
+        asymptoteLabel.setAttribute('y', Math.max(16, asymY - 5).toFixed(1));
+        asymptoteLabel.textContent = maxTheoretical >= 50 ? 'Tope S_max > 50x' : `Tope Asintótico S_max = ${maxTheoretical.toFixed(2)}x`;
+      }
+    }
+
+    // Update Operating Point (p, S) Marker
+    if (activePoint && pointHalo && pointLabel) {
+      const curX = mapX(p);
+      const curY = mapY(speedup);
+
+      activePoint.setAttribute('cx', curX.toFixed(1));
+      activePoint.setAttribute('cy', curY.toFixed(1));
+
+      pointHalo.setAttribute('cx', curX.toFixed(1));
+      pointHalo.setAttribute('cy', curY.toFixed(1));
+
+      const labelX = curX > 380 ? curX - 85 : curX + 10;
+      const labelY = Math.max(30, curY - 6);
+      pointLabel.setAttribute('x', labelX.toFixed(1));
+      pointLabel.setAttribute('y', labelY.toFixed(1));
+      pointLabel.textContent = `(p=${p}, S=${speedup.toFixed(2)}x)`;
     }
   }
 
-  fractionSlider?.addEventListener('input', updateAmdahl);
-  procsSlider?.addEventListener('input', updateAmdahl);
+  // Two-way sync for Fraction slider & number input
+  if (fractionSlider && calcFractionInput) {
+    fractionSlider.addEventListener('input', () => {
+      calcFractionInput.value = fractionSlider.value;
+      updateAmdahl();
+    });
+    calcFractionInput.addEventListener('input', () => {
+      fractionSlider.value = calcFractionInput.value;
+      updateAmdahl();
+    });
+  }
+
+  // Two-way sync for Procs slider & number input
+  if (procsSlider && calcProcsInput) {
+    procsSlider.addEventListener('input', () => {
+      calcProcsInput.value = procsSlider.value;
+      updateAmdahl();
+    });
+    calcProcsInput.addEventListener('input', () => {
+      procsSlider.value = calcProcsInput.value;
+      updateAmdahl();
+    });
+  }
+
+  // Global preset handler for Slide 11
+  window.applyAmdahlPreset = function(fVal, pVal) {
+    if (fractionSlider) fractionSlider.value = fVal;
+    if (calcFractionInput) calcFractionInput.value = fVal;
+
+    if (procsSlider) procsSlider.value = pVal;
+    if (calcProcsInput) calcProcsInput.value = pVal;
+
+    updateAmdahl();
+  };
+
   updateAmdahl();
 }
+
 
 // ==========================================================================
 // 2. CALCULADORA INTERACTIVA DE SPEEDUP & DIAGRAMA DINÁMICO (DIAPOSITIVA 10)
