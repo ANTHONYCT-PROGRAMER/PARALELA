@@ -6,170 +6,169 @@
 
 const SPEAKER_NOTES_DB = {
   1: {
-    persona: "General / Portada",
+    persona: "Equipo / Apertura",
     time: "30 seg",
-    badge: "Inicio",
-    guide: "Saludar cordialmente al Dr. Robert Romero y compañeros. Presentar el tema <strong>'Fundamentos del Paralelismo y Rendimiento'</strong> (Unidad 1, Semanas 1 y 2). Indicar que la exposición durará 16 minutos dividida exactamente en 4 intervenciones de 4 minutos cada una.",
-    keyWords: ["SIS225", "Concurrencia", "Paralelismo", "Rendimiento", "Consistencia", "Python"],
+    badge: "Inicio (0:00)",
+    guide: "<em>\"Buenas tardes Dr. Robert Romero y compañeros. Somos el grupo encargado del tema <strong>'Fundamentos del Paralelismo y Rendimiento'</strong> (Unidad 1, Semanas 1 y 2) del curso SIS225. Nuestra exposición durará exactamente 16 minutos cronometrados, dividida en 4 intervenciones de 4 minutos cada una. Empezaremos explorando los principios de la concurrencia y cómo se diferencia físicamente del paralelismo.\"</em>",
+    keyWords: ["SIS225", "Concurrencia", "Paralelismo", "Rendimiento", "Ley de Amdahl", "Python"],
     qa: [
-      { q: "¿Cuál es el objetivo principal del tema?", a: "Comprender la diferencia fundamental entre concurrencia y paralelismo, y aprender a medir el rendimiento en arquitecturas paralelas." }
+      { q: "¿Cuál es el objetivo central de la sesión?", a: "Comprender la diferencia formal entre concurrencia y paralelismo, y aprender a medir cuantitativamente la aceleración, eficiencia y límites teóricos en hardware multinúcleo." }
     ]
   },
   2: {
-    persona: "General / Agenda",
+    persona: "Equipo / Hoja de Ruta",
     time: "30 seg",
-    badge: "Estructura",
-    guide: "Explicar brevemente el hilo conductor: Persona 1 iniciará con los conceptos de concurrencia y modelos lógicos; Persona 2 profundizará en la simultaneidad física del paralelismo y taxonomía de Flynn; Persona 3 detallará las fórmulas de Speedup, Amdahl y consistencia; y Persona 4 cerrará con casos prácticos en Python.",
-    keyWords: ["4 Bloques", "Flujo Teórico", "Demostración Práctica"],
+    badge: "Estructura (0:30)",
+    guide: "<em>\"Nuestra hoja de ruta se estructura en 4 bloques complementarios: <strong>Persona 1</strong> abordará la Concurrencia y sus modelos lógicos; <strong>Persona 2</strong> explicará el Paralelismo físico, la Regla de Oro y la Taxonomía de Flynn; <strong>Persona 3</strong> detallará las Métricas Cuantitativas de Rendimiento, la Ley de Amdahl y la Consistencia de Memoria; y <strong>Persona 4</strong> cerrará con la implementación en Python analizando el GIL, Threading y Multiprocessing con simulaciones en vivo.\"</em>",
+    keyWords: ["4 Bloques", "Concurrencia", "Paralelismo", "Métricas Cuantitativas", "Python & GIL"],
     qa: [
-      { q: "¿Cómo se conectan los 4 temas?", a: "Van de lo conceptual (concurrencia) a lo físico (paralelismo), luego a la medición matemática (rendimiento) y finalmente a la implementación en código (Python)." }
+      { q: "¿Cómo se conectan los 4 bloques?", a: "Van desde la abstracción conceptual del software (concurrencia), a la ejecución física del hardware (paralelismo), la evaluación matemática (rendimiento) y la implementación práctica en código (Python)." }
     ]
   },
   3: {
     persona: "Persona 1 (Integrante 1)",
-    time: "4 min (P1)",
-    badge: "Concurrencia",
-    guide: "<strong>(0:00 - 1:00)</strong> Definir concurrencia: <em>'Capacidad de un sistema para ejecutar múltiples tareas al mismo tiempo lógico, aunque no necesariamente en el mismo instante físico'</em>.<br><br><strong>Idea clave:</strong> Las tareas progresan de manera intercalada compartiendo el procesador (time-slicing).",
-    keyWords: ["Tiempo lógico", "Progreso intercalado", "Compartir recursos", "Context Switch"],
+    time: "1 min",
+    badge: "Concurrencia (1:00)",
+    guide: "<em>\"Iniciando con el Bloque 1: La <strong>concurrencia</strong> es la capacidad de un sistema para gestionar y avanzar múltiples tareas al <strong>mismo tiempo lógico</strong>, aunque no necesariamente en el mismo instante físico.<br><br>Como vemos en el diagrama, en un sistema de 1 solo núcleo las tareas progresan de forma <strong>intercalada</strong> mediante <strong>time-slicing</strong> y cambios de contexto (context switches). La concurrencia trata sobre la <strong>estructura</strong> del programa para evitar que el CPU quede ocioso durante esperas.\"</em>",
+    keyWords: ["Tiempo Lógico", "Progreso Intercalado", "Time-Slicing", "Context Switch", "Estructura"],
     qa: [
-      { q: "¿Qué es la concurrencia?", a: "Es la composición y gestión de múltiples tareas que progresan de forma intercalada en el tiempo lógico." },
-      { q: "¿Por qué mejora el uso del CPU?", a: "Porque aprovecha los tiempos muertos y esperas de I/O para avanzar otras tareas en lugar de dejar el procesador ocioso." }
+      { q: "¿Qué es un context switch y qué costo tiene?", a: "Es el procedimiento del sistema operativo para guardar el estado del hilo actual (registros, PC) y cargar el estado del siguiente. Consume ciclos de reloj (overhead de CPU)." },
+      { q: "¿Puede haber concurrencia con 1 solo procesador?", a: "Sí, mediante multiprogramación y time-slicing donde el procesador comparte el tiempo entre múltiples tareas." }
     ]
   },
   4: {
     persona: "Persona 1 (Integrante 1)",
-    time: "4 min (P1)",
-    badge: "Analogía Cocina",
-    guide: "<strong>(1:00 - 2:30)</strong> Explicar el ejemplo cotidiano: <em>'Imagina un solo chef cocinando. Mientras hierve la pasta (espera I/O), pica verduras (cómputo activo) y revisa el horno. No hace las 3 cosas al mismo nanosegundo, pero avanza en todas sin bloquearse'</em>. Comparar con la secuencialidad donde esperaría a hervir la pasta para recién picar.",
-    keyWords: ["1 Chef = 1 CPU", "Intercalado de atención", "Secuencial vs Concurrente"],
+    time: "1 min 30 seg",
+    badge: "Analogía Cocina (2:00)",
+    guide: "<em>\"Para entenderlo cotidianamente: imaginemos a <strong>1 solo chef</strong> en una cocina. Mientras el agua hierve para la pasta (espera pasiva de I/O), el chef pica verduras (cómputo activo) y supervisa el horno. El chef no tiene 6 brazos para hacer todo al mismo nanosegundo, pero avanza en las 3 tareas sin quedarse de brazos cruzados.<br><br>En un modelo secuencial estricto, el chef se quedaría parado 10 minutos esperando que hierva el agua antes de picar. La concurrencia optimiza la gestión del tiempo y la capacidad de respuesta.\"</em>",
+    keyWords: ["1 Chef = 1 CPU", "Espera I/O", "Cómputo Activo", "Progreso Intercalado", "No Bloqueante"],
     qa: [
-      { q: "¿En qué se diferencia de la ejecución secuencial?", a: "La secuencial ejecuta una tras otra de forma bloqueante; la concurrente intercala el avance optimizando tiempos de espera." }
+      { q: "¿En qué se diferencia la concurrencia de la ejecución secuencial?", a: "La secuencial ejecuta tareas una tras otra de forma bloqueante; la concurrente intercala el avance aprovechando los tiempos muertos de espera." }
     ]
   },
   5: {
     persona: "Persona 1 (Integrante 1)",
-    time: "4 min (P1)",
-    badge: "Modelos",
-    guide: "<strong>(2:30 - 4:00)</strong> Explicar dónde se aplica: Sistemas operativos (procesos compitiendo), servidores web (atender miles de peticiones), GUIs (interfaz fluida mientras se descarga algo).<br><br><strong>Modelos:</strong> Hilos (memoria compartida), Procesos (memoria aislada, IPC), Actores (mensajes), Reactivo (eventos).<br><em>Transición: 'Ahora que sabemos qué es concurrencia, veamos qué es el paralelismo real'.</em>",
-    keyWords: ["Hilos vs Procesos", "Servidores Web", "Modelo de Actores", "IPC"],
+    time: "1 min 30 seg",
+    badge: "Modelos Lógicos (3:30)",
+    guide: "<em>\"En la ingeniería de software implementamos la concurrencia mediante 4 modelos arquitectónicos:<br>1) <strong>Hilos (Threads):</strong> comparten el mismo espacio de memoria (livianos pero requieren control de concurrencia);<br>2) <strong>Procesos:</strong> memoria aislada comunicada por IPC (robustos);<br>3) <strong>Modelo de Actores:</strong> no comparten memoria y se comunican enviando mensajes asíncronos;<br>4) <strong>Modelo Reactivo:</strong> asíncrono y no bloqueante guiado por bucles de eventos.<br><br>Ahora que comprendemos la concurrencia lógica, le doy el pase a mi compañero para analizar qué ocurre cuando sumamos múltiples núcleos físicos: el paralelismo.\"</em>",
+    keyWords: ["Hilos (Memoria Compartida)", "Procesos & IPC", "Modelo de Actores", "Modelo Reactivo", "Transición a P2"],
     qa: [
-      { q: "¿Qué es un hilo y en qué se diferencia de un proceso?", a: "Un hilo es la unidad mínima de ejecución dentro de un proceso y comparte memoria; un proceso tiene su propio espacio de memoria aislado." }
+      { q: "¿Qué diferencia crítica hay entre un hilo y un proceso?", a: "Los hilos comparten el espacio de direcciones de memoria del proceso padre; los procesos tienen memoria totalmente aislada por el SO." }
     ]
   },
   6: {
     persona: "Persona 2 (Integrante 2)",
-    time: "4 min (P2)",
-    badge: "Paralelismo",
-    guide: "<strong>(0:00 - 1:00)</strong> Definir paralelismo: <em>'Ejecución simultánea física de múltiples tareas en diferentes unidades de procesamiento (núcleos, procesadores o nodos de cómputo)'</em>.<br><br><strong>Idea clave:</strong> Ocurre exactamente en el mismo instante de tiempo t. Requiere obligatoriamente 2 o más núcleos.",
-    keyWords: ["Simultaneidad física", "Múltiples núcleos", "Mismo instante t"],
+    time: "1 min",
+    badge: "Paralelismo (4:30)",
+    guide: "<em>\"Continuando con el Bloque 2: El <strong>paralelismo</strong> es la ejecución <strong>simultánea física</strong> de múltiples tareas en diferentes unidades de procesamiento (núcleos, sockets de CPU o nodos de cómputo).<br><br>A diferencia de la concurrencia que opera en tiempo lógico, en el paralelismo las operaciones ocurren <strong>exactamente en el mismo instante de tiempo físico t</strong>. Como vemos en el diagrama, un procesador de 4 núcleos ejecuta 4 instrucciones al unísono, reduciendo drásticamente el tiempo de cálculo $T_{par}$.\"</em>",
+    keyWords: ["Simultaneidad Física", "Mismo Instante t", "Hardware Multinúcleo (4 Cores)", "Reducción de Latencia"],
     qa: [
-      { q: "¿Qué es el paralelismo?", a: "Es la ejecución física real de dos o más instrucciones exactamente al mismo instante en distintos núcleos de cómputo." }
+      { q: "¿Se puede lograr paralelismo en un CPU mononúcleo?", a: "No, el paralelismo exige físicamente dos o más unidades de cómputo (núcleos, ALUs o procesadores) ejecutando instrucciones al unísono." }
     ]
   },
   7: {
     persona: "Persona 2 (Integrante 2)",
-    time: "4 min (P2)",
-    badge: "Regla de Oro",
-    guide: "<strong>(1:00 - 2:30)</strong> Enfatizar la Regla de Oro: <mark>'Todo paralelismo implica concurrencia, pero no toda concurrencia implica paralelismo'</mark>.<br><br>Mostrar la tabla y el diagrama: 1 núcleo hace concurrencia intercalada; 4 núcleos hacen paralelismo físico simultáneo para reducir drásticamente el tiempo de ejecución.",
-    keyWords: ["Regla de Oro", "Concurrencia = Estructura", "Paralelismo = Ejecución física"],
+    time: "1 min 30 seg",
+    badge: "Regla de Oro (5:30)",
+    guide: "<em>\"Llegamos a la regla fundamental de nuestra exposición: <mark><strong>'Todo paralelismo implica concurrencia, pero no toda concurrencia implica paralelismo'</strong></mark>.<br><br>Como resume nuestro cuadro comparativo: la concurrencia trata sobre cómo <strong>estructuramos</strong> un programa para gestionar muchas tareas a la vez (diseño de software); el paralelismo trata sobre la <strong>ejecución física simultánea</strong> en hardware para acelerar el cálculo. 1 núcleo logra concurrencia intercalada; 4 núcleos logran paralelismo físico simultáneo.\"</em>",
+    keyWords: ["Regla de Oro", "Estructura vs Ejecución", "Diseño de Software", "Hardware Físico"],
     qa: [
-      { q: "¿Cuál es la diferencia clave entre concurrencia y paralelismo?", a: "La concurrencia es cómo estructuramos el avance de tareas intercaladas (puede ser 1 núcleo); el paralelismo es la ejecución física simultánea en múltiples núcleos." }
+      { q: "¿Puede existir paralelismo sin concurrencia?", a: "No, porque si múltiples tareas se ejecutan en paralelo, el sistema ya las está administrando como tareas en progreso concurrente dentro de su arquitectura." }
     ]
   },
   8: {
     persona: "Persona 2 (Integrante 2)",
-    time: "4 min (P2)",
-    badge: "Flynn & Tipos",
-    guide: "<strong>(2:30 - 4:00)</strong> Explicar Tipos de paralelismo: <em>Datos</em> (dividir arreglos/matrices) y <em>Tareas</em> (operaciones distintas).<br><br><strong>Taxonomía de Flynn:</strong> SISD (secuencial tradicional), SIMD (GPUs, operaciones vectoriales como AVX), MIMD (CPUs multinúcleo modernos y clusters de servidores).<br><em>Transición: 'Ahora veamos cómo medir el rendimiento de estos sistemas paralelos'.</em>",
-    keyWords: ["Paralelismo de Datos", "Paralelismo de Tareas", "SISD", "SIMD", "MIMD"],
+    time: "1 min 30 seg",
+    badge: "Flynn & Tipos (7:30)",
+    guide: "<em>\"Existen dos formas principales de partición: <strong>Paralelismo de Datos</strong>, donde dividimos un conjunto grande de datos y cada núcleo procesa un bloque (base de GPUs y vectores); y <strong>Paralelismo de Tareas</strong>, donde dividimos funciones independientes entre núcleos (pipelines).<br><br>Michael Flynn clasificó las arquitecturas en: <strong>SISD</strong> (secuencial tradicional Von Neumann), <strong>SIMD</strong> (1 sola instrucción aplicada a múltiples datos a la vez, como shaders y AVX) y <strong>MIMD</strong> (múltiples instrucciones sobre múltiples datos, base de procesadores multinúcleo como Intel Core, AMD Ryzen y clusters). Le doy el pase a mi compañero para analizar el rendimiento cuantitativo.\"</em>",
+    keyWords: ["Paralelismo de Datos", "Paralelismo de Tareas", "Taxonomía de Flynn", "SISD", "SIMD", "MIMD"],
     qa: [
-      { q: "¿Qué diferencia hay entre SIMD y MIMD?", a: "SIMD aplica una sola instrucción a múltiples datos a la vez (ideal para GPUs y matrices); MIMD ejecuta múltiples instrucciones diferentes sobre distintos datos de forma autónoma (CPUs multinúcleo)." }
+      { q: "¿Qué diferencia hay entre SIMD y MIMD?", a: "En SIMD todas las unidades ejecutan la misma instrucción sincronizadas sobre datos distintos (ideal para matrices); en MIMD cada núcleo ejecuta código y flujos independientes de forma autónoma." }
     ]
   },
   9: {
     persona: "Persona 3 (Integrante 3)",
-    time: "4 min (P3)",
-    badge: "Métricas",
-    guide: "<strong>(0:00 - 1:00)</strong> Presentar las métricas fundamentales:<br>• Tseq: Tiempo secuencial con 1 procesador.<br>• Tpar: Tiempo paralelo con p procesadores.<br>• <strong>Speedup (S):</strong> S = Tseq / Tpar (aceleración obtenida).<br>• <strong>Eficiencia (E):</strong> E = S / p (fracción de aprovechamiento por procesador).",
-    keyWords: ["Tseq", "Tpar", "Speedup S", "Eficiencia E", "Overhead"],
+    time: "1 min",
+    badge: "Métricas (8:30)",
+    guide: "<em>\"En el Bloque 3 evaluamos cuantitativamente los sistemas paralelos mediante 4 métricas formales:<br>1) <strong>Tiempos base:</strong> $T_{seq}$ (1 procesador) y $T_{par}$ ($p$ procesadores);<br>2) <strong>Speedup ($S$):</strong> $S = T_{seq} / T_{par}$, que mide cuántas veces más rápido corre el algoritmo;<br>3) <strong>Eficiencia ($E$):</strong> $E = S / p$, que mide el aprovechamiento útil por núcleo;<br>4) <strong>Overhead ($T_{ovh}$):</strong> tiempo perdido en sincronización y comunicación.<br><br>En el gráfico de curvas vemos el Speedup Ideal Lineal ($S=p$), el Real Sublineal por overhead ($S<p$) y el caso <strong>Superlineal ($S>p$)</strong> que ocurre cuando el problema cabe 100% en las memorias caché L2/L3 combinadas.\"</em>",
+    keyWords: ["Tseq", "Tpar", "Speedup S", "Eficiencia E", "Overhead Tovh", "Curvas de Rendimiento", "Superlineal"],
     qa: [
-      { q: "¿Cómo se calcula el speedup?", a: "Dividiendo el tiempo secuencial entre el tiempo paralelo: S = Tseq / Tpar." },
-      { q: "¿Qué representa la eficiencia?", a: "Representa el porcentaje de uso efectivo de cada procesador: E = S / p. Si es 1.0 (100%), el paralelismo es ideal y lineal." }
+      { q: "¿Por qué se produce el Speedup Superlineal (E > 100%)?", a: "Ocurre cuando la suma de memorias caché L2/L3 de todos los núcleos permite alojar todo el dataset en memoria ultrarrápida, eliminando accesos lentos a la memoria RAM principal." }
     ]
   },
   10: {
     persona: "Persona 3 (Integrante 3)",
-    time: "4 min (P3)",
-    badge: "Ejemplo Numérico",
-    guide: "<strong>(1:00 - 2:00)</strong> Resolver el caso numérico del silabo:<br>• Tseq = 100 s, Tpar = 30 s con p = 4 procesadores.<br>• S = 100 / 30 = 3.33x<br>• E = 3.33 / 4 = 0.83 (83.3%)<br>• <strong>Interpretación:</strong> El 83.3% del poder de los 4 núcleos se aprovechó; el 16.7% restante se perdió en <em>Overhead</em> (comunicación, sincronización, creación de hilos).",
-    keyWords: ["S = 3.33x", "E = 83%", "17% Overhead", "Sincronización"],
+    time: "1 min 30 seg",
+    badge: "Ejemplo Numérico (9:30)",
+    guide: "<em>\"Analicemos el caso numérico del curso: Un algoritmo tarda $T_{seq} = 100\\text{ s}$ en secuencial y $T_{par} = 30\\text{ s}$ con $p = 4$ procesadores.<br><br>• Speedup: $S = 100 / 30 = 3.33x$<br>• Eficiencia: $E = 3.33 / 4 = 83.3\\%$<br>• Overhead: $16.7\\%$ ($5.0\\text{ s}$ perdidos en sincronización).<br><br><strong>Interpretación:</strong> Logramos acelerar el programa 3.33 veces aprovechando el 83.3% del hardware. Como vemos en nuestro simulador en tiempo real, podemos ajustar los parámetros en vivo y observar la redistribución de carga por núcleo y el desglose de tiempo ahorrado.\"</em>",
+    keyWords: ["Tseq = 100s", "Tpar = 30s", "p = 4 Cores", "S = 3.33x", "E = 83.3%", "Overhead = 16.7%", "Simulador en Vivo"],
     qa: [
-      { q: "¿Por qué la eficiencia no fue del 100% (S=4)?", a: "Por el overhead de coordinación, sincronización entre hilos y la parte de código que no se pudo paralelizar." }
+      { q: "¿Por qué la eficiencia no fue del 100% (S = 4)?", a: "Debido al costo extra (overhead) de creación de hilos, sincronización con locks, comunicación por el bus y las secciones de código no paralelizables." }
     ]
   },
   11: {
     persona: "Persona 3 (Integrante 3)",
-    time: "4 min (P3)",
-    badge: "Ley de Amdahl",
-    guide: "<strong>(2:00 - 3:00)</strong> Explicar la Ley de Amdahl: Smax = 1 / ((1-f) + f/p), donde f es la fracción paralelizable.<br><br><strong>Ejemplo clave:</strong> Si f = 0.8 (80% paralelizable) y p = 4: Smax = 1 / (0.2 + 0.8/4) = 2.5x.<br>Aunque tengamos infinitos procesadores (p -> infinito), el speedup máximo jamás pasará de 1 / 0.2 = 5x.",
-    keyWords: ["Fracción f", "Límite superior", "Cuello de botella secuencial", "S_max"],
+    time: "1 min 30 seg",
+    badge: "Ley de Amdahl (11:00)",
+    guide: "<em>\"Gene Amdahl demostró que la porción estrictamente secuencial $(1-f)$ impone una cota máxima teórica al Speedup:<br>$$S = \\frac{1}{(1-f) + \\frac{f}{p}}$$<br>Si el 80% del código es paralelizable ($f=0.80$) y usamos 4 procesadores, el Speedup obtenido es $2.50x$. Pero si tuviéramos infinitos núcleos ($p \\to \\infty$), el límite teórico jamás superará $1 / 0.20 = 5.00x$.<br><br>Como muestra la línea roja de asíntota en nuestro gráfico interactivo en tiempo real: ¡el cuello de botella secuencial limita la aceleración máxima posible!\"</em>",
+    keyWords: ["Ley de Amdahl", "Fracción f", "Porción Secuencial (1-f)", "Asíntota S_max", "Límite Teórico", "Simulador Amdahl"],
     qa: [
-      { q: "¿Por qué no se puede lograr Speedup infinito?", a: "Por la Ley de Amdahl: la parte estrictamente secuencial (1-f) impone una asíntota máxima infranqueable, sin importar cuántos procesadores agreguemos." }
+      { q: "¿Qué ocurre si p tiende a infinito en la Ley de Amdahl?", a: "El término f/p se vuelve cero, por lo que el Speedup queda topado estrictamente en S_max = 1 / (1 - f)." }
     ]
   },
   12: {
     persona: "Persona 3 (Integrante 3)",
-    time: "4 min (P3)",
-    badge: "Consistencia",
-    guide: "<strong>(3:00 - 4:00)</strong> Consistencia de Memoria: ¿Cómo garantizamos que todos los procesadores vean un estado coherente de las variables compartidas?<br><br>• <strong>Estricta:</strong> Lecturas instantáneas (reloj físico único, utópica).<br>• <strong>Secuencial:</strong> Orden global válido (Leslie Lamport).<br>• <strong>Relajada:</strong> Reordenamiento de hardware con barreras/locks para máxima velocidad.<br><em>Transición: 'Ahora veamos cómo se implementa esto en Python'.</em>",
-    keyWords: ["Memoria Compartida", "Lamport", "Consistencia Secuencial", "Memory Barriers"],
+    time: "1 min",
+    badge: "Consistencia (12:00)",
+    guide: "<em>\"Para cerrar el bloque teórico: La <strong>Consistencia de Memoria</strong> define las reglas sobre cuándo las escrituras de un núcleo son visibles para las lecturas de los demás.<br><br>1) <strong>Estricta:</strong> lectura instantánea en un reloj físico absoluto (imposible por $\\Delta t > 0$);<br>2) <strong>Secuencial (Leslie Lamport):</strong> todas las CPUs ven el mismo orden global intercalado respetando el Program Order (estándar clásico);<br>3) <strong>Relajada / Débil:</strong> las CPUs modernas (x86, ARM) reordenan operaciones en búferes de escritura para maximizar el throughput, delegando la sincronización al programador mediante <strong>Memory Barriers (FENCE)</strong> y cerrojos (Mutex). Le doy el pase a mi compañero para la implementación práctica en Python.\"</em>",
+    keyWords: ["Consistencia de Memoria", "Estricta (Inviable)", "Secuencial (Lamport)", "Relajada (Moderna)", "Memory Barriers", "Transición a P4"],
     qa: [
-      { q: "¿Qué es la consistencia de memoria?", a: "Es el modelo de reglas que define en qué orden y cuándo las escrituras en memoria realizadas por un procesador son visibles para los demás." }
+      { q: "¿Por qué los CPUs modernos usan consistencia relajada?", a: "Porque permite reordenamiento fuera de orden (out-of-order execution) y uso de Store Buffers que aumentan enormemente el rendimiento del hardware." }
     ]
   },
   13: {
     persona: "Persona 4 (Integrante 4)",
-    time: "4 min (P4)",
-    badge: "Python Threading",
-    guide: "<strong>(0:00 - 1:30)</strong> Explicar threading en Python:<br>• Ocurre dentro de 1 solo proceso.<br>• <strong>GIL (Global Interpreter Lock):</strong> Permite que solo 1 hilo ejecute bytecode Python a la vez.<br>• <strong>Uso ideal:</strong> Tareas I/O Bound (descargas web, base de datos). En el ejemplo, 2 tareas de 2s terminan en ~2s en lugar de 4s porque esperan I/O concurrentemente.",
-    keyWords: ["threading", "GIL", "I/O Bound", "time.sleep", "join()"],
+    time: "1 min 30 seg",
+    badge: "Python Threading (13:00)",
+    guide: "<em>\"Iniciando el Bloque 4 de implementación: En Python estándar (CPython), los hilos existen dentro de 1 solo proceso y comparten memoria. Sin embargo, CPython tiene el <strong>GIL (Global Interpreter Lock)</strong>, un cerrojo mutex que previene que múltiples hilos nativos ejecuten bytecode Python simultáneamente para proteger la gestión de memoria por conteo de referencias.<br><br>Por esta razón, el módulo <code>threading</code> es ideal para tareas <strong>I/O Bound</strong> (descargas web, bases de datos), donde los hilos liberan el GIL durante la espera. Como probamos en el simulador en vivo, dos tareas de 2 segundos terminan en solo 2.01 segundos de forma concurrente.\"</em>",
+    keyWords: ["Python threading", "GIL (Global Interpreter Lock)", "CPython", "I/O Bound", "time.sleep()", "start() y join()", "Terminal en Vivo"],
     qa: [
-      { q: "¿Qué es el GIL y cómo afecta?", a: "El Global Interpreter Lock es un mutex en CPython que evita que múltiples hilos nativos ejecuten código Python simultáneamente en distintos núcleos." },
-      { q: "¿Cuándo conviene usar threading?", a: "Cuando el cuello de botella es de entrada/salida (red, disco, APIs) y los hilos liberan el GIL durante la espera." }
+      { q: "¿Por qué threading no acelera tareas CPU Bound en Python?", a: "Porque el GIL serializa la ejecución del bytecode Python, forzando a que solo un hilo a la vez ejecute instrucciones en el procesador." }
     ]
   },
   14: {
     persona: "Persona 4 (Integrante 4)",
-    time: "4 min (P4)",
-    badge: "Python Multiprocessing",
-    guide: "<strong>(1:30 - 3:00)</strong> Explicar multiprocessing:<br>• Crea procesos separados con su propia memoria y su propio GIL.<br>• Logra <strong>paralelismo real</strong> en los 4 núcleos del CPU.<br>• <strong>Uso ideal:</strong> CPU Bound (cálculos matemáticos, sumas de cuadrados).<br>• Mostrar cómo Pool(4).map() divide la lista de datos y reduce el tiempo a casi una cuarta parte, logrando Speedup real.",
-    keyWords: ["multiprocessing", "Pool(4)", "CPU Bound", "Paralelismo real", "Speedup medido"],
+    time: "1 min 30 seg",
+    badge: "Multiprocessing (14:30)",
+    guide: "<em>\"Para lograr <strong>paralelismo real</strong> en tareas de cálculo intensivo (<strong>CPU Bound</strong>), Python nos ofrece el módulo <code>multiprocessing</code>.<br><br>A diferencia de los hilos, cada proceso tiene su propio espacio de memoria aislado y su propia instancia del intérprete con su propio GIL. Usando <code>Pool(processes=4).map()</code>, distribuimos una lista de 40 millones de datos entre los 4 núcleos físicos del CPU. Como vemos en el simulador interactivo en vivo, el tiempo se reduce de 4.82 segundos a 1.35 segundos, logrando un <strong>Speedup medido de 3.57x</strong>.\"</em>",
+    keyWords: ["multiprocessing", "Pool(4).map()", "CPU Bound", "Paralelismo Real", "Memoria Aislada", "Speedup 3.57x", "Terminal en Vivo"],
     qa: [
-      { q: "¿Cuándo usar multiprocessing?", a: "Para tareas CPU Bound pesadas (cómputo numérico, procesamiento de imágenes, simulaciones) que necesitan aprovechar todos los núcleos físicos." }
+      { q: "¿Qué desventaja tiene multiprocessing frente a threading?", a: "Mayor consumo de memoria RAM (cada proceso carga el intérprete) y mayor overhead en la comunicación interproceso (IPC y serialización Pickle)." }
     ]
   },
   15: {
     persona: "Persona 4 / Equipo Completo",
-    time: "4 min (P4)",
-    badge: "Fórmulas & Cierre",
-    guide: "<strong>(3:00 - 4:00)</strong> Resumir los 5 aprendizajes clave de la exposición:<br>1. Concurrencia = gestión intercalada de tareas.<br>2. Paralelismo = ejecución simultánea en múltiples núcleos.<br>3. Speedup y Eficiencia miden la ganancia real.<br>4. La Ley de Amdahl fija el techo de aceleración.<br>5. En Python: threading para I/O, multiprocessing para CPU.<br>Dar paso a las preguntas del docente y del aula.",
-    keyWords: ["5 Conclusiones", "Resumen de Fórmulas", "Cierre del Grupo"],
+    time: "1 min",
+    badge: "Síntesis (15:30)",
+    guide: "<em>\"Para sintetizar nuestra exposición, repasamos el Formulario Maestro y las 5 conclusiones del grupo:<br>1) <strong>Concurrencia:</strong> estructura lógica de tareas intercaladas (I/O Bound);<br>2) <strong>Paralelismo:</strong> ejecución física simultánea en 2+ núcleos (CPU Bound);<br>3) <strong>Rendimiento:</strong> evaluado cuantitativamente con Speedup y Eficiencia;<br>4) <strong>Ley de Amdahl:</strong> la porción secuencial $(1-f)$ impone el tope asintótico;<br>5) <strong>Python:</strong> threading para I/O y multiprocessing para cómputo pesado.<br><br>Recordando siempre la Regla de Oro: Todo paralelismo implica concurrencia, pero no toda concurrencia implica paralelismo.\"</em>",
+    keyWords: ["5 Conclusiones", "Formulario Maestro", "Speedup", "Eficiencia", "Ley de Amdahl", "Regla de Oro", "Cierre del Grupo"],
     qa: [
-      { q: "¿Qué conclusiones generales nos deja el tema?", a: "Que el paralelismo no es automático: requiere hardware adecuado, algoritmos divisibles y control de overhead para obtener eficiencia real." }
+      { q: "¿Qué recomendación de diseño general nos deja el tema?", a: "Identificar si el problema es de I/O o de cómputo antes de elegir la tecnología, y minimizar los puntos de sincronización para mantener la eficiencia alta." }
     ]
   },
   16: {
-    persona: "Equipo Completo (Q&A)",
-    time: "Ronda Final",
-    badge: "Preguntas Frecuentes",
-    guide: "Mantener esta diapositiva proyectada durante la ronda de preguntas. Contiene las respuestas preparadas a las 4 preguntas de la rúbrica para responder con seguridad ante el profesor Dr. Romero.",
-    keyWords: ["Preguntas Docente", "Defensa de Exposición", "Respuestas Clave"],
+    persona: "Equipo Completo (Defensa)",
+    time: "Ronda de Preguntas",
+    badge: "Agradecimiento & Q&A (16:00)",
+    guide: "<em>\"Agradecemos a la Universidad Nacional del Altiplano - Puno, a la Facultad de Ingeniería Mecánica Eléctrica, Electrónica y Sistemas, a la Escuela Profesional de Ingeniería de Sistemas y de manera especial a nuestro docente Dr. Robert Antonio Romero Flores por su atención y orientación en este tema.<br><br>Quedamos a su entera disposición para responder las preguntas del docente y de nuestros compañeros de aula.\"</em>",
+    keyWords: ["UNA Puno", "FIMEES • EPIS", "Dr. Robert Romero", "SIS225", "Ronda de Preguntas", "Defensa de Exposición"],
     qa: [
-      { q: "¿Puede haber paralelismo sin concurrencia?", a: "No, porque si estás ejecutando tareas en paralelo, el sistema ya las está gestionando de forma concurrente en su ciclo de vida." },
-      { q: "¿Qué pasa si p tiende a infinito en la Ley de Amdahl?", a: "El término f/p se vuelve 0, por lo que el Speedup máximo queda estrictamente limitado a 1 / (1 - f)." }
+      { q: "¿Por qué no se puede paralelizar todo un programa al 100%?", a: "Porque siempre existen etapas intrínsecamente secuenciales: inicialización de recursos, lectura de entrada/salida y sincronización final de resultados." },
+      { q: "¿Qué impacto tiene el hardware en la consistencia de memoria?", a: "Las CPUs modernas priorizan la velocidad reordenando instrucciones en caché, lo que obliga a los compiladores y programadores a insertar Memory Barriers explícitas en código concurrente." }
     ]
   }
 };
+
 
 class PresentationController {
   constructor() {
