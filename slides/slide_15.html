@@ -1,86 +1,185 @@
 <!-- ====================================================================
-           SLIDE 15: PERSONA 4 / EQUIPO - FÓRMULAS CLAVE & CONCLUSIONES
-           ==================================================================== -->
-      <article class="slide" id="slide-15">
-        <div class="slide-header">
-          <div class="slide-tagline-row">
-            <span class="slide-badge-category">Resumen y Cierre</span>
-            <span class="slide-badge-time">Minuto 12:00 - 16:00</span>
-          </div>
-          <h2 class="slide-title">Resumen de Fórmulas & Conclusiones Finales</h2>
-          <p class="slide-subtitle">Síntesis de conceptos fundamentales aprendidos durante la sesión</p>
+     SLIDE 15: PERSONA 4 / EQUIPO - FÓRMULAS MAESTRAS & CONCLUSIONES CLAVE
+     ==================================================================== -->
+<article class="slide" id="slide-15">
+  <div class="slide-header" style="margin-bottom: 8px;">
+    <div class="slide-tagline-row">
+      <span class="slide-badge-category">Resumen y Cierre</span>
+      <span class="slide-badge-time">Minuto 12:00 - 16:00</span>
+    </div>
+    <h2 class="slide-title">Resumen de Fórmulas &amp; Conclusiones Finales</h2>
+    <p class="slide-subtitle">Síntesis integral de fundamentos matemáticos, modelos arquitectónicos y principios de diseño</p>
+  </div>
+
+  <div class="slide-body" style="gap: 10px;">
+    <!-- 2 Column Split Layout: Master Formulas (Left) vs 5 Key Conclusions (Right) -->
+    <div class="grid-2-cols" style="flex: 1; min-height: 0; gap: 12px; align-items: stretch;">
+      
+      <!-- LEFT COLUMN: 4 MASTER FORMULA CARDS -->
+      <div class="card" style="padding: 12px 14px; display: flex; flex-direction: column; justify-content: space-between; gap: 8px; box-shadow: var(--shadow-sm); border: 1.5px solid var(--border-light);">
+        
+        <!-- Header -->
+        <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #E2EFF5; padding-bottom: 6px;">
+          <h3 class="card-title" style="font-size: 14px; margin: 0; color: var(--primary-navy);">
+            <svg class="icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+            Formulario Maestro SIS225
+          </h3>
+          <span style="background: var(--bg-mint); color: var(--secondary-ocean); font-size: 9.5px; font-weight: 800; padding: 2px 7px; border-radius: 4px; border: 1px solid var(--accent-cyan);">
+            4 Métricas Clave
+          </span>
         </div>
 
-        <div class="slide-body">
-          <div class="grid-2-cols">
-            <!-- Left: Table of Formulas -->
-            <div class="card" style="padding: 18px;">
-              <h3 class="card-title" style="font-size: 16px; margin-bottom: 8px;">
-                <svg class="icon" viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
-                Formulario Maestro (SIS225)
-              </h3>
-              <table class="table-presentation">
-                <thead>
-                  <tr>
-                    <th>Métrica</th>
-                    <th>Fórmula</th>
-                    <th>Interpretación</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><strong>Speedup</strong></td>
-                    <td><code>S = Tseq / Tpar</code></td>
-                    <td>Aceleración lograda frente a 1 CPU.</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Eficiencia</strong></td>
-                    <td><code>E = S / p</code></td>
-                    <td>Fracción de uso útil por cada núcleo.</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Ley de Amdahl</strong></td>
-                    <td><code>Smax = 1 / ((1-f) + f/p)</code></td>
-                    <td>Límite impuesto por la parte secuencial.</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Overhead</strong></td>
-                    <td><code>Tovh = Tpar - (Tseq / p)</code></td>
-                    <td>Costo extra de coordinación y comunicación.</td>
-                  </tr>
-                </tbody>
-              </table>
+        <!-- 2x2 Formula Grid -->
+        <div class="formula-grid-2x2" style="flex: 1; gap: 8px;">
+          
+          <!-- Formula 1: Speedup -->
+          <div class="formula-card-pro" style="padding: 8px 10px; border-color: var(--secondary-ocean);">
+            <div class="formula-header-row" style="margin-bottom: 2px;">
+              <span class="formula-title-text" style="font-size: 12px; color: var(--secondary-ocean);">1. Speedup (S)</span>
+              <span class="formula-badge-pill" style="font-size: 8.5px; padding: 1px 5px;">Aceleración</span>
             </div>
+            <div class="formula-math-display" style="padding: 4px 8px; font-size: 13.5px; margin: 2px 0;">
+              S = 
+              <div class="math-frac">
+                <span class="math-num">T<sub>seq</sub></span>
+                <span class="math-den">T<sub>par</sub></span>
+              </div>
+            </div>
+            <p class="formula-desc-text" style="font-size: 10.5px;">
+              Ganancia de velocidad frente a 1 procesador (<em>S &gt; 1</em>).
+            </p>
+          </div>
 
-            <!-- Right: 5 Big Conclusions -->
-            <div class="card card-navy" style="justify-content: center; padding: 20px;">
-              <h3 class="card-title" style="color: #FFFFFF; font-size: 16px; margin-bottom: 10px;">
-                <svg class="icon" viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
-                5 Conclusiones Clave del Grupo
-              </h3>
-              <ul class="feature-list">
-                <li class="feature-item">
-                  <span class="bullet-icon">1</span>
-                  <span><strong>Concurrencia:</strong> Intercalado lógico de tareas (ideal para I/O y responsividad).</span>
-                </li>
-                <li class="feature-item">
-                  <span class="bullet-icon">2</span>
-                  <span><strong>Paralelismo:</strong> Ejecución simultánea física en 2+ núcleos (reduce tiempo de cálculo).</span>
-                </li>
-                <li class="feature-item">
-                  <span class="bullet-icon">3</span>
-                  <span><strong>Rendimiento:</strong> Se mide cuantitativamente con Speedup y Eficiencia.</span>
-                </li>
-                <li class="feature-item">
-                  <span class="bullet-icon">4</span>
-                  <span><strong>Límite de Amdahl:</strong> La fracción secuencial (1-f) fija un tope infranqueable.</span>
-                </li>
-                <li class="feature-item">
-                  <span class="bullet-icon">5</span>
-                  <span><strong>En Python:</strong> <code>threading</code> para I/O Bound; <code>multiprocessing</code> para CPU Bound.</span>
-                </li>
-              </ul>
+          <!-- Formula 2: Eficiencia -->
+          <div class="formula-card-pro" style="padding: 8px 10px; border-color: var(--primary-navy);">
+            <div class="formula-header-row" style="margin-bottom: 2px;">
+              <span class="formula-title-text" style="font-size: 12px;">2. Eficiencia (E)</span>
+              <span class="formula-badge-pill" style="font-size: 8.5px; padding: 1px 5px;">Aprovechamiento</span>
+            </div>
+            <div class="formula-math-display" style="padding: 4px 8px; font-size: 13.5px; margin: 2px 0;">
+              E = 
+              <div class="math-frac">
+                <span class="math-num">S</span>
+                <span class="math-den">p</span>
+              </div>
+              &times; 100%
+            </div>
+            <p class="formula-desc-text" style="font-size: 10.5px;">
+              Fracción útil por procesador (<em>0% a 100%</em>).
+            </p>
+          </div>
+
+          <!-- Formula 3: Amdahl -->
+          <div class="formula-card-pro" style="padding: 8px 10px; border-color: #E05D5D;">
+            <div class="formula-header-row" style="margin-bottom: 2px;">
+              <span class="formula-title-text" style="font-size: 12px; color: #E05D5D;">3. Ley de Amdahl</span>
+              <span class="formula-badge-pill" style="font-size: 8.5px; padding: 1px 5px; background: #FFF2F2; color: #A82828; border-color: #FFC4C4;">Tope Teórico</span>
+            </div>
+            <div class="formula-math-display" style="padding: 4px 8px; font-size: 12.5px; margin: 2px 0; color: #A82828;">
+              S &le; 
+              <div class="math-frac">
+                <span class="math-num">1</span>
+                <span class="math-den">1 - f</span>
+              </div>
+            </div>
+            <p class="formula-desc-text" style="font-size: 10.5px;">
+              Límite asintótico fijado por la fracción secuencial <em>(1 - f)</em>.
+            </p>
+          </div>
+
+          <!-- Formula 4: Overhead -->
+          <div class="formula-card-pro" style="padding: 8px 10px;">
+            <div class="formula-header-row" style="margin-bottom: 2px;">
+              <span class="formula-title-text" style="font-size: 12px;">4. Overhead (T<sub>ovh</sub>)</span>
+              <span class="formula-badge-pill" style="font-size: 8.5px; padding: 1px 5px;">Sobrecosto</span>
+            </div>
+            <div class="formula-math-display" style="padding: 4px 8px; font-size: 12px; margin: 2px 0;">
+              T<sub>ovh</sub> = T<sub>par</sub> - 
+              <div class="math-frac">
+                <span class="math-num">T<sub>seq</sub></span>
+                <span class="math-den">p</span>
+              </div>
+            </div>
+            <p class="formula-desc-text" style="font-size: 10.5px;">
+              Costo de sincronización, locks, IPC y paso de mensajes.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN: 5 EXECUTIVE CONCLUSIONS -->
+      <div class="card card-navy" style="padding: 12px 16px; display: flex; flex-direction: column; justify-content: space-between; gap: 6px; box-shadow: var(--shadow-sm);">
+        
+        <!-- Header -->
+        <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(172, 230, 246, 0.25); padding-bottom: 6px;">
+          <h3 class="card-title" style="color: #FFFFFF; font-size: 14px; margin: 0;">
+            <svg class="icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+            5 Conclusiones Fundamentales del Grupo
+          </h3>
+          <span style="background: rgba(255, 255, 255, 0.15); color: var(--accent-cyan); font-size: 9.5px; font-weight: 800; padding: 2px 7px; border-radius: 4px; border: 1px solid rgba(172, 230, 246, 0.4);">
+            Síntesis
+          </span>
+        </div>
+
+        <!-- 5 High-Density Conclusion Items -->
+        <div style="display: flex; flex-direction: column; gap: 6px; flex: 1; justify-content: space-between;">
+          
+          <!-- Item 1 -->
+          <div style="display: flex; align-items: flex-start; gap: 8px; background: rgba(255, 255, 255, 0.06); padding: 5px 8px; border-radius: 6px; border: 1px solid rgba(172, 230, 246, 0.15);">
+            <span style="background: var(--secondary-ocean); color: #FFFFFF; font-size: 9.5px; font-weight: 800; padding: 1px 6px; border-radius: 4px; margin-top: 1px;">1</span>
+            <div style="font-size: 11px; line-height: 1.35; color: #F4FDFB;">
+              <strong style="color: var(--accent-cyan);">Concurrencia (Estructura):</strong> Intercalado lógico de tareas (*time-slicing*). Optimiza la espera en I/O y mantiene la interfaz fluida.
             </div>
           </div>
+
+          <!-- Item 2 -->
+          <div style="display: flex; align-items: flex-start; gap: 8px; background: rgba(255, 255, 255, 0.06); padding: 5px 8px; border-radius: 6px; border: 1px solid rgba(172, 230, 246, 0.15);">
+            <span style="background: var(--secondary-ocean); color: #FFFFFF; font-size: 9.5px; font-weight: 800; padding: 1px 6px; border-radius: 4px; margin-top: 1px;">2</span>
+            <div style="font-size: 11px; line-height: 1.35; color: #F4FDFB;">
+              <strong style="color: var(--accent-cyan);">Paralelismo (Física):</strong> Ejecución física simultánea en 2+ núcleos al mismo instante *t* para reducir el tiempo de cálculo.
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div style="display: flex; align-items: flex-start; gap: 8px; background: rgba(255, 255, 255, 0.06); padding: 5px 8px; border-radius: 6px; border: 1px solid rgba(172, 230, 246, 0.15);">
+            <span style="background: var(--secondary-ocean); color: #FFFFFF; font-size: 9.5px; font-weight: 800; padding: 1px 6px; border-radius: 4px; margin-top: 1px;">3</span>
+            <div style="font-size: 11px; line-height: 1.35; color: #F4FDFB;">
+              <strong style="color: var(--accent-cyan);">Medición Cuantitativa:</strong> La aceleración real se evalúa mediante *Speedup (S)* y *Eficiencia (E)*, descontando el *Overhead*.
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div style="display: flex; align-items: flex-start; gap: 8px; background: rgba(255, 255, 255, 0.06); padding: 5px 8px; border-radius: 6px; border: 1px solid rgba(172, 230, 246, 0.15);">
+            <span style="background: var(--secondary-ocean); color: #FFFFFF; font-size: 9.5px; font-weight: 800; padding: 1px 6px; border-radius: 4px; margin-top: 1px;">4</span>
+            <div style="font-size: 11px; line-height: 1.35; color: #F4FDFB;">
+              <strong style="color: var(--accent-cyan);">Límite de Amdahl:</strong> La fracción secuencial estricta *(1 - f)* establece una barrera infranqueable sin importar cuántos núcleos se añadan.
+            </div>
+          </div>
+
+          <!-- Item 5 -->
+          <div style="display: flex; align-items: flex-start; gap: 8px; background: rgba(255, 255, 255, 0.06); padding: 5px 8px; border-radius: 6px; border: 1px solid rgba(172, 230, 246, 0.15);">
+            <span style="background: var(--secondary-ocean); color: #FFFFFF; font-size: 9.5px; font-weight: 800; padding: 1px 6px; border-radius: 4px; margin-top: 1px;">5</span>
+            <div style="font-size: 11px; line-height: 1.35; color: #F4FDFB;">
+              <strong style="color: var(--accent-cyan);">Python &amp; GIL:</strong> Usar <code>threading</code> para tareas I/O Bound y <code>multiprocessing</code> para tareas intensivas de cómputo CPU Bound.
+            </div>
+          </div>
+
         </div>
-      </article>
+
+      </div>
+
+    </div>
+
+    <!-- BOTTOM FULL-WIDTH SUMMARY BANNER: LA REGLA DE ORO -->
+    <div class="takeaway-banner" style="flex: 0 0 auto; margin: 0; padding: 8px 14px; background: #FFFFFF; border-left: 5px solid var(--secondary-ocean); box-shadow: var(--shadow-sm);">
+      <div class="takeaway-icon-box" style="width: 26px; height: 26px;">
+        <svg class="icon" viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      </div>
+      <div class="takeaway-text" style="font-size: 11.5px; line-height: 1.35; color: var(--primary-navy);">
+        <strong>Regla de Oro de SIS225:</strong> <em>"Todo paralelismo implica concurrencia, pero no toda concurrencia implica paralelismo."</em> La concurrencia estructura el programa; el paralelismo en hardware acelera la ejecución física.
+      </div>
+    </div>
+  </div>
+</article>
