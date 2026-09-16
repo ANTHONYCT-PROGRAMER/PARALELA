@@ -199,6 +199,10 @@ class PresentationController {
     this.initDOM();
     this.initEventListeners();
     this.goToSlide(0);
+
+    if (window.initAllSimulations) {
+      window.initAllSimulations();
+    }
   }
 
   async loadModularSlides() {
@@ -388,6 +392,10 @@ class PresentationController {
     thumbs.forEach((t, i) => {
       t.classList.toggle('active', i === index);
     });
+
+    if (window.initAllSimulations) {
+      window.initAllSimulations();
+    }
   }
 
   nextSlide() {

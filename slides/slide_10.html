@@ -1,68 +1,188 @@
 <!-- ====================================================================
-           SLIDE 10: PERSONA 3 - EJEMPLO NUMÉRICO CON DIAGRAMA VISUAL HERO
-           ==================================================================== -->
-      <article class="slide" id="slide-10">
-        <div class="slide-header">
-          <div class="slide-tagline-row">
-            <span class="slide-badge-category">Persona 3: Caso Práctico Numérico</span>
-            <span class="slide-badge-time">Minuto 8:00 - 12:00</span>
+     SLIDE 10: PERSONA 3 - EJEMPLO NUMÉRICO CON DIAGRAMA SINCRONIZADO EN TIEMPO REAL
+     ==================================================================== -->
+<article class="slide" id="slide-10">
+  <div class="slide-header" style="margin-bottom: 8px;">
+    <div class="slide-tagline-row">
+      <span class="slide-badge-category">Persona 3: Caso Práctico Numérico</span>
+      <span class="slide-badge-time">Minuto 8:00 - 12:00</span>
+    </div>
+    <h2 class="slide-title">Ejemplo Numérico: Speedup y Eficiencia</h2>
+    <p class="slide-subtitle">Simulación cuantitativa y visualización de reducción de tiempo sincronizada en tiempo real</p>
+  </div>
+
+  <div class="slide-body" style="gap: 10px;">
+    <div class="grid-2-cols" style="flex: 1; min-height: 0; gap: 12px; align-items: stretch;">
+      
+      <!-- LEFT COLUMN: REAL-TIME DYNAMIC DIAGRAM -->
+      <div class="dyn-diagram-card">
+        
+        <!-- Header -->
+        <div class="dyn-diagram-header">
+          <div>
+            <h4 style="font-family: 'Outfit', sans-serif; font-size: 13.5px; font-weight: 800; color: var(--primary-navy); margin: 0;">
+              Comparación Visual de Tiempo de Ejecución
+            </h4>
+            <span style="font-size: 10.5px; color: var(--text-muted);">
+              Impacto de la paralelización sobre la latencia total
+            </span>
           </div>
-          <h2 class="slide-title">Ejemplo Numérico: Speedup y Eficiencia</h2>
-          <p class="slide-subtitle">Caso oficial del documento con diagrama visual y calculadora interactiva en vivo</p>
+          <span id="dynPillHeaderBadge" class="calc-live-badge" style="background: #EDF8FC; color: var(--secondary-ocean); border-color: var(--accent-cyan);">
+            4 Núcleos Activos
+          </span>
         </div>
 
-        <div class="slide-body">
-          <div class="grid-2-cols">
-            <!-- Left: High Impact Speedup Visual Diagram -->
-            <div class="media-container" style="padding: 6px;">
-              <img src="assets/images/speedup_efficiency_visual.svg" alt="Diagrama de Reducción de Tiempo y Speedup">
+        <!-- Dynamic Time Bars Section -->
+        <div class="dyn-bar-section">
+          
+          <!-- Bar 1: Sequential -->
+          <div class="dyn-bar-item">
+            <div class="dyn-bar-label-row">
+              <span>Modo Secuencial (1 CPU): <strong>T<sub>seq</sub></strong></span>
+              <span id="dynSeqTimeVal" style="font-family: 'JetBrains Mono', monospace; color: var(--primary-navy);">100 s (100%)</span>
             </div>
-
-            <!-- Right: Interactive Live Calculator -->
-            <div class="calc-card">
-              <div>
-                <h3 class="card-title" style="font-size: 16.5px; margin-bottom: 10px;">
-                  <svg class="icon" viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></svg>
-                  Calculadora Interactiva en Vivo
-                </h3>
-
-                <div class="calc-row">
-                  <span class="calc-label">Tiempo Secuencial ($T_{seq}$):</span>
-                  <input type="number" id="calcTSeq" value="100" min="1" max="1000" style="width: 80px; padding: 4px 8px; border-radius: 6px; border: 1.5px solid var(--border-navy); font-weight: bold; font-family: 'JetBrains Mono', monospace;">
-                  <span style="font-size: 12px; color: var(--text-muted);">seg</span>
-                </div>
-
-                <div class="calc-row">
-                  <span class="calc-label">Tiempo Paralelo ($T_{par}$):</span>
-                  <input type="number" id="calcTPar" value="30" min="1" max="1000" style="width: 80px; padding: 4px 8px; border-radius: 6px; border: 1.5px solid var(--border-navy); font-weight: bold; font-family: 'JetBrains Mono', monospace;">
-                  <span style="font-size: 12px; color: var(--text-muted);">seg</span>
-                </div>
-
-                <div class="calc-row">
-                  <span class="calc-label">Número de Núcleos ($p$):</span>
-                  <input type="number" id="calcProcs" value="4" min="1" max="64" style="width: 80px; padding: 4px 8px; border-radius: 6px; border: 1.5px solid var(--border-navy); font-weight: bold; font-family: 'JetBrains Mono', monospace;">
-                  <span style="font-size: 12px; color: var(--text-muted);">CPUs</span>
-                </div>
-              </div>
-
-              <!-- Results Box -->
-              <div>
-                <div class="calc-result-box">
-                  <div class="calc-res-item">
-                    <span class="calc-res-label">Speedup Calculado</span>
-                    <span id="calcSpeedupOut" class="calc-res-val">3.33x</span>
-                  </div>
-                  <div class="calc-res-item">
-                    <span class="calc-res-label">Eficiencia Obtenida</span>
-                    <span id="calcEfficiencyOut" class="calc-res-val">83.3%</span>
-                  </div>
-                </div>
-
-                <div style="margin-top: 8px; text-align: center; font-size: 12px; color: var(--text-muted);">
-                  Overhead estimado: <strong id="calcOverheadOut" style="color: var(--secondary-ocean); font-family: 'JetBrains Mono', monospace;">16.7%</strong>
-                </div>
+            <div class="dyn-bar-track">
+              <div id="dynSeqBarFill" class="dyn-fill-seq" style="width: 100%;">
+                <span id="dynSeqBarText">100 s de cómputo secuencial continuo en 1 solo núcleo</span>
               </div>
             </div>
           </div>
+
+          <!-- Bar 2: Parallel -->
+          <div class="dyn-bar-item">
+            <div class="dyn-bar-label-row">
+              <span>Modo Paralelo (<span id="dynProcsCountLabel">4</span> CPUs): <strong>T<sub>par</sub></strong></span>
+              <span id="dynParTimeVal" style="font-family: 'JetBrains Mono', monospace; color: var(--secondary-ocean);">30 s</span>
+            </div>
+            <div class="dyn-bar-track">
+              <!-- Useful Computation Segment -->
+              <div id="dynCompFill" class="dyn-fill-comp" style="width: 25%;" title="Cómputo Útil">
+                <span id="dynCompText">Cómputo: 25.0s</span>
+              </div>
+              <!-- Overhead Segment -->
+              <div id="dynOvhFill" class="dyn-fill-ovh" style="width: 5%;" title="Overhead de Sincronización">
+                <span id="dynOvhText">Ovh: 5.0s</span>
+              </div>
+              <!-- Saved Time Segment -->
+              <div id="dynSavedFill" class="dyn-fill-saved" style="width: 70%;">
+                <span id="dynSavedText">Tiempo Ahorrado: 70.0 s (70.0% de reducción)</span>
+              </div>
+            </div>
+          </div>
+
         </div>
-      </article>
+
+        <!-- Dynamic Processor Core Rack -->
+        <div>
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;">
+            <span style="font-size: 10.5px; font-weight: 800; color: var(--primary-navy); text-transform: uppercase; letter-spacing: 0.5px;">
+              Distribución de Carga en Núcleos Físicos (<span id="dynCoresTitleCount">4</span> Cores):
+            </span>
+            <span id="dynPerCoreLoad" style="font-family: 'JetBrains Mono', monospace; font-size: 10.5px; font-weight: 700; color: var(--secondary-ocean);">
+              ~25.0 s por núcleo
+            </span>
+          </div>
+          <div id="dynCoresContainer" class="dyn-cores-rack">
+            <!-- Dynamically populated via JS -->
+          </div>
+        </div>
+
+        <!-- Bottom Metric Badges -->
+        <div class="dyn-diagram-footer">
+          <div class="dyn-pill-metric">
+            <div class="dyn-pill-label">Speedup (S = T<sub>seq</sub> / T<sub>par</sub>)</div>
+            <div id="dynFooterSpeedup" class="dyn-pill-val">3.33x</div>
+          </div>
+          <div class="dyn-pill-metric">
+            <div class="dyn-pill-label">Eficiencia (E = S / p)</div>
+            <div id="dynFooterEfficiency" class="dyn-pill-val" style="color: var(--secondary-ocean);">83.3%</div>
+          </div>
+          <div class="dyn-pill-metric">
+            <div class="dyn-pill-label">Overhead Estimado</div>
+            <div id="dynFooterOverhead" class="dyn-pill-val" style="color: #E05D5D;">5.0 s (16.7%)</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN: MINIMALIST CALCULATOR -->
+      <div class="calc-card-mini">
+        
+        <!-- Header -->
+        <div class="calc-header-mini">
+          <div class="calc-title-mini">
+            <svg class="icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></svg>
+            Calculadora Minimalista
+          </div>
+          <span class="calc-live-badge">
+            <span class="calc-live-dot"></span> EN VIVO
+          </span>
+        </div>
+
+        <!-- Input 1: T_seq -->
+        <div class="calc-row-mini">
+          <div class="calc-row-header">
+            <span>1. Tiempo Secuencial (T<sub>seq</sub>):</span>
+            <span style="font-size: 11px; color: var(--text-muted);">segundos</span>
+          </div>
+          <div class="calc-input-group">
+            <input type="range" id="sliderTSeq" min="10" max="300" step="5" value="100" class="calc-slider-pro">
+            <input type="number" id="calcTSeq" min="1" max="1000" value="100" class="calc-num-input">
+          </div>
+        </div>
+
+        <!-- Input 2: T_par -->
+        <div class="calc-row-mini">
+          <div class="calc-row-header">
+            <span>2. Tiempo Paralelo (T<sub>par</sub>):</span>
+            <span style="font-size: 11px; color: var(--text-muted);">segundos</span>
+          </div>
+          <div class="calc-input-group">
+            <input type="range" id="sliderTPar" min="5" max="200" step="1" value="30" class="calc-slider-pro">
+            <input type="number" id="calcTPar" min="1" max="1000" value="30" class="calc-num-input">
+          </div>
+        </div>
+
+        <!-- Input 3: p (Procs) -->
+        <div class="calc-row-mini">
+          <div class="calc-row-header">
+            <span>3. Número de Procesadores (p):</span>
+            <span style="font-size: 11px; color: var(--text-muted);">núcleos</span>
+          </div>
+          <div class="calc-input-group">
+            <input type="range" id="sliderProcs" min="1" max="16" step="1" value="4" class="calc-slider-pro">
+            <input type="number" id="calcProcs" min="1" max="64" value="4" class="calc-num-input">
+          </div>
+        </div>
+
+        <!-- Presets Row -->
+        <div class="calc-presets-row">
+          <span style="font-size: 9.5px; font-weight: 800; color: var(--text-muted); text-transform: uppercase;">Presets:</span>
+          <button type="button" class="preset-chip" onclick="window.applySpeedupPreset(100, 30, 4)">Base: 100s / 30s (4p)</button>
+          <button type="button" class="preset-chip" onclick="window.applySpeedupPreset(100, 25, 4)">Ideal: 100s / 25s (4p)</button>
+          <button type="button" class="preset-chip" onclick="window.applySpeedupPreset(120, 18, 8)">8 Cores: 120s / 18s</button>
+          <button type="button" class="preset-chip" onclick="window.applySpeedupPreset(100, 20, 4)">Superlineal: 20s (4p)</button>
+        </div>
+
+        <!-- Minimalist KPI Summary -->
+        <div class="calc-kpi-grid">
+          <div class="calc-kpi-box">
+            <div class="calc-kpi-title">Speedup (S)</div>
+            <div id="calcSpeedupOut" class="calc-kpi-value">3.33x</div>
+          </div>
+          <div class="calc-kpi-box kpi-ocean">
+            <div class="calc-kpi-title">Eficiencia (E)</div>
+            <div id="calcEfficiencyOut" class="calc-kpi-value">83.3%</div>
+          </div>
+        </div>
+
+        <!-- Dynamic Diagnosis Status -->
+        <div id="calcStatusBox" class="calc-status-indicator">
+          Alta Eficiencia Paralela (83.3%) • Ganancia real de 3.33x
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</article>

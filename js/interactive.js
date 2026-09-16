@@ -1,6 +1,7 @@
 /**
  * SIS225: Simulaciones Interactivas en Vivo
  * Calculadoras de Amdahl, Speedup y Ejecutor de Código Python Simulado
+ * Sincronización en Tiempo Real entre Calculadora y Diagramas Dinámicos
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -8,6 +9,13 @@ document.addEventListener('DOMContentLoaded', () => {
   initSpeedupCalculator();
   initPythonSimulators();
 });
+
+// Also expose an initialization function that can be safely re-run
+window.initAllSimulations = function() {
+  initAmdahlCalculator();
+  initSpeedupCalculator();
+  initPythonSimulators();
+};
 
 // ==========================================================================
 // 1. CALCULADORA INTERACTIVA DE LEY DE AMDAHL (DIAPOSITIVA 11)
@@ -56,40 +64,192 @@ function initAmdahlCalculator() {
 }
 
 // ==========================================================================
-// 2. CALCULADORA INTERACTIVA DE SPEEDUP Y EFICIENCIA (DIAPOSITIVA 10)
+// 2. CALCULADORA INTERACTIVA DE SPEEDUP & DIAGRAMA DINÁMICO (DIAPOSITIVA 10)
 // ==========================================================================
 function initSpeedupCalculator() {
-  const tSeqInput = document.getElementById('calcTSeq');
-  const tParInput = document.getElementById('calcTPar');
-  const pInput = document.getElementById('calcProcs');
+  // Inputs & Sliders
+  const sliderTSeq = document.getElementById('sliderTSeq');
+  const calcTSeq = document.getElementById('calcTSeq');
+  
+  const sliderTPar = document.getElementById('sliderTPar');
+  const calcTPar = document.getElementById('calcTPar');
+  
+  const sliderProcs = document.getElementById('sliderProcs');
+  const calcProcs = document.getElementById('calcProcs');
 
+  // KPI Output elements
   const speedupOut = document.getElementById('calcSpeedupOut');
   const efficiencyOut = document.getElementById('calcEfficiencyOut');
-  const overheadOut = document.getElementById('calcOverheadOut');
+  const statusBox = document.getElementById('calcStatusBox');
 
-  function updateSpeedup() {
-    if (!tSeqInput || !tParInput || !pInput) return;
+  // Dynamic Diagram elements (Slide 10 Left Side)
+  const dynPillHeaderBadge = document.getElementById('dynPillHeaderBadge');
+  const dynSeqTimeVal = document.getElementById('dynSeqTimeVal');
+  const dynSeqBarFill = document.getElementById('dynSeqBarFill');
+  const dynSeqBarText = document.getElementById('dynSeqBarText');
+  
+  const dynProcsCountLabel = document.getElementById('dynProcsCountLabel');
+  const dynParTimeVal = document.getElementById('dynParTimeVal');
+  const dynCompFill = document.getElementById('dynCompFill');
+  const dynCompText = document.getElementById('dynCompText');
+  const dynOvhFill = document.getElementById('dynOvhFill');
+  const dynOvhText = document.getElementById('dynOvhText');
+  const dynSavedFill = document.getElementById('dynSavedFill');
+  const dynSavedText = document.getElementById('dynSavedText');
 
-    const tSeq = parseFloat(tSeqInput.value) || 100;
-    const tPar = parseFloat(tParInput.value) || 30;
-    const p = parseInt(pInput.value, 10) || 4;
+  const dynCoresTitleCount = document.getElementById('dynCoresTitleCount');
+  const dynPerCoreLoad = document.getElementById('dynPerCoreLoad');
+  const dynCoresContainer = document.getElementById('dynCoresContainer');
 
-    if (tPar <= 0 || p <= 0) return;
+  const dynFooterSpeedup = document.getElementById('dynFooterSpeedup');
+  const dynFooterEfficiency = document.getElementById('dynFooterEfficiency');
+  const dynFooterOverhead = document.getElementById('dynFooterOverhead');
 
-    const s = tSeq / tPar;
-    const e = (s / p) * 100;
-    const overheadTime = (tPar * p) - tSeq;
-    const overheadPercent = Math.max(0, 100 - e);
+  function updateSpeedupAndDiagram() {
+    if (!calcTSeq || !calcTPar || !calcProcs) return;
 
-    if (speedupOut) speedupOut.innerText = `${s.toFixed(2)}x`;
-    if (efficiencyOut) efficiencyOut.innerText = `${e.toFixed(1)}%`;
-    if (overheadOut) overheadOut.innerText = `${overheadPercent.toFixed(1)}%`;
+    const tSeq = Math.max(1, parseFloat(calcTSeq.value) || 100);
+    const tPar = Math.max(0.1, parseFloat(calcTPar.value) || 30);
+    const p = Math.max(1, parseInt(calcProcs.value, 10) || 4);
+
+    // Calculate Core Metrics
+    const speedup = tSeq / tPar;
+    const efficiency = (speedup / p) * 100;
+    const usefulCompute = tSeq / p;
+    const overheadSec = Math.max(0, tPar - usefulCompute);
+    const overheadPercent = Math.max(0, 100 - efficiency);
+    const savedTime = Math.max(0, tSeq - tPar);
+    const savedPercent = Math.max(0, (savedTime / tSeq) * 100);
+
+    // 1. Update KPI Values in Calculator
+    if (speedupOut) speedupOut.innerText = `${speedup.toFixed(2)}x`;
+    if (efficiencyOut) efficiencyOut.innerText = `${efficiency.toFixed(1)}%`;
+
+    // 2. Update Status Diagnosis Badge
+    if (statusBox) {
+      if (efficiency > 100) {
+        statusBox.style.background = '#E4FCF9';
+        statusBox.style.color = '#0E6056';
+        statusBox.style.borderColor = '#4B89AC';
+        statusBox.innerHTML = `<strong>⚡ Speedup Superlineal (${efficiency.toFixed(1)}%):</strong> Gran ganancia por efecto de caché L2/L3 combinada.`;
+      } else if (efficiency >= 75) {
+        statusBox.style.background = '#E8F8F4';
+        statusBox.style.color = '#126353';
+        statusBox.style.borderColor = '#A3DEC9';
+        statusBox.innerHTML = `<strong>✓ Alta Eficiencia (${efficiency.toFixed(1)}%):</strong> Excelente escalabilidad paralela con bajo overhead (${overheadPercent.toFixed(1)}%).`;
+      } else if (efficiency >= 50) {
+        statusBox.style.background = '#EDF7FC';
+        statusBox.style.color = '#255877';
+        statusBox.style.borderColor = '#ACE6F6';
+        statusBox.innerHTML = `<strong>ℹ Eficiencia Moderada (${efficiency.toFixed(1)}%):</strong> Sobrecosto de sincronización perceptible (${overheadPercent.toFixed(1)}%).`;
+      } else {
+        statusBox.style.background = '#FFF3F3';
+        statusBox.style.color = '#9E2424';
+        statusBox.style.borderColor = '#FFC4C4';
+        statusBox.innerHTML = `<strong>⚠ Alto Overhead (${overheadPercent.toFixed(1)}%):</strong> Gran costo en sincronización/comunicación para ${p} procesadores.`;
+      }
+    }
+
+    // 3. Update Left-Side Dynamic Diagram Bars
+    if (dynPillHeaderBadge) dynPillHeaderBadge.innerText = `${p} Núcleos Activos`;
+    if (dynSeqTimeVal) dynSeqTimeVal.innerText = `${tSeq.toFixed(1)} s (100%)`;
+    if (dynSeqBarText) dynSeqBarText.innerText = `${tSeq.toFixed(1)} s de cómputo secuencial continuo en 1 núcleo`;
+
+    if (dynProcsCountLabel) dynProcsCountLabel.innerText = `${p}`;
+    if (dynParTimeVal) dynParTimeVal.innerText = `${tPar.toFixed(1)} s`;
+
+    // Bar segment widths relative to T_seq
+    const compWidthPct = Math.min(100, Math.max(3, (usefulCompute / tSeq) * 100));
+    const ovhWidthPct = Math.min(100 - compWidthPct, Math.max(0, (overheadSec / tSeq) * 100));
+    const savedWidthPct = Math.max(0, 100 - (compWidthPct + ovhWidthPct));
+
+    if (dynCompFill) {
+      dynCompFill.style.width = `${compWidthPct}%`;
+      if (dynCompText) dynCompText.innerText = `Cómputo: ${usefulCompute.toFixed(1)}s`;
+    }
+
+    if (dynOvhFill) {
+      dynOvhFill.style.width = `${ovhWidthPct}%`;
+      if (dynOvhText) {
+        dynOvhText.innerText = ovhWidthPct > 5 ? `Ovh: ${overheadSec.toFixed(1)}s` : `${overheadSec.toFixed(1)}s`;
+      }
+      dynOvhFill.style.display = overheadSec > 0.05 ? 'flex' : 'none';
+    }
+
+    if (dynSavedFill) {
+      dynSavedFill.style.width = `${savedWidthPct}%`;
+      if (dynSavedText) {
+        dynSavedText.innerText = savedWidthPct > 15 ? 
+          `Ahorro: ${savedTime.toFixed(1)} s (${savedPercent.toFixed(0)}%)` : 
+          `${savedTime.toFixed(1)}s`;
+      }
+    }
+
+    // 4. Update Cores Rack
+    if (dynCoresTitleCount) dynCoresTitleCount.innerText = `${p}`;
+    if (dynPerCoreLoad) dynPerCoreLoad.innerText = `~${usefulCompute.toFixed(1)} s de cómputo por núcleo`;
+
+    if (dynCoresContainer) {
+      let coresHtml = '';
+      const displayCores = Math.min(p, 16);
+      for (let i = 0; i < displayCores; i++) {
+        coresHtml += `
+          <div class="core-chip-item active">
+            <span>Core ${i}</span>
+            <span style="font-size: 8.5px; color: var(--secondary-ocean); font-family: 'JetBrains Mono', monospace;">${usefulCompute.toFixed(1)}s</span>
+          </div>
+        `;
+      }
+      if (p > 16) {
+        coresHtml += `
+          <div class="core-chip-item active" style="background: var(--primary-navy); color: #FFFFFF; border-color: var(--primary-navy);">
+            <span>+${p - 16} Cores</span>
+          </div>
+        `;
+      }
+      dynCoresContainer.innerHTML = coresHtml;
+    }
+
+    // 5. Update Footer Metric Pills
+    if (dynFooterSpeedup) dynFooterSpeedup.innerText = `${speedup.toFixed(2)}x`;
+    if (dynFooterEfficiency) dynFooterEfficiency.innerText = `${efficiency.toFixed(1)}%`;
+    if (dynFooterOverhead) {
+      dynFooterOverhead.innerText = `${overheadSec.toFixed(1)} s (${overheadPercent.toFixed(1)}%)`;
+    }
   }
 
-  tSeqInput?.addEventListener('input', updateSpeedup);
-  tParInput?.addEventListener('input', updateSpeedup);
-  pInput?.addEventListener('input', updateSpeedup);
-  updateSpeedup();
+  // Two-way synchronization helpers
+  function syncInputAndSlider(slider, input) {
+    if (!slider || !input) return;
+    slider.addEventListener('input', () => {
+      input.value = slider.value;
+      updateSpeedupAndDiagram();
+    });
+    input.addEventListener('input', () => {
+      slider.value = input.value;
+      updateSpeedupAndDiagram();
+    });
+  }
+
+  syncInputAndSlider(sliderTSeq, calcTSeq);
+  syncInputAndSlider(sliderTPar, calcTPar);
+  syncInputAndSlider(sliderProcs, calcProcs);
+
+  // Global preset handler
+  window.applySpeedupPreset = function(tSeq, tPar, p) {
+    if (sliderTSeq) sliderTSeq.value = tSeq;
+    if (calcTSeq) calcTSeq.value = tSeq;
+
+    if (sliderTPar) sliderTPar.value = tPar;
+    if (calcTPar) calcTPar.value = tPar;
+
+    if (sliderProcs) sliderProcs.value = p;
+    if (calcProcs) calcProcs.value = p;
+
+    updateSpeedupAndDiagram();
+  };
+
+  updateSpeedupAndDiagram();
 }
 
 // ==========================================================================
