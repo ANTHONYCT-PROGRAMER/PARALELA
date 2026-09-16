@@ -1,0 +1,278 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{geometry}
+\geometry{top=2cm, bottom=2cm, left=2.2cm, right=2.2cm}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{hyperref}
+
+% Paleta Oficial UNA PUNO - SIS225
+\definecolor{primaryNavy}{HTML}{446491}
+\definecolor{secondaryOcean}{HTML}{4B89AC}
+\definecolor{accentCyan}{HTML}{ACE6F6}
+\definecolor{bgMint}{HTML}{E4FCF9}
+\definecolor{darkText}{HTML}{122034}
+\definecolor{boxBg}{HTML}{F8FDFD}
+
+% Configuración de Encabezados y Pies
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\textbf{\color{primaryNavy}UNA PUNO $\cdot$ FIMEES $\cdot$ EPIS}}
+\fancyhead[R]{\small\color{secondaryOcean}SIS225: Computación Paralela y Distribuida}
+\fancyfoot[C]{\thepage}
+\fancyfoot[R]{\small\color{gray}Guía de Estudio: Persona 3}
+
+% Formato de Títulos
+\titleformat{\section}{\Large\bfseries\color{primaryNavy}}{\thesection.}{0.5em}{}[\titlerule]
+\titleformat{\subsection}{\large\bfseries\color{secondaryOcean}}{\thesubsection.}{0.5em}{}
+
+% Cajas de Estilo Personalizadas
+\newtcolorbox{guionbox}[1]{
+  enhanced,
+  colback=boxBg,
+  colframe=primaryNavy,
+  fonttitle=\bfseries\color{white},
+  colbacktitle=primaryNavy,
+  title={🎙️ Guión Sugerido de Exposición: #1},
+  arc=3mm,
+  boxrule=1.2pt,
+  breakable,
+  shadow={2pt}{-2pt}{0pt}{black!15}
+}
+
+\newtcolorbox{conceptbox}[1]{
+  enhanced,
+  colback=bgMint!30,
+  colframe=secondaryOcean,
+  fonttitle=\bfseries\color{white},
+  colbacktitle=secondaryOcean,
+  title={💡 Fundamento Teórico: #1},
+  arc=3mm,
+  boxrule=1.2pt,
+  breakable
+}
+
+\newtcolorbox{formulabox}[1]{
+  enhanced,
+  colback=primaryNavy!5,
+  colframe=primaryNavy,
+  fonttitle=\bfseries\color{white},
+  colbacktitle=primaryNavy,
+  title={📐 Formulación Matemática: #1},
+  arc=3mm,
+  boxrule=1.2pt,
+  breakable
+}
+
+\newtcolorbox{qabox}[1]{
+  enhanced,
+  colback=white,
+  colframe=primaryNavy!80,
+  fonttitle=\bfseries\color{white},
+  colbacktitle=primaryNavy!80,
+  title={❓ Pregunta de Examen / Docente: #1},
+  arc=2.5mm,
+  boxrule=1pt,
+  breakable
+}
+
+\begin{document}
+
+% Portada / Cabecera Académica
+\begin{center}
+    {\Large\textbf{\color{primaryNavy}UNIVERSIDAD NACIONAL DEL ALTIPLANO -- PUNO}}\\[2mm]
+    {\large\textbf{\color{secondaryOcean}FACULTAD DE INGENIERÍA MECÁNICA ELÉCTRICA, ELECTRÓNICA Y SISTEMAS}}\\[1mm]
+    {\textbf{Escuela Profesional de Ingeniería de Sistemas}}\\[4mm]
+    
+    \begin{tcolorbox}[colback=primaryNavy,colframe=primaryNavy,arc=4mm,center,width=0.95\textwidth]
+        \centering\color{white}
+        \Large\textbf{GUÍA MAESTRA DE ESTUDIO Y DEFENSA}\\[1.5mm]
+        \large\textbf{PERSONA 3: MÉTRICAS DE RENDIMIENTO, AMDAHL Y CONSISTENCIA}\\[1mm]
+        \small\textbf{Curso:} Computación Paralela y Distribuida (SIS225) --- Semestre 2026-II\\
+        \small\textbf{Docente:} Dr. Ing. Robert Antonio Romero Flores
+    \end{tcolorbox}
+\end{center}
+
+\vspace{2mm}
+\noindent\textbf{Tiempo Asignado:} 4 minutos cronometrados (Minuto 8:00 al 12:00) $\cdot$ \textbf{Diapositivas a cargo:} 09, 10, 11 y 12.
+
+\section{Cronograma Minuto a Minuto de tu Exposición (4:00 min)}
+
+\begin{table}[h!]
+\centering
+\small
+\begin{tabular}{@{}cclp{7.5cm}@{}}
+\toprule
+\textbf{Tiempo} & \textbf{Diapo} & \textbf{Fase} & \textbf{Acción / Objetivo Principal} \\ \midrule
+\textbf{8:00 -- 9:00} & 09 & Métricas Fundamentales & Definir $T_{seq}, T_{par}$, Speedup ($S$), Eficiencia ($E$) y curvas (Lineal, Sublineal, Superlineal). \\
+\textbf{9:00 -- 10:15} & 10 & Ejemplo Numérico \& Simulación & Demostrar $S=3.33x, E=83.3\%$, explicar el origen del overhead y usar el simulador en vivo. \\
+\textbf{10:15 -- 11:15} & 11 & Ley de Amdahl \& Límite Asintótico & Explicar la fórmula $S(p)$, el cuello de botella secuencial $(1-f)$ y la asíntota $S_{max}=1/(1-f)$. \\
+\textbf{11:15 -- 11:50} & 12 & Consistencia de Memoria & Contrastar Estricta vs Secuencial (Lamport) vs Relajada (x86/ARM con Memory Barriers). \\
+\textbf{11:50 -- 12:00} & 12 & Pase a Persona 4 & Transición fluida a la implementación en Python (GIL, Threading y Multiprocessing). \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\section{Guiones Exactos Paso a Paso (¿Qué decir en cada lámina?)}
+
+\begin{guionbox}{Diapositiva 09 --- Métricas Fundamentales de Rendimiento (8:00 -- 9:00)}
+\textit{«Buenas tardes Dr. Robert Romero y compañeros. En este tercer bloque abordamos la \textbf{evaluación cuantitativa del rendimiento} en sistemas paralelos mediante cuatro métricas matemáticas fundamentales:}
+
+\begin{enumerate}[leftmargin=5mm]
+    \item \textbf{Tiempos base:} \textit{$T_{seq}$ es el tiempo de ejecución secuencial en un solo procesador y $T_{par}$ es el tiempo paralelo utilizando $p$ procesadores.}
+    \item \textbf{Speedup ($S$):} \textit{Definido como $S = \frac{T_{seq}}{T_{par}}$. Representa el factor de aceleración: cuántas veces más rápido corre el programa.}
+    \item \textbf{Eficiencia ($E$):} \textit{Definida como $E = \frac{S}{p}$. Mide la fracción útil de cómputo aprovechada por cada núcleo ($0 \le E \le 1$).}
+    \item \textbf{Overhead ($T_{ovh}$):} \textit{Tiempo consumido en la creación de hilos, comunicación interproceso, contención de buses y sincronización.}
+\end{enumerate}
+
+\textit{Como observamos en las curvas de rendimiento: el caso ideal es el \textbf{Speedup Lineal} ($S = p$), pero en la práctica obtenemos un comportamiento \textbf{Sublineal} ($S < p$) debido al overhead. Existe además el fenómeno de \textbf{Speedup Superlineal} ($S > p$), que ocurre cuando la suma de las memorias caché L2/L3 de todos los núcleos permite almacenar la totalidad de los datos en memoria ultrarrápida, eliminando accesos a la memoria RAM.»}
+\end{guionbox}
+
+\begin{guionbox}{Diapositiva 10 --- Caso Numérico \& Simulación Interactiva (9:00 -- 10:15)}
+\textit{«Para consolidar estos conceptos, analicemos el problema numérico del curso:}
+
+\textit{Supongamos un algoritmo que tarda $T_{seq} = 100\text{ segundos}$ en secuencial y $T_{par} = 30\text{ segundos}$ al ejecutarse sobre $p = 4$ procesadores dedicados.}
+
+\begin{itemize}[leftmargin=5mm]
+    \item \textit{\textbf{Speedup Calculado:} $S = \frac{100}{30} = 3.33\text{x}$. El algoritmo corre $3.33$ veces más rápido.}
+    \item \textit{\textbf{Eficiencia del Sistema:} $E = \frac{3.33}{4} = 0.833 = 83.3\%$. Cada núcleo produce trabajo útil el $83.3\%$ del tiempo.}
+    \item \textit{\textbf{Pérdida por Overhead:} El $16.7\%$ restante representa una penalización de $5.0\text{ segundos}$ distribuida en sincronización y contención.}
+\end{itemize}
+
+\textit{Como podemos observar en nuestro simulador en tiempo real en la diapositiva, si modificamos el número de procesadores o los tiempos de cómputo, la gráfica y el gráfico de barras recalculan instantáneamente la distribución de carga por núcleo y el ahorro temporal neto.»}
+\end{guionbox}
+
+\begin{guionbox}{Diapositiva 11 --- Ley de Amdahl: El Límite del Paralelismo (10:15 -- 11:15)}
+\textit{«En 1967, Gene Amdahl formuló la ley que rige los límites físicos y teóricos del paralelismo:}
+
+\textit{Si un programa tiene una fracción paralelizable $f$ (donde $0 \le f \le 1$), la porción restante $(1-f)$ es \textbf{estrictamente secuencial}. El tiempo paralelo con $p$ procesadores es $T_{par} = T_{seq} \cdot \left((1-f) + \frac{f}{p}\right)$, lo que produce la fórmula del Speedup de Amdahl: $S(p) = \frac{1}{(1-f) + \frac{f}{p}}$.}
+
+\textit{Si el $80\%$ del código es paralelizable ($f = 0.80$) y utilizamos $4$ núcleos, alcanzamos un Speedup de $2.50\text{x}$. Sin embargo, si agregamos procesadores infinitos ($p \to \infty$), el término $\frac{f}{p}$ se anula y el Speedup queda estrictamente topado por la asíntota:}
+\[
+S_{max} = \lim_{p \to \infty} S(p) = \frac{1}{1-f} = \frac{1}{0.20} = 5.00\text{x}
+\]
+\textit{Como resalta la línea roja de asíntota en nuestro simulador interactivo: ¡el cuello de botella secuencial $(1-f)$ impone el límite insalvable del paralelismo!»}
+\end{guionbox}
+
+\begin{guionbox}{Diapositiva 12 --- Modelos de Consistencia de Memoria \& Transición (11:15 -- 12:00)}
+\textit{«Para garantizar la corrección en sistemas con memoria compartida, debemos estudiar la \textbf{Consistencia de Memoria}, que define el contrato sobre cuándo una escritura en memoria por un núcleo es visible para las lecturas de los demás:}
+
+\begin{enumerate}[leftmargin=5mm]
+    \item \textbf{Consistencia Estricta:} \textit{Cualquier lectura retorna el valor de la escritura más reciente en un reloj físico global absoluto. Es físicamente imposible en sistemas distribuidos debido a la velocidad finita de la luz y latencias de propagación.}
+    \item \textbf{Consistencia Secuencial (Leslie Lamport, 1979):} \textit{El resultado de cualquier ejecución es idéntico a si las operaciones de todos los procesadores se hubieran intercalado en un orden secuencial global, respetando el orden de programa (Program Order) de cada procesador.}
+    \item \textbf{Consistencia Relajada / Débil (Hardware Moderno):} \textit{Procesadores como x86 y ARM reordenan lecturas y escrituras mediante Store Buffers para maximizar el throughput. Por ello, el programador debe insertar \textbf{Barreras de Memoria (Memory Barriers / Fences)} o usar primitivas atómicas.}
+\end{enumerate}
+
+\textit{Habiendo analizado los modelos matemáticos y la consistencia de hardware, le doy el pase a mi compañero (Persona 4) para ver la implementación práctica en Python analizando el GIL, Threading y Multiprocessing.»}
+\end{guionbox}
+
+\section{Marco Teórico y Demostraciones Matemáticas Rigurosas}
+
+\subsection{Deducción Formal de las Métricas de Rendimiento}
+
+\begin{formulabox}{1. Speedup y Eficiencia}
+Sean:
+\begin{itemize}[leftmargin=5mm]
+    \item $T_1 = T_{seq}$: Tiempo de ejecución del mejor algoritmo secuencial sobre $1$ unidad de procesamiento.
+    \item $T_p = T_{par}$: Tiempo de ejecución del algoritmo paralelo sobre $p$ unidades idénticas de procesamiento.
+\end{itemize}
+Se definen formalmente:
+\[
+S(p) = \frac{T_1}{T_p}, \quad E(p) = \frac{S(p)}{p} = \frac{T_1}{p \cdot T_p}, \quad \text{Overhead Fraction } \Omega(p) = 1 - E(p)
+\]
+\textbf{Rango de Eficiencia Estándar:} $0 < E(p) \le 1 \implies 0 < S(p) \le p$.
+\end{formulabox}
+
+\begin{conceptbox}{Explicación Rigurosa del Speedup Superlineal ($S(p) > p$)}
+Ocurre cuando la eficiencia supera el $100\%$ ($E > 1$). Esto no viola las leyes de la física, sino que se debe a efectos de la \textbf{jerarquía de memoria caché}:
+\begin{enumerate}[leftmargin=5mm]
+    \item En $1$ núcleo, el tamaño del conjunto de datos de trabajo (\textit{working set size} $W$) excede la capacidad de la caché L2/L3 local ($W > C_1$), provocando continuos fallos de caché (\textit{cache misses}) y accesos lentos a la memoria RAM principal (latencia $\approx 60\text{--}100\text{ ns}$).
+    \item Al distribuir el problema en $p$ núcleos, cada procesador maneja una porción $W/p$. Si $W/p \le C_p$, el subconjunto cabe \textbf{completamente} en la memoria caché SRAM ultrarrápida local (latencia $\approx 1\text{--}4\text{ ns}$), eliminando los cuellos de botella del bus de memoria y generando $S(p) > p$.
+\end{enumerate}
+\end{conceptbox}
+
+\subsection{Deducción Matemática de la Ley de Amdahl}
+
+\begin{formulabox}{2. Deducción del Teorema de Gene Amdahl (1967)}
+Sea el tiempo secuencial normalizado $T_1 = 1$. Dividimos el cómputo en:
+\begin{itemize}[leftmargin=5mm]
+    \item Fracción estrictamente secuencial: $(1-f)$
+    \item Fracción perfectamente paralelizable en $p$ procesadores: $f$
+\end{itemize}
+El tiempo de ejecución paralelo $T_p$ con $p$ procesadores es:
+\[
+T_p = (1-f) \cdot T_1 + \frac{f}{p} \cdot T_1 = T_1 \left( (1-f) + \frac{f}{p} \right)
+\]
+Sustituyendo en la definición de Speedup $S(p) = \frac{T_1}{T_p}$:
+\[
+\boxed{S(p) = \frac{1}{(1-f) + \frac{f}{p}}}
+\]
+\textbf{Comportamiento Asintótico ($p \to \infty$):}
+\[
+\boxed{S_{max} = \lim_{p \to \infty} \left( \frac{1}{(1-f) + \frac{f}{p}} \right) = \frac{1}{1-f}}
+\]
+\textbf{Consecuencia:} Si el $5\%$ de un programa es secuencial ($1-f = 0.05$), el Speedup jamás superará $20\text{x}$, sin importar si usamos mil o un millón de procesadores.
+\end{formulabox}
+
+\subsection{Modelos de Consistencia de Memoria en Arquitecturas Modernas}
+
+\begin{table}[h!]
+\centering
+\small
+\begin{tabular}{@{}lp{4.2cm}p{4.2cm}p{4.2cm}@{}}
+\toprule
+\textbf{Modelo} & \textbf{Definición Central} & \textbf{Reordenamiento Hardware} & \textbf{Mecanismo de Control} \\ \midrule
+\textbf{Estricto} & Lectura instantánea en tiempo real físico absoluto. & Prohibido todo reordenamiento ($\Delta t = 0$). & Inviable físicamente en sistemas reales. \\
+\textbf{Secuencial (Lamport 1979)} & Orden global intercalado respetando el Program Order de cada CPU. & No permite reordenar lecturas ni escrituras previas. & Sincronización estricta de bus (costoso en rendimiento). \\
+\textbf{Relajado (Débil: x86 / ARM)} & Permite ejecuciones fuera de orden (\textit{Out-of-Order}) y Store Buffers. & Permite $W \to R$, $W \to W$ o $R \to R$ según la arquitectura. & \textbf{Memory Barriers (FENCE)} y operaciones atómicas (\texttt{std::atomic}). \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\begin{conceptbox}{¿Qué es una Barrera de Memoria (Memory Barrier / Fence)?}
+Es una instrucción de CPU de bajo nivel (como \texttt{MFENCE}, \texttt{LFENCE}, \texttt{SFENCE} en x86 o \texttt{DMB} en ARM) que fuerza al pipeline del procesador y a los búferes de escritura a vaciarse y sincronizarse con la caché L1/L2 antes de permitir que continúe la ejecución de instrucciones posteriores, garantizando la consistencia de datos entre hilos concurrentes.
+\end{conceptbox}
+
+\section{Banco de Preguntas del Docente (Dr. Robert Romero) \& Respuestas de Defensa}
+
+\begin{qabox}{1. ¿Por qué en un sistema real la Eficiencia siempre es menor a 100\% ($E < 1$)?}
+\textbf{Respuesta Modelo:}  
+\textit{«Porque en cualquier implementación física existe un costo temporal denominado \textbf{Overhead ($T_{ovh}$)}. Este sobrecosto se origina por: 1) El tiempo de creación, despacho y destrucción de hilos/procesos; 2) La contención en el bus de memoria al acceder a la RAM; 3) El tiempo ocioso por desbalance de carga entre núcleos; y 4) La serialización obligatoria provocada por secciones críticas y bloqueos mutex.»}
+\end{qabox}
+
+\begin{qabox}{2. ¿Cómo se explica matemáticamente el límite asintótico de la Ley de Amdahl?}
+\textbf{Respuesta Modelo:}  
+\textit{«A partir de la función de Speedup $S(p) = \frac{1}{(1-f) + f/p}$, al aplicar el límite cuando $p \to \infty$, la componente paralelizable $\frac{f}{p}$ converge a cero ($\lim_{p \to \infty} \frac{f}{p} = 0$). Por tanto, la expresión queda gobernada únicamente por la constante de la porción secuencial, resultando en $S_{max} = \frac{1}{1-f}$. Esto demuestra que la porción secuencial actúa como un cuello de botella infranqueable.»}
+\end{qabox}
+
+\begin{qabox}{3. ¿En qué escenario práctico puede ocurrir un Speedup Superlineal ($S > p$)?}
+\textbf{Respuesta Modelo:}  
+\textit{«El Speedup Superlineal ocurre principalmente por el \textbf{efecto de agregación de memoria caché}. Cuando un conjunto de datos grande no cabe en la memoria caché de un solo núcleo, el CPU sufre continuos fallos de caché (cache misses) y accesos lentos a la RAM. Al dividir el problema entre $p$ procesadores, el tamaño de los datos por núcleo se reduce ($N/p$) y cabe completamente en las cachés L2/L3 locales de cada núcleo, permitiendo lecturas ultra rápidas y haciendo que el sistema acelere más de $p$ veces.»}
+\end{qabox}
+
+\begin{qabox}{4. ¿Qué establece el modelo de Consistencia Secuencial propuesto por Leslie Lamport?}
+\textbf{Respuesta Modelo:}  
+\textit{«Lamport (1979) definió que un sistema es secuencialmente consistente si el resultado de cualquier ejecución concurrente es el mismo que si las operaciones de todos los procesadores se ejecutaran en algún orden secuencial secuenciado por el bus, y las operaciones de cada procesador individual aparecen en dicha secuencia respetando el orden estricto especificado por su propio programa (Program Order).»}
+\end{qabox}
+
+\begin{qabox}{5. ¿Por qué los procesadores comerciales modernos (Intel x86, AMD, ARM) no implementan Consistencia Secuencial pura?}
+\textbf{Respuesta Modelo:}  
+\textit{«Porque implementar consistencia secuencial estricta en hardware obligaría a los núcleos a detener el pipeline (stall) en cada escritura esperando la confirmación de todos los demás núcleos, destruyendo el rendimiento. Los procesadores modernos implementan \textbf{Consistencia Relajada} mediante Store Buffers y ejecución fuera de orden (\textit{Out-of-Order Execution}), delegando al programador o al compilador el uso explícito de \textbf{Barreras de Memoria (Memory Fences)} cuando se requiere sincronización.»}
+\end{qabox}
+
+\section{Checklist de Seguridad para tu Exposición}
+
+\begin{itemize}[leftmargin=6mm]
+    \item[$\square$] \textbf{Control de Fórmulas:} Recordar con precisión $S = T_{seq}/T_{par}$, $E = S/p$ y $S = \frac{1}{(1-f) + f/p}$.
+    \item[$\square$] \textbf{Interacción con la Diapositiva 10:} Señalar en la pantalla los $100\text{ s} \to 30\text{ s}$ en $4$ núcleos, indicando los $3.33\text{x}$ y $83.3\%$.
+    \item[$\square$] \textbf{Énfasis en la Diapositiva 11 (Amdahl):} Apuntar a la curva roja asintótica ($5.00\text{x}$) para ilustrar el límite teórico insuperable.
+    \item[$\square$] \textbf{Transición Impecable (Minuto 11:55):} Cerrar diciendo: \textit{«Habiendo fundamentado las métricas cuantitativas, Amdahl y la consistencia de hardware, le doy el pase a mi compañero para ver la implementación práctica en Python analizando el GIL, Threading y Multiprocessing.»}
+\end{itemize}
+
+\end{document}
