@@ -1197,3 +1197,109 @@ body {
 }
 
 .laser-active .laser-dot { display: block; }
+
+/* ==========================================================================
+   Mathematical Formula Cards & Typographic Notation (UNA Puno Standard)
+   ========================================================================== */
+.formula-grid-2x2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 10px;
+  height: 100%;
+}
+
+.formula-card-pro {
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+}
+
+.formula-card-pro:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--secondary-ocean);
+}
+
+.formula-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.formula-title-text {
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--primary-navy);
+}
+
+.formula-badge-pill {
+  font-family: 'Inter', sans-serif;
+  font-size: 9.5px;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: var(--bg-mint);
+  color: var(--secondary-ocean);
+  border: 1px solid var(--accent-cyan);
+}
+
+.formula-math-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 10px;
+  background: linear-gradient(135deg, #F8FDFD, #EDF8FC);
+  border: 1.2px dashed rgba(75, 137, 172, 0.45);
+  border-radius: var(--radius-sm);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14.5px;
+  font-weight: 800;
+  color: var(--primary-navy);
+  margin: 4px 0;
+}
+
+.math-frac {
+  display: inline-flex;
+  flex-direction: column;
+  vertical-align: middle;
+  align-items: center;
+  text-align: center;
+  padding: 0 4px;
+  margin: 0 4px;
+}
+
+.math-num {
+  border-bottom: 2px solid var(--primary-navy);
+  padding-bottom: 1px;
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.math-den {
+  padding-top: 1px;
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.formula-desc-text {
+  font-size: 11px;
+  line-height: 1.35;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+.formula-desc-text strong {
+  color: var(--primary-navy);
+}
+

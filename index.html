@@ -755,79 +755,135 @@
 
       <!-- slide_09.html -->
       <!-- ====================================================================
-           SLIDE 09: PERSONA 3 - MÉTRICAS DE RENDIMIENTO
-           ==================================================================== -->
-      <article class="slide" id="slide-9">
-        <div class="slide-header">
-          <div class="slide-tagline-row">
-            <span class="slide-badge-category">Persona 3: Rendimiento</span>
-            <span class="slide-badge-time">Minuto 8:00 - 12:00</span>
+     SLIDE 09: PERSONA 3 - MÉTRICAS FUNDAMENTALES DE RENDIMIENTO
+     ==================================================================== -->
+<article class="slide" id="slide-9">
+  <div class="slide-header" style="margin-bottom: 8px;">
+    <div class="slide-tagline-row">
+      <span class="slide-badge-category">Persona 3: Rendimiento Cuantitativo</span>
+      <span class="slide-badge-time">Minuto 8:00 - 12:00</span>
+    </div>
+    <h2 class="slide-title">Métricas Fundamentales de Rendimiento</h2>
+    <p class="slide-subtitle">Cuantificación matemática de ganancia de velocidad, eficiencia de hardware y sobrecosto</p>
+  </div>
+
+  <div class="slide-body" style="gap: 10px;">
+    <!-- 2 Column Split Layout: Formulas (Left) vs Speedup Curves & Insights (Right) -->
+    <div class="grid-2-cols" style="flex: 1; min-height: 0; gap: 12px; align-items: stretch;">
+      
+      <!-- LEFT COLUMN: 4 Formulas in 2x2 Clean Grid -->
+      <div class="formula-grid-2x2">
+        
+        <!-- Formula 1: Tiempos de Ejecución -->
+        <div class="formula-card-pro">
+          <div class="formula-header-row">
+            <span class="formula-title-text">1. Tiempos Base</span>
+            <span class="formula-badge-pill">Línea Base</span>
           </div>
-          <h2 class="slide-title">Métricas Fundamentales de Rendimiento</h2>
-          <p class="slide-subtitle">Cómo cuantificar matemáticamente la ganancia de velocidad en sistemas paralelos</p>
+          <div class="formula-math-display">
+            T<sub style="font-size: 11px;">seq</sub> &nbsp;vs&nbsp; T<sub style="font-size: 11px;">par</sub>(p)
+          </div>
+          <p class="formula-desc-text">
+            <strong>T<sub>seq</sub>:</strong> Tiempo con 1 solo procesador.<br>
+            <strong>T<sub>par</sub>:</strong> Tiempo con <em>p</em> procesadores activos.
+          </p>
         </div>
 
-        <div class="slide-body">
-          <div class="grid-4-cols">
-            <!-- Metric 1: Tseq & Tpar -->
-            <div class="formula-card">
-              <div class="formula-label">Tiempos de Ejecución</div>
-              <div class="formula-math" style="font-size: 18px;">T_seq &amp; T_par</div>
-              <p class="formula-explain">
-                $T_{seq}$: Tiempo con 1 procesador.<br>
-                $T_{par}$: Tiempo con $p$ procesadores.
-              </p>
-            </div>
-
-            <!-- Metric 2: Speedup -->
-            <div class="formula-card" style="border-color: var(--secondary-ocean);">
-              <div class="formula-label">Speedup (Aceleración)</div>
-              <div class="formula-math">S = \frac{T_{seq}}{T_{par}}</div>
-              <p class="formula-explain">
-                Cuántas veces más rápido corre el algoritmo en paralelo ($S > 1$).
-              </p>
-            </div>
-
-            <!-- Metric 3: Eficiencia -->
-            <div class="formula-card" style="border-color: var(--primary-navy);">
-              <div class="formula-label">Eficiencia (E)</div>
-              <div class="formula-math">E = \frac{S}{p}</div>
-              <p class="formula-explain">
-                Aprovechamiento por procesador ($0 \le E \le 1$ o $0\% \text{ a } 100\%$).
-              </p>
-            </div>
-
-            <!-- Metric 4: Overhead -->
-            <div class="formula-card">
-              <div class="formula-label">Overhead (T_ovh)</div>
-              <div class="formula-math" style="font-size: 15px;">T_{ovh} = T_{par} - \frac{T_{seq}}{p}</div>
-              <p class="formula-explain">
-                Tiempo perdido en sincronización, comunicación y creación de hilos.
-              </p>
+        <!-- Formula 2: Speedup -->
+        <div class="formula-card-pro" style="border-color: var(--secondary-ocean);">
+          <div class="formula-header-row">
+            <span class="formula-title-text" style="color: var(--secondary-ocean);">2. Speedup (S)</span>
+            <span class="formula-badge-pill" style="background: #EAF4F9; color: var(--secondary-ocean); border-color: var(--secondary-ocean);">Aceleración</span>
+          </div>
+          <div class="formula-math-display" style="background: linear-gradient(135deg, #F0F8FC, #E6F3F9); color: var(--secondary-ocean);">
+            S = 
+            <div class="math-frac">
+              <span class="math-num">T<sub>seq</sub></span>
+              <span class="math-den">T<sub>par</sub></span>
             </div>
           </div>
-
-          <div class="grid-2-cols" style="height: auto;">
-            <div class="card card-navy" style="padding: 16px 20px;">
-              <h4 style="font-size: 14px; font-weight: 700; color: #FFFFFF; margin-bottom: 4px;">
-                Speedup Ideal vs Real
-              </h4>
-              <p style="font-size: 13px; color: #DDF7FC; line-height: 1.5;">
-                En un mundo ideal con $p=4$, esperaríamos un Speedup de $S=4$ ($E=100\%$, Speedup lineal). En el mundo real, la eficiencia ronda el $70\%-90\%$ debido al costo de coordinación.
-              </p>
-            </div>
-
-            <div class="card card-ocean" style="padding: 16px 20px;">
-              <h4 style="font-size: 14px; font-weight: 700; color: #FFFFFF; margin-bottom: 4px;">
-                ¿Qué es el Speedup Superlineal?
-              </h4>
-              <p style="font-size: 13px; color: #E4FCF9; line-height: 1.5;">
-                Ocurre cuando $S > p$ ($E > 100\%$). Esto casi siempre se debe a que la memoria de caché combinada de todos los núcleos permite que el problema quepa 100% en caché L2/L3.
-              </p>
-            </div>
-          </div>
+          <p class="formula-desc-text">
+            Factor de aceleración que indica <strong>cuántas veces más rápido</strong> corre en paralelo (<em>S &gt; 1</em>).
+          </p>
         </div>
-      </article>
+
+        <!-- Formula 3: Eficiencia -->
+        <div class="formula-card-pro" style="border-color: var(--primary-navy);">
+          <div class="formula-header-row">
+            <span class="formula-title-text">3. Eficiencia (E)</span>
+            <span class="formula-badge-pill">Uso de Cores</span>
+          </div>
+          <div class="formula-math-display">
+            E = 
+            <div class="math-frac">
+              <span class="math-num">S</span>
+              <span class="math-den">p</span>
+            </div>
+            &times; 100%
+          </div>
+          <p class="formula-desc-text">
+            Aprovechamiento real por cada procesador. Rango: <strong>0% a 100%</strong> (<em>0 &le; E &le; 1</em>).
+          </p>
+        </div>
+
+        <!-- Formula 4: Overhead -->
+        <div class="formula-card-pro">
+          <div class="formula-header-row">
+            <span class="formula-title-text">4. Overhead (T<sub>ovh</sub>)</span>
+            <span class="formula-badge-pill">Sobrecosto</span>
+          </div>
+          <div class="formula-math-display">
+            T<sub>ovh</sub> = T<sub>par</sub> - 
+            <div class="math-frac">
+              <span class="math-num">T<sub>seq</sub></span>
+              <span class="math-den">p</span>
+            </div>
+          </div>
+          <p class="formula-desc-text">
+            Tiempo perdido en <strong>sincronización</strong>, paso de mensajes, barreras y creación de hilos.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN: Visual Diagram (Top) + Analysis Cards (Bottom) -->
+      <div style="display: flex; flex-direction: column; gap: 8px; height: 100%; min-height: 0;">
+        
+        <!-- Hero Speedup Curves Diagram -->
+        <div class="media-container" style="flex: 1; min-height: 0; width: 100%; padding: 2px; box-shadow: var(--shadow-sm);">
+          <img src="assets/images/speedup_curves_diagram.svg" alt="Curvas de Comportamiento del Speedup vs Procesadores" style="width: 100%; height: 100%; object-fit: contain;">
+        </div>
+
+        <!-- 2 Compact Bottom Insight Cards -->
+        <div class="grid-2-cols" style="flex: 0 0 auto; gap: 8px; margin: 0;">
+          
+          <!-- Insight 1 -->
+          <div class="card card-navy" style="padding: 8px 12px; height: auto; min-height: auto; gap: 2px; border-radius: var(--radius-sm);">
+            <h4 style="font-family: 'Outfit', sans-serif; font-size: 11.5px; font-weight: 800; color: #FFFFFF; margin: 0;">
+              Speedup Lineal vs Real
+            </h4>
+            <p style="font-size: 10.5px; line-height: 1.35; color: #DDF7FC; margin: 0;">
+              Con <em>p=4</em>, el ideal es <em>S=4</em> (<em>E=100%</em>). En la práctica, <em>E &approx; 70%-90%</em> debido al costo de sincronización.
+            </p>
+          </div>
+
+          <!-- Insight 2 -->
+          <div class="card card-ocean" style="padding: 8px 12px; height: auto; min-height: auto; gap: 2px; border-radius: var(--radius-sm);">
+            <h4 style="font-family: 'Outfit', sans-serif; font-size: 11.5px; font-weight: 800; color: #FFFFFF; margin: 0;">
+              ¿Por qué ocurre el Superlineal?
+            </h4>
+            <p style="font-size: 10.5px; line-height: 1.35; color: #E4FCF9; margin: 0;">
+              Ocurre si <em>S &gt; p</em> (<em>E &gt; 100%</em>) cuando la suma de memorias caché L2/L3 de todos los núcleos evita accesos lentos a RAM.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</article>
 
       <!-- slide_10.html -->
       <!-- ====================================================================
